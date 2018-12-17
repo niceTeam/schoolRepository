@@ -2,6 +2,7 @@ package com.wisdomschool.student.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,18 @@ public class StudentService {
 
 	public int saveList(List<Student> students) {
 		return this.studentMapper.saveList(students);
+	}
+
+	//学生进行登陆，并且修改cid
+	public Student getUserToLogin(Student stu) {
+		if (stu == null)
+			return null;
+		Student student = this.studentMapper.getUserToLogin(stu.getStuPhone(), stu.getStuPwd());
+		if (student != null) {
+			Student s = this.getStudentByStuId(student.getStuId());
+			s.setcId(stu.getcId());
+			this.studentMapper.update(s);
+		}
+		return student;
 	}
 }

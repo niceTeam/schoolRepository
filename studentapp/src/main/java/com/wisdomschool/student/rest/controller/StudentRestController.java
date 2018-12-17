@@ -3,6 +3,7 @@ package com.wisdomschool.student.rest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wisdomschool.student.pojo.Student;
 import com.wisdomschool.student.service.StudentService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/rest/student")
 public class StudentRestController {
@@ -83,5 +85,16 @@ public class StudentRestController {
 	@PostMapping("/saveList")
 	public int saveList(@RequestBody List<Student> students) {
 		return this.studentService.saveList(students);
+	}
+
+	/**
+	 * 登陆
+	 * 
+	 * @param stu
+	 * @return
+	 */
+	@PostMapping("/tologin")
+	public Object getUserToLogin(@RequestBody Student stu) {
+		return this.studentService.getUserToLogin(stu);
 	}
 }

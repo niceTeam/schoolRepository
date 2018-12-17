@@ -35,4 +35,13 @@ public interface StudentMapper {
 	 * @return
 	 */
 	int saveList(@Param("students") List<Student> students);
+	
+	/**
+	 * 学生使用手机号和面进行登陆
+	 * @param phone
+	 * @param pwd
+	 * @return
+	 */
+	@Select ("select * from student where stuPhone=#{phone} and stuPwd=#{pwd} limit 0,1")
+	Student getUserToLogin(@Param("phone")String phone,@Param("pwd")String pwd);
 }
