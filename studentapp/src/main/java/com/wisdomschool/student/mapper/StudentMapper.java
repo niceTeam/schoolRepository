@@ -25,7 +25,7 @@ public interface StudentMapper {
 	@Options(useGeneratedKeys = true, keyColumn = "stuId", keyProperty = "stuId")
 	int save(Student student);
 
-	@Update("UPDATE `schoolmanage`.`student` SET `stuName` = #{stuName},`stuUserName` = #{stuUserName},`stuPwd` = #{stuPwd},`classId` = #{classId},`stuSex` = #{stuSex},`stuBirth` = #{stuBirth},`stuImage` = #{stuImage},`stuPhone` = #{stuPhone},`stuType` = #{stuType},`stuStartTime` = #{stuStartTime},`stuEndTime` = #{stuEndTime},`stuIdNumber` = #{stuIdNumber},`styAddress` = #{styAddress},`cId` = #{cId#{ WHERE `stuId` = #{stuId}")
+	@Update("UPDATE `schoolmanage`.`student` SET `stuName` = #{stuName},`stuUserName` = #{stuUserName},`stuPwd` = #{stuPwd},`classId` = #{classId},`stuSex` = #{stuSex},`stuBirth` = #{stuBirth},`stuImage` = #{stuImage},`stuPhone` = #{stuPhone},`stuType` = #{stuType},`stuStartTime` = #{stuStartTime},`stuEndTime` = #{stuEndTime},`stuIdNumber` = #{stuIdNumber},`styAddress` = #{styAddress},`cId` = #{cId} WHERE `stuId` = #{stuId}")
 	int update(Student student);
 
 	/**
@@ -35,13 +35,17 @@ public interface StudentMapper {
 	 * @return
 	 */
 	int saveList(@Param("students") List<Student> students);
-	
+
 	/**
 	 * 学生使用手机号和面进行登陆
+	 * 
 	 * @param phone
 	 * @param pwd
 	 * @return
 	 */
-	@Select ("select * from student where stuPhone=#{phone} and stuPwd=#{pwd} limit 0,1")
-	Student getUserToLogin(@Param("phone")String phone,@Param("pwd")String pwd);
+	@Select("select * from student where stuPhone=#{phone} and stuPwd=#{pwd} limit 0,1")
+	Student getUserToLogin(@Param("phone") String phone, @Param("pwd") String pwd);
+
+	@Select("select * from student where stuId != #{stuId} and cId = #{cId} limit 0,1")
+	Student getStudentByCid(@Param("cId") String cId, @Param("stuId") int stuId);
 }

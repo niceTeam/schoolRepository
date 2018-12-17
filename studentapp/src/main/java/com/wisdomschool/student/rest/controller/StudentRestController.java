@@ -1,6 +1,7 @@
 package com.wisdomschool.student.rest.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wisdomschool.student.pojo.Student;
 import com.wisdomschool.student.service.StudentService;
+import com.wisdomschool.student.util.MapInfo;
 
 @CrossOrigin
 @RestController
@@ -94,7 +96,10 @@ public class StudentRestController {
 	 * @return
 	 */
 	@PostMapping("/tologin")
-	public Object getUserToLogin(@RequestBody Student stu) {
-		return this.studentService.getUserToLogin(stu);
+	public Object getUserToLogin(Student stu) {
+		Student student = this.studentService.getUserToLogin(stu);
+		Map<String, Object> map = MapInfo.getMap("登陆", student!=null);
+		map.put("student", student);
+		return map;
 	}
 }
