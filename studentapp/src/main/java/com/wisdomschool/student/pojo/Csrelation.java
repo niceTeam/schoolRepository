@@ -1,12 +1,18 @@
 package com.wisdomschool.student.pojo;
 
+import java.io.Serializable;
+
 /**
  * 班级与学生关系
  * @author axiang
  *
  * 2018年12月17日 上午11:27:43
  */
-public class Csrelation {
+public class Csrelation implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6536270197846539208L;
 	private Integer id;
 	private Integer stuId; // 学员Id
 	private Integer classId; // 班级id

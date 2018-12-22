@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisdomschool.student.mapper.EnterhighrecordMapper">
+    <!-- Enterhighrecord的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_Enterhighrecord_Map" type="com.wisdomschool.student.pojo.Enterhighrecord">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="classId" jdbcType="INTEGER" property="classid" />
+        <result column="gId" jdbcType="INTEGER" property="gid" />
+        <result column="enterTime" jdbcType="DATE" property="entertime" />
+    </resultMap>
+
+    <!-- 数据库中表名为:enterhighrecord的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="enterhighrecord_Column">
+        enterhighrecord.id as id
+        ,enterhighrecord.classId as classId
+        ,enterhighrecord.gId as gId
+        ,enterhighrecord.enterTime as enterTime
+    </sql>
+
+    <!--获得类名为:Enterhighrecord对应的数据库表的数据总行数 -->
+    <select id="getEnterhighrecordRowCount" resultType="java.lang.Long">
+        select count(id) from enterhighrecord
+    </select>
+    <!-- 获得类名为:Enterhighrecord对应数据库中表的数据集合 -->
+    <select id="selectEnterhighrecord" resultMap="result_Enterhighrecord_Map">
+        select 
+        <include refid="enterhighrecord_Column" /> 
+        from enterhighrecord
+    </select> 
+
+    <!-- 获得一个Enterhighrecord对象,以参数Enterhighrecord对象中不为空的属性作为条件进行查询-->
+    <select id="selectEnterhighrecordByObj" parameterType="com.wisdomschool.student.pojo.Enterhighrecord" resultMap="result_Enterhighrecord_Map">
+        select 
+            <include refid="enterhighrecord_Column" /> 
+        from enterhighrecord
+        <where>
+            <if test="entertime != null "> and enterhighrecord.enterTime = #{entertime,jdbcType=DATE}</if>
+            <if test="gid != null "> and enterhighrecord.gId = #{gid,jdbcType=INTEGER}</if>
+            <if test="classid != null "> and enterhighrecord.classId = #{classid,jdbcType=INTEGER}</if>
+            <if test="id != null "> and enterhighrecord.id = #{id,jdbcType=INTEGER}</if>
+        </where>
+    </select> 
+
+    <!-- 通过Enterhighrecord的id获得对应数据库中表的数据对象-->
+    <select id="selectEnterhighrecordById" parameterType="java.lang.Integer" resultMap="result_Enterhighrecord_Map">
+        select 
+            <include refid="enterhighrecord_Column" /> 
+        from enterhighrecord
+        where enterhighrecord.id = #{id,jdbcType=INTEGER}
+    </select> 
+
+    <!-- 将Enterhighrecord插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertEnterhighrecord" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
+        insert into enterhighrecord(id,classId,gId,enterTime) 
+        values(#{id,jdbcType=INTEGER},#{classid,jdbcType=INTEGER},#{gid,jdbcType=INTEGER},#{entertime,jdbcType=DATE})
+    </insert>
+
+    <!-- 将Enterhighrecord中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyEnterhighrecord" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
+        insert into enterhighrecord
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="classid != null">classId,</if>
+            <if test="gid != null">gId,</if>
+            <if test="entertime != null">enterTime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id,jdbcType=INTEGER},</if>
+            <if test="classid != null"> #{classid,jdbcType=INTEGER},</if>
+            <if test="gid != null"> #{gid,jdbcType=INTEGER},</if>
+            <if test="entertime != null"> #{entertime,jdbcType=DATE},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过Enterhighrecord的id将数据库表中对应的数据删除-->
+    <delete id="deleteEnterhighrecordById" parameterType="java.lang.Integer">
+        delete from enterhighrecord
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 通过Enterhighrecord的id将Enterhighrecord的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateEnterhighrecordById" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
+        update enterhighrecord set
+            classId=#{classid,jdbcType=INTEGER}
+            ,gId=#{gid,jdbcType=INTEGER}
+            ,enterTime=#{entertime,jdbcType=DATE}
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 通过Enterhighrecord的id将Enterhighrecord中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyEnterhighrecordById" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
+        update enterhighrecord
+        <set>
+            <if test="classid != null">
+                classId=#{classid,jdbcType=INTEGER},
+            </if>
+            <if test="gid != null">
+                gId=#{gid,jdbcType=INTEGER},
+            </if>
+            <if test="entertime != null">
+                enterTime=#{entertime,jdbcType=DATE},
+            </if>
+        </set>
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>

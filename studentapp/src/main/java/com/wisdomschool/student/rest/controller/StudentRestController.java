@@ -96,10 +96,20 @@ public class StudentRestController {
 	 * @return
 	 */
 	@PostMapping("/tologin")
-	public Object getUserToLogin(Student stu) {
-		Student student = this.studentService.getUserToLogin(stu);
-		Map<String, Object> map = MapInfo.getMap("登陆", student!=null);
-		map.put("student", student);
-		return map;
+	public Object getStudentToLogin(Student stu) {
+		Student student = this.studentService.getStudentToLogin(stu);
+		return MapInfo.getMap("student", student, "登陆", student != null);
+	}
+
+	@PutMapping("/updatePwd")
+	public Object updatePwd(Integer stuId, String oldPwd, String nowPwd) {
+		Student student = this.studentService.updatePwd(stuId, oldPwd, nowPwd);
+		return MapInfo.getMap("student", student, "修改", student != null);
+	}
+
+	@PutMapping("/uploadHeadImg")
+	public Object uploadHeadImg(Integer stuId, String headImg) {
+		Student student = this.studentService.uploadHeadImg(stuId, headImg);
+		return MapInfo.getMap("student", student, "修改", student != null);
 	}
 }

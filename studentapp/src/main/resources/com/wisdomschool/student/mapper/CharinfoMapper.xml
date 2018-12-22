@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisdomschool.student.mapper.CharinfoMapper">
+    <!-- Charinfo的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_Charinfo_Map" type="com.wisdomschool.student.pojo.CharInfo">
+        <id column="chId" jdbcType="INTEGER" property="chid" />
+        <result column="message" jdbcType="VARCHAR" property="message" />
+        <result column="msgType" jdbcType="INTEGER" property="msgtype" />
+        <result column="sendTime" jdbcType="DATE" property="sendtime" />
+        <result column="isRemove" jdbcType="INTEGER" property="isremove" />
+        <result column="beSend" jdbcType="VARCHAR" property="besend" />
+    </resultMap>
+
+    <!-- 数据库中表名为:charinfo的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="charinfo_Column">
+        charinfo.chId as chId
+        ,charinfo.message as message
+        ,charinfo.msgType as msgType
+        ,charinfo.sendTime as sendTime
+        ,charinfo.isRemove as isRemove
+        ,charinfo.beSend as beSend
+    </sql>
+
+    <!--获得类名为:Charinfo对应的数据库表的数据总行数 -->
+    <select id="getCharinfoRowCount" resultType="java.lang.Long">
+        select count(chId) from charinfo
+    </select>
+    <!-- 获得类名为:Charinfo对应数据库中表的数据集合 -->
+    <select id="selectCharinfo" resultMap="result_Charinfo_Map">
+        select 
+        <include refid="charinfo_Column" /> 
+        from charinfo
+    </select> 
+
+    <!-- 获得一个Charinfo对象,以参数Charinfo对象中不为空的属性作为条件进行查询-->
+    <select id="selectCharinfoByObj" parameterType="com.wisdomschool.student.pojo.CharInfo" resultMap="result_Charinfo_Map">
+        select 
+            <include refid="charinfo_Column" /> 
+        from charinfo
+        <where>
+            <if test="besend != null "> and charinfo.beSend = #{besend,jdbcType=VARCHAR}</if>
+            <if test="isremove != null "> and charinfo.isRemove = #{isremove,jdbcType=INTEGER}</if>
+            <if test="sendtime != null "> and charinfo.sendTime = #{sendtime,jdbcType=DATE}</if>
+            <if test="msgtype != null "> and charinfo.msgType = #{msgtype,jdbcType=INTEGER}</if>
+            <if test="message != null "> and charinfo.message = #{message,jdbcType=VARCHAR}</if>
+            <if test="chid != null "> and charinfo.chId = #{chid,jdbcType=INTEGER}</if>
+        </where>
+    </select> 
+
+    <!-- 通过Charinfo的id获得对应数据库中表的数据对象-->
+    <select id="selectCharinfoById" parameterType="java.lang.Integer" resultMap="result_Charinfo_Map">
+        select 
+            <include refid="charinfo_Column" /> 
+        from charinfo
+        where charinfo.chId = #{id,jdbcType=INTEGER}
+    </select> 
+
+    <!-- 将Charinfo插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertCharinfo" parameterType="com.wisdomschool.student.pojo.CharInfo">
+        insert into charinfo(chId,message,msgType,sendTime,isRemove,beSend) 
+        values(#{chid,jdbcType=INTEGER},#{message,jdbcType=VARCHAR},#{msgtype,jdbcType=INTEGER},#{sendtime,jdbcType=DATE},#{isremove,jdbcType=INTEGER},#{besend,jdbcType=VARCHAR})
+    </insert>
+
+    <!-- 将Charinfo中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyCharinfo" parameterType="com.wisdomschool.student.pojo.CharInfo">
+        insert into charinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="chid != null">chId,</if>
+            <if test="message != null">message,</if>
+            <if test="msgtype != null">msgType,</if>
+            <if test="sendtime != null">sendTime,</if>
+            <if test="isremove != null">isRemove,</if>
+            <if test="besend != null">beSend,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="chid != null"> #{chid,jdbcType=INTEGER},</if>
+            <if test="message != null"> #{message,jdbcType=VARCHAR},</if>
+            <if test="msgtype != null"> #{msgtype,jdbcType=INTEGER},</if>
+            <if test="sendtime != null"> #{sendtime,jdbcType=DATE},</if>
+            <if test="isremove != null"> #{isremove,jdbcType=INTEGER},</if>
+            <if test="besend != null"> #{besend,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过Charinfo的id将数据库表中对应的数据删除-->
+    <delete id="deleteCharinfoById" parameterType="java.lang.Integer">
+        delete from charinfo
+        where chId = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 通过Charinfo的id将Charinfo的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateCharinfoById" parameterType="com.wisdomschool.student.pojo.CharInfo">
+        update charinfo set
+            message=#{message,jdbcType=VARCHAR}
+            ,msgType=#{msgtype,jdbcType=INTEGER}
+            ,sendTime=#{sendtime,jdbcType=DATE}
+            ,isRemove=#{isremove,jdbcType=INTEGER}
+            ,beSend=#{besend,jdbcType=VARCHAR}
+        where chId=#{chid,jdbcType=INTEGER}
+    </update>
+
+    <!-- 通过Charinfo的id将Charinfo中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyCharinfoById" parameterType="com.wisdomschool.student.pojo.CharInfo">
+        update charinfo
+        <set>
+            <if test="message != null">
+                message=#{message,jdbcType=VARCHAR},
+            </if>
+            <if test="msgtype != null">
+                msgType=#{msgtype,jdbcType=INTEGER},
+            </if>
+            <if test="sendtime != null">
+                sendTime=#{sendtime,jdbcType=DATE},
+            </if>
+            <if test="isremove != null">
+                isRemove=#{isremove,jdbcType=INTEGER},
+            </if>
+            <if test="besend != null">
+                beSend=#{besend,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where chId=#{chid,jdbcType=INTEGER}
+    </update>
+
+</mapper>

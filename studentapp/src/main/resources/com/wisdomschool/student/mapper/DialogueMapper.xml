@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisdomschool.student.mapper.DialogueMapper">
+    <!-- Dialogue的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_Dialogue_Map" type="com.wisdomschool.student.pojo.Dialogue">
+        <id column="dId" jdbcType="INTEGER" property="did" />
+        <result column="sendId" jdbcType="VARCHAR" property="sendid" />
+        <result column="beSendId" jdbcType="VARCHAR" property="besendid" />
+        <result column="IsQun" jdbcType="INTEGER" property="isqun" />
+    </resultMap>
+
+    <!-- 数据库中表名为:dialogue的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="dialogue_Column">
+        dialogue.dId as dId
+        ,dialogue.sendId as sendId
+        ,dialogue.beSendId as beSendId
+        ,dialogue.IsQun as IsQun
+    </sql>
+
+    <!--获得类名为:Dialogue对应的数据库表的数据总行数 -->
+    <select id="getDialogueRowCount" resultType="java.lang.Long">
+        select count(dId) from dialogue
+    </select>
+    <!-- 获得类名为:Dialogue对应数据库中表的数据集合 -->
+    <select id="selectDialogue" resultMap="result_Dialogue_Map">
+        select 
+        <include refid="dialogue_Column" /> 
+        from dialogue
+    </select> 
+
+    <!-- 获得一个Dialogue对象,以参数Dialogue对象中不为空的属性作为条件进行查询-->
+    <select id="selectDialogueByObj" parameterType="com.wisdomschool.student.pojo.Dialogue" resultMap="result_Dialogue_Map">
+        select 
+            <include refid="dialogue_Column" /> 
+        from dialogue
+        <where>
+            <if test="isqun != null "> and dialogue.IsQun = #{isqun,jdbcType=INTEGER}</if>
+            <if test="besendid != null "> and dialogue.beSendId = #{besendid,jdbcType=VARCHAR}</if>
+            <if test="sendid != null "> and dialogue.sendId = #{sendid,jdbcType=VARCHAR}</if>
+            <if test="did != null "> and dialogue.dId = #{did,jdbcType=INTEGER}</if>
+        </where>
+    </select> 
+
+    <!-- 通过Dialogue的id获得对应数据库中表的数据对象-->
+    <select id="selectDialogueById" parameterType="java.lang.Integer" resultMap="result_Dialogue_Map">
+        select 
+            <include refid="dialogue_Column" /> 
+        from dialogue
+        where dialogue.dId = #{id,jdbcType=INTEGER}
+    </select> 
+
+    <!-- 将Dialogue插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertDialogue" parameterType="com.wisdomschool.student.pojo.Dialogue">
+        insert into dialogue(dId,sendId,beSendId,IsQun) 
+        values(#{did,jdbcType=INTEGER},#{sendid,jdbcType=VARCHAR},#{besendid,jdbcType=VARCHAR},#{isqun,jdbcType=INTEGER})
+    </insert>
+
+    <!-- 将Dialogue中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyDialogue" parameterType="com.wisdomschool.student.pojo.Dialogue">
+        insert into dialogue
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="did != null">dId,</if>
+            <if test="sendid != null">sendId,</if>
+            <if test="besendid != null">beSendId,</if>
+            <if test="isqun != null">IsQun,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="did != null"> #{did,jdbcType=INTEGER},</if>
+            <if test="sendid != null"> #{sendid,jdbcType=VARCHAR},</if>
+            <if test="besendid != null"> #{besendid,jdbcType=VARCHAR},</if>
+            <if test="isqun != null"> #{isqun,jdbcType=INTEGER},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过Dialogue的id将数据库表中对应的数据删除-->
+    <delete id="deleteDialogueById" parameterType="java.lang.Integer">
+        delete from dialogue
+        where dId = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 通过Dialogue的id将Dialogue的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateDialogueById" parameterType="com.wisdomschool.student.pojo.Dialogue">
+        update dialogue set
+            sendId=#{sendid,jdbcType=VARCHAR}
+            ,beSendId=#{besendid,jdbcType=VARCHAR}
+            ,IsQun=#{isqun,jdbcType=INTEGER}
+        where dId=#{did,jdbcType=INTEGER}
+    </update>
+
+    <!-- 通过Dialogue的id将Dialogue中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyDialogueById" parameterType="com.wisdomschool.student.pojo.Dialogue">
+        update dialogue
+        <set>
+            <if test="sendid != null">
+                sendId=#{sendid,jdbcType=VARCHAR},
+            </if>
+            <if test="besendid != null">
+                beSendId=#{besendid,jdbcType=VARCHAR},
+            </if>
+            <if test="isqun != null">
+                IsQun=#{isqun,jdbcType=INTEGER},
+            </if>
+        </set>
+        where dId=#{did,jdbcType=INTEGER}
+    </update>
+
+</mapper>

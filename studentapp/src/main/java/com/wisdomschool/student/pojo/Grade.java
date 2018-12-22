@@ -1,12 +1,18 @@
 package com.wisdomschool.student.pojo;
 
+import java.io.Serializable;
+
 /**
  * 年级
  * @author axiang
  *
  * 2018年12月17日 上午11:27:55
  */
-public class Grade {
+public class Grade implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8059653762881056396L;
 	private Integer gId;
 	private String gName;
 

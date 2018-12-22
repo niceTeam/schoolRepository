@@ -1,12 +1,19 @@
 package com.wisdomschool.student.pojo;
 
+import java.io.Serializable;
+
+
 /**
  * 班级
  * @author axiang
  *
  * 2018年12月17日 上午11:27:28
  */
-public class Classes {
+public class Classes implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8728222844153298657L;
 	private int classId;
 	private String cName; // 班级名称
 	private int gId;// 年级编号

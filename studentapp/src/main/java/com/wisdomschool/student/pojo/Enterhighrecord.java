@@ -1,12 +1,18 @@
 package com.wisdomschool.student.pojo;
 
+import java.io.Serializable;
+
 /**
  * 班级升学记录
  * @author axiang
  *
  * 2018年12月17日 上午11:27:50
  */
-public class Enterhighrecord {
+public class Enterhighrecord implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7084127063941850849L;
 	private Integer id;
 	private Integer classId; // 班级id
 	private Integer gId; // 年级 id

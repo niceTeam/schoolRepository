@@ -42,18 +42,36 @@ public class StudentService {
 
 	// 学生进行登陆，并且修改cid
 	@Transactional
-	public Student getUserToLogin(Student stu) {
+	public Student getStudentToLogin(Student stu) {
 		if (stu == null)
 			return null;
-		Student student = this.studentMapper.getUserToLogin(stu.getStuPhone(), stu.getStuPwd());
+		Student student = this.studentMapper.getStudentToLogin(stu.getStuPhone(), stu.getStuPwd());
 		if (student != null) {
 			student.setcId(stu.getcId());
 			this.studentMapper.update(student);
 			Student student2 = this.studentMapper.getStudentByCid(student.getcId(), student.getStuId());
-			if(student2!=null) {
+			if (student2 != null) {
 				student2.setcId(null);
 				this.studentMapper.update(student2);
 			}
+		}
+		return student;
+	}
+
+	public Student updatePwd(Integer stuId, String oldPwd, String nowPwd) {
+		Student student = this.studentMapper.getStudentByStuIdAndPwd(stuId, oldPwd);
+		if (student != null) {
+			student.setStuPwd(nowPwd);
+			this.studentMapper.update(student);
+		}
+		return student;
+	}
+
+	public Student uploadHeadImg(Integer stuId, String headImg) {
+		Student student = this.studentMapper.getStudentByStuId(stuId);
+		if (student != null) {
+			student.setStuImage(headImg);
+			this.studentMapper.updateImg(student);
 		}
 		return student;
 	}

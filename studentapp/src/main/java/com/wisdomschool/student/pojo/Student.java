@@ -1,12 +1,18 @@
 package com.wisdomschool.student.pojo;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author axiang
  *
  *         2018年12月17日 上午11:25:57
  */
-public class Student {
+public class Student implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4207735280230066753L;
 	private Integer stuId;
 	private String stuName; // 学员姓名
 	private String stuUserName; // 学员通行证
