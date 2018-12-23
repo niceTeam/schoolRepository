@@ -5,7 +5,7 @@ import com.wisdomschool.student.pojo.Classes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
-public class ClassesServiceImpl {
+public class ClassesService {
     @Autowired
     private ClassesMapper classesMapper;
     

@@ -1,6 +1,7 @@
 package com.wisdomschool.student.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 对话表
@@ -11,31 +12,37 @@ import java.io.Serializable;
  */
 public class Dialogue implements Serializable {
 	private static final long serialVersionUID = 4752692379538924944L;
-	private int dId;
+	private Integer dId;
 	private String sendId; // 发送人Id
 	private String beSendId; // 接收人Id/群
-	private int IsQun; // 是否为群聊 1：不是 2：是
+	private Integer isqun; // 是否为群聊 1：不是 2：是
+	private Integer state;
 
-	@Override
-	public String toString() {
-		return "Dialogue [dId=" + dId + ", sendId=" + sendId + ", beSendId=" + beSendId + ", IsQun=" + IsQun + "]";
-	}
+	private List<CharInfo> charInfos;
 
 	public Dialogue() {
 	}
 
-	public Dialogue(String sendId, String beSendId, int isQun) {
-		super();
+	public Dialogue(String sendId, String beSendId, Integer isqun, Integer state) {
 		this.sendId = sendId;
 		this.beSendId = beSendId;
-		IsQun = isQun;
+		this.isqun = isqun;
+		this.state = state;
 	}
 
-	public int getdId() {
+	public Dialogue(String sendId, String beSendId, Integer isqun, Integer state, List<CharInfo> charInfos) {
+		this.sendId = sendId;
+		this.beSendId = beSendId;
+		this.isqun = isqun;
+		this.state = state;
+		this.charInfos = charInfos;
+	}
+
+	public Integer getdId() {
 		return dId;
 	}
 
-	public void setdId(int dId) {
+	public void setdId(Integer dId) {
 		this.dId = dId;
 	}
 
@@ -55,11 +62,28 @@ public class Dialogue implements Serializable {
 		this.beSendId = beSendId;
 	}
 
-	public int getIsQun() {
-		return IsQun;
+	public Integer getIsqun() {
+		return isqun;
 	}
 
-	public void setIsQun(int isQun) {
-		IsQun = isQun;
+	public void setIsqun(Integer isqun) {
+		this.isqun = isqun;
 	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public List<CharInfo> getCharInfos() {
+		return charInfos;
+	}
+
+	public void setCharInfos(List<CharInfo> charInfos) {
+		this.charInfos = charInfos;
+	}
+
 }

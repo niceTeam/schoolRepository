@@ -13,12 +13,12 @@ public class Teacher implements Serializable {
 
 	private static final long serialVersionUID = -346314626056458385L;
 
-	private int teaId;
+	private Integer teaId;
 	private String teaName; // 员工Id
 	private String teaUserName; // 员工通行证
 	private String teaPwd; // 密码
 	private String teaImage; // 头像,App默认头像
-	private int teaType; // 职位 1:班主任 2:教员 3:管理者 4:宿管
+	private Integer teaType; // 职位 1:班主任 2:教员 3:管理者 4:宿管
 	private String teaPhone; // 联系电话
 	private String teaSex; // 性别
 	private String teaBirth; // 出生日期
@@ -39,7 +39,7 @@ public class Teacher implements Serializable {
 	public Teacher() {
 	}
 
-	public Teacher(String teaName, String teaUserName, String teaPwd, String teaImage, int teaType, String teaPhone,
+	public Teacher(String teaName, String teaUserName, String teaPwd, String teaImage, Integer teaType, String teaPhone,
 			String teaSex, String teaBirth, String teaStartTime, String teaEndTime, String teaIdNumber,
 			String teaAddress, String cId) {
 		super();
@@ -58,11 +58,11 @@ public class Teacher implements Serializable {
 		this.cId = cId;
 	}
 
-	public int getTeaId() {
+	public Integer getTeaId() {
 		return teaId;
 	}
 
-	public void setTeaId(int teaId) {
+	public void setTeaId(Integer teaId) {
 		this.teaId = teaId;
 	}
 
@@ -98,11 +98,11 @@ public class Teacher implements Serializable {
 		this.teaImage = teaImage;
 	}
 
-	public int getTeaType() {
+	public Integer getTeaType() {
 		return teaType;
 	}
 
-	public void setTeaType(int teaType) {
+	public void setTeaType(Integer teaType) {
 		this.teaType = teaType;
 	}
 

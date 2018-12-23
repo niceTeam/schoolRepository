@@ -54,13 +54,13 @@
 
     <!-- 将Csrelation插入到对应数据库的表中,包括属性值为null的数据-->
 
-    <insert id="insertCsrelation" parameterType="com.wisdomschool.student.pojo.Csrelation">
+    <insert useGeneratedKeys="true" keyColumn="id" keyProperty="id" id="insertCsrelation" parameterType="com.wisdomschool.student.pojo.Csrelation">
         insert into csrelation(id,stuId,classId,csTime,isChange) 
         values(#{id,jdbcType=INTEGER},#{stuid,jdbcType=INTEGER},#{classid,jdbcType=INTEGER},#{cstime,jdbcType=DATE},#{ischange,jdbcType=INTEGER})
     </insert>
 
     <!-- 将Csrelation中属性值不为null的数据,插入到对应数据库的表中-->
-    <insert id="insertNonEmptyCsrelation" parameterType="com.wisdomschool.student.pojo.Csrelation">
+    <insert useGeneratedKeys="true" keyColumn="id" keyProperty="id" id="insertNonEmptyCsrelation" parameterType="com.wisdomschool.student.pojo.Csrelation">
         insert into csrelation
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>

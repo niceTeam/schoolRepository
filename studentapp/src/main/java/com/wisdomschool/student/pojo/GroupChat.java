@@ -9,27 +9,39 @@ import java.io.Serializable;
  *
  *         2018年12月19日 下午3:47:41
  */
-public class GroupChat implements Serializable{
+public class GroupChat implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7254797342319509906L;
-	private int groupId;// 群组Id
+	private Integer groupId;// 群组Id
 	private String groupName;// 群组名
-	private int ownerId;// 群主id
-	private String groupTime;// 创立时间'
+	private Integer ownerId;// 群主id
+	private String groupTime;// 创立时间
+	private Integer gradeId;// 年级Id
 
 	@Override
 	public String toString() {
 		return "GroupChat [groupId=" + groupId + ", groupName=" + groupName + ", ownerId=" + ownerId + ", groupTime="
-				+ groupTime + "]";
+				+ groupTime + ", gradeId=" + gradeId + "]";
 	}
 
-	public int getGroupId() {
+	public GroupChat() {
+	}
+
+	public GroupChat(String groupName, Integer ownerId, String groupTime, Integer gradeId) {
+		super();
+		this.groupName = groupName;
+		this.ownerId = ownerId;
+		this.groupTime = groupTime;
+		this.gradeId = gradeId;
+	}
+
+	public Integer getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(int groupId) {
+	public void setGroupId(Integer groupId) {
 		this.groupId = groupId;
 	}
 
@@ -41,11 +53,11 @@ public class GroupChat implements Serializable{
 		this.groupName = groupName;
 	}
 
-	public int getOwnerId() {
+	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public void setOwnerId(int ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
 	}
 
@@ -56,4 +68,17 @@ public class GroupChat implements Serializable{
 	public void setGroupTime(String groupTime) {
 		this.groupTime = groupTime;
 	}
+
+	public Integer getGradeId() {
+		return gradeId;
+	}
+
+	public void setGradeId(Integer gradeId) {
+		this.gradeId = gradeId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

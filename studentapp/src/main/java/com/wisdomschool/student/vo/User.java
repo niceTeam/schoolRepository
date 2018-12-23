@@ -30,6 +30,14 @@ public class User implements Serializable {
 	private String uAddress;
 	private String cId;
 
+	@Override
+	public String toString() {
+		return "User [uId=" + uId + ", userNum=" + userNum + ", uName=" + uName + ", upwd=" + upwd + ", headImg="
+				+ headImg + ", uType=" + uType + ", uPhone=" + uPhone + ", uSex=" + uSex + ", uBirth=" + uBirth
+				+ ", uStart=" + uStart + ", uEnd=" + uEnd + ", uIdNumber=" + uIdNumber + ", uAddress=" + uAddress
+				+ ", cId=" + cId + "]";
+	}
+
 	public User() {
 	}
 

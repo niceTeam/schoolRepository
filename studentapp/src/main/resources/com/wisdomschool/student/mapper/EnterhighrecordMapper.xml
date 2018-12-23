@@ -51,13 +51,13 @@
 
     <!-- 将Enterhighrecord插入到对应数据库的表中,包括属性值为null的数据-->
 
-    <insert id="insertEnterhighrecord" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
+    <insert useGeneratedKeys="true" keyColumn="id" keyProperty="id" id="insertEnterhighrecord" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
         insert into enterhighrecord(id,classId,gId,enterTime) 
         values(#{id,jdbcType=INTEGER},#{classid,jdbcType=INTEGER},#{gid,jdbcType=INTEGER},#{entertime,jdbcType=DATE})
     </insert>
 
     <!-- 将Enterhighrecord中属性值不为null的数据,插入到对应数据库的表中-->
-    <insert id="insertNonEmptyEnterhighrecord" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
+    <insert useGeneratedKeys="true" keyColumn="id" keyProperty="id" id="insertNonEmptyEnterhighrecord" parameterType="com.wisdomschool.student.pojo.Enterhighrecord">
         insert into enterhighrecord
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>

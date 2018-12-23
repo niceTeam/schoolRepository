@@ -14,12 +14,12 @@ public class GroupChatRecord implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -134524515960087830L;
-	private int id;
-	private int sendId;// 发送人id
+	private Integer id;
+	private Integer sendId;// 发送人id
 	private String message;// 消息内容
 	private String messageFile;// 文件图片消息 文件路径or图片路径
 	private String time;// 发送时间
-	private int isRemove;// 是否撤回
+	private Integer isRemove;// 是否撤回
 
 	@Override
 	public String toString() {
@@ -27,19 +27,19 @@ public class GroupChatRecord implements Serializable {
 				+ messageFile + ", time=" + time + ", isRemove=" + isRemove + "]";
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getSendId() {
+	public Integer getSendId() {
 		return sendId;
 	}
 
-	public void setSendId(int sendId) {
+	public void setSendId(Integer sendId) {
 		this.sendId = sendId;
 	}
 
@@ -67,11 +67,11 @@ public class GroupChatRecord implements Serializable {
 		this.time = time;
 	}
 
-	public int getIsRemove() {
+	public Integer getIsRemove() {
 		return isRemove;
 	}
 
-	public void setIsRemove(int isRemove) {
+	public void setIsRemove(Integer isRemove) {
 		this.isRemove = isRemove;
 	}
 }

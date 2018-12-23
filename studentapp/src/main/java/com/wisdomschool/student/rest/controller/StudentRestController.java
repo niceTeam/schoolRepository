@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wisdomschool.student.pojo.Student;
 import com.wisdomschool.student.service.StudentService;
 import com.wisdomschool.student.util.MapInfo;
+import com.wisdomschool.student.vo.GradeVo;
 
 @CrossOrigin
 @RestController
@@ -111,5 +112,16 @@ public class StudentRestController {
 	public Object uploadHeadImg(Integer stuId, String headImg) {
 		Student student = this.studentService.uploadHeadImg(stuId, headImg);
 		return MapInfo.getMap("student", student, "修改", student != null);
+	}
+
+	/**
+	 * 得到一个学生的团队
+	 * 
+	 * @param stuId
+	 * @return
+	 */
+	@GetMapping("/getTeam/{stuId}")
+	public Object getTeam(@PathVariable Integer stuId) {
+		return this.studentService.getTeam(stuId);
 	}
 }

@@ -48,13 +48,13 @@
 
     <!-- 将Classes插入到对应数据库的表中,包括属性值为null的数据-->
 
-    <insert id="insertClasses" parameterType="com.wisdomschool.student.pojo.Classes">
+    <insert id="insertClasses" useGeneratedKeys="true" keyColumn="classId" keyProperty="classId" parameterType="com.wisdomschool.student.pojo.Classes">
         insert into classes(classId,cName,gId) 
         values(#{classid,jdbcType=INTEGER},#{cname,jdbcType=VARCHAR},#{gid,jdbcType=INTEGER})
     </insert>
 
     <!-- 将Classes中属性值不为null的数据,插入到对应数据库的表中-->
-    <insert id="insertNonEmptyClasses" parameterType="com.wisdomschool.student.pojo.Classes">
+    <insert useGeneratedKeys="true" keyColumn="classid" keyProperty="classId" id="insertNonEmptyClasses" parameterType="com.wisdomschool.student.pojo.Classes">
         insert into classes
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="classid != null">classId,</if>

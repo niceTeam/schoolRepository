@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wisdomschool.student.mapper.GroupchatMapper">
-    <!-- Groupchat的resultMap,column是给数据库列起的别名,它对应property类的属性-->
-    <resultMap id="result_Groupchat_Map" type="com.wisdomschool.student.mapper.GroupChat">
+<mapper namespace="com.wisdomschool.student.mapper.GroupChatMapper">
+    <!-- GroupChat的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_GroupChat_Map" type="com.wisdomschool.student.pojo.GroupChat">
         <id column="groupId" jdbcType="INTEGER" property="groupid" />
         <result column="groupName" jdbcType="VARCHAR" property="groupname" />
         <result column="ownerId" jdbcType="INTEGER" property="ownerid" />
         <result column="groupTime" jdbcType="DATE" property="grouptime" />
+        <result column="gradeId" jdbcType="INTEGER" property="gradeid" />
     </resultMap>
 
     <!-- 数据库中表名为:groupchat的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
@@ -15,25 +16,27 @@
         ,groupchat.groupName as groupName
         ,groupchat.ownerId as ownerId
         ,groupchat.groupTime as groupTime
+        ,groupchat.gradeId as gradeId
     </sql>
 
-    <!--获得类名为:Groupchat对应的数据库表的数据总行数 -->
-    <select id="getGroupchatRowCount" resultType="java.lang.Long">
+    <!--获得类名为:GroupChat对应的数据库表的数据总行数 -->
+    <select id="getGroupChatRowCount" resultType="java.lang.Long">
         select count(groupId) from groupchat
     </select>
-    <!-- 获得类名为:Groupchat对应数据库中表的数据集合 -->
-    <select id="selectGroupchat" resultMap="result_Groupchat_Map">
+    <!-- 获得类名为:GroupChat对应数据库中表的数据集合 -->
+    <select id="selectGroupChat" resultMap="result_GroupChat_Map">
         select 
         <include refid="groupchat_Column" /> 
         from groupchat
     </select> 
 
-    <!-- 获得一个Groupchat对象,以参数Groupchat对象中不为空的属性作为条件进行查询-->
-    <select id="selectGroupchatByObj" parameterType="com.wisdomschool.student.mapper.GroupChat" resultMap="result_Groupchat_Map">
+    <!-- 获得一个GroupChat对象,以参数GroupChat对象中不为空的属性作为条件进行查询-->
+    <select id="selectGroupChatByObj" parameterType="com.wisdomschool.student.pojo.GroupChat" resultMap="result_GroupChat_Map">
         select 
             <include refid="groupchat_Column" /> 
         from groupchat
         <where>
+            <if test="gradeid != null "> and groupchat.gradeId = #{gradeid,jdbcType=INTEGER}</if>
             <if test="grouptime != null "> and groupchat.groupTime = #{grouptime,jdbcType=DATE}</if>
             <if test="ownerid != null "> and groupchat.ownerId = #{ownerid,jdbcType=INTEGER}</if>
             <if test="groupname != null "> and groupchat.groupName = #{groupname,jdbcType=VARCHAR}</if>
@@ -41,55 +44,58 @@
         </where>
     </select> 
 
-    <!-- 通过Groupchat的id获得对应数据库中表的数据对象-->
-    <select id="selectGroupchatById" parameterType="java.lang.Integer" resultMap="result_Groupchat_Map">
+    <!-- 通过GroupChat的id获得对应数据库中表的数据对象-->
+    <select id="selectGroupChatById" parameterType="java.lang.Integer" resultMap="result_GroupChat_Map">
         select 
             <include refid="groupchat_Column" /> 
         from groupchat
         where groupchat.groupId = #{id,jdbcType=INTEGER}
     </select> 
 
-    <!-- 将Groupchat插入到对应数据库的表中,包括属性值为null的数据-->
+    <!-- 将GroupChat插入到对应数据库的表中,包括属性值为null的数据-->
 
-    <insert id="insertGroupchat" parameterType="com.wisdomschool.student.mapper.GroupChat">
-        insert into groupchat(groupId,groupName,ownerId,groupTime) 
-        values(#{groupid,jdbcType=INTEGER},#{groupname,jdbcType=VARCHAR},#{ownerid,jdbcType=INTEGER},#{grouptime,jdbcType=DATE})
+    <insert useGeneratedKeys="true" keyColumn="groupId" keyProperty="groupId" id="insertGroupChat" parameterType="com.wisdomschool.student.pojo.GroupChat">
+        insert into groupchat(groupId,groupName,ownerId,groupTime,gradeId) 
+        values(#{groupid,jdbcType=INTEGER},#{groupname,jdbcType=VARCHAR},#{ownerid,jdbcType=INTEGER},#{grouptime,jdbcType=DATE},#{gradeid,jdbcType=INTEGER})
     </insert>
 
-    <!-- 将Groupchat中属性值不为null的数据,插入到对应数据库的表中-->
-    <insert id="insertNonEmptyGroupchat" parameterType="com.wisdomschool.student.mapper.GroupChat">
+    <!-- 将GroupChat中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert useGeneratedKeys="true" keyColumn="groupId" keyProperty="groupId" id="insertNonEmptyGroupChat" parameterType="com.wisdomschool.student.pojo.GroupChat">
         insert into groupchat
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="groupid != null">groupId,</if>
             <if test="groupname != null">groupName,</if>
             <if test="ownerid != null">ownerId,</if>
             <if test="grouptime != null">groupTime,</if>
+            <if test="gradeid != null">gradeId,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="groupid != null"> #{groupid,jdbcType=INTEGER},</if>
             <if test="groupname != null"> #{groupname,jdbcType=VARCHAR},</if>
             <if test="ownerid != null"> #{ownerid,jdbcType=INTEGER},</if>
             <if test="grouptime != null"> #{grouptime,jdbcType=DATE},</if>
+            <if test="gradeid != null"> #{gradeid,jdbcType=INTEGER},</if>
         </trim>
     </insert>
 
-    <!-- 通过Groupchat的id将数据库表中对应的数据删除-->
-    <delete id="deleteGroupchatById" parameterType="java.lang.Integer">
+    <!-- 通过GroupChat的id将数据库表中对应的数据删除-->
+    <delete id="deleteGroupChatById" parameterType="java.lang.Integer">
         delete from groupchat
         where groupId = #{id,jdbcType=INTEGER}
     </delete>
 
-    <!-- 通过Groupchat的id将Groupchat的数据更新到数据库中对应的表,包括值null的数据-->
-    <update id="updateGroupchatById" parameterType="com.wisdomschool.student.mapper.GroupChat">
+    <!-- 通过GroupChat的id将GroupChat的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateGroupChatById" parameterType="com.wisdomschool.student.pojo.GroupChat">
         update groupchat set
             groupName=#{groupname,jdbcType=VARCHAR}
             ,ownerId=#{ownerid,jdbcType=INTEGER}
             ,groupTime=#{grouptime,jdbcType=DATE}
+            ,gradeId=#{gradeid,jdbcType=INTEGER}
         where groupId=#{groupid,jdbcType=INTEGER}
     </update>
 
-    <!-- 通过Groupchat的id将Groupchat中属性值不为null的数据更新到数据库对应的表中-->
-    <update id="updateNonEmptyGroupchatById" parameterType="com.wisdomschool.student.mapper.GroupChat">
+    <!-- 通过GroupChat的id将GroupChat中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyGroupChatById" parameterType="com.wisdomschool.student.pojo.GroupChat">
         update groupchat
         <set>
             <if test="groupname != null">
@@ -100,6 +106,9 @@
             </if>
             <if test="grouptime != null">
                 groupTime=#{grouptime,jdbcType=DATE},
+            </if>
+            <if test="gradeid != null">
+                gradeId=#{gradeid,jdbcType=INTEGER},
             </if>
         </set>
         where groupId=#{groupid,jdbcType=INTEGER}

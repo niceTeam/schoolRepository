@@ -44,13 +44,6 @@ public class DialogueService {
     public int updateNonEmptyDialogueById(Dialogue enti){
         return dialogueMapper.updateNonEmptyDialogueById(enti);
     }
-
-    public DialogueMapper getDialogueMapper() {
-        return this.dialogueMapper;
-    }
-
-    public void setDialogueMapper(DialogueMapper dialogueMapper) {
-        this.dialogueMapper = dialogueMapper;
-    }
+    
 
 }
