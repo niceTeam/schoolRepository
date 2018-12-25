@@ -8,11 +8,12 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.wisdomschool.student.pojo.Leaveprocess;
 import com.wisdomschool.student.pojo.Student;
 
 public interface StudentMapper {
 
-	@Select("select * from schoolmanage.`student`")
+	@Select("select * from `student`")
 	List<Student> listAll();
 
 	@Select("SELECT * FROM schoolmanage.`student` WHERE `student`.stuId = #{stuId}")
@@ -28,6 +29,12 @@ public interface StudentMapper {
 	@Update("UPDATE `schoolmanage`.`student` SET `stuName` = #{stuName},`stuUserName` = #{stuUserName},`stuPwd` = #{stuPwd},`classId` = #{classId},`stuSex` = #{stuSex},`stuBirth` = #{stuBirth},`stuImage` = #{stuImage},`stuPhone` = #{stuPhone},`stuType` = #{stuType},`stuStartTime` = #{stuStartTime},`stuEndTime` = #{stuEndTime},`stuIdNumber` = #{stuIdNumber},`styAddress` = #{styAddress},`cId` = #{cId} WHERE `stuId` = #{stuId}")
 	int update(Student student);
 
+	/*
+	 * 请假
+	 */
+	@Insert("INSERT INTO `leaveprocess`(`domeId`,`stuId`,`leaTime`,`leaReson`,`leaStarTime`,`leaEndTime`,`leaStates`,`isDorm`)VALUES(#{domeId},#{stuId],#{leaTime],#{leaReson},#{leaStarTime},#{leaEndTime},#{leaStates},#{isDorm})")
+	int leave(Leaveprocess leaveprocess);
+		
 	/**
 	 * 批量新增学生
 	 * 

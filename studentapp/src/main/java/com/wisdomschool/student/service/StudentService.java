@@ -2,12 +2,12 @@ package com.wisdomschool.student.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wisdomschool.student.mapper.StudentMapper;
+import com.wisdomschool.student.pojo.Leaveprocess;
 import com.wisdomschool.student.pojo.Student;
 
 @Service
@@ -39,7 +39,14 @@ public class StudentService {
 	public int saveList(List<Student> students) {
 		return this.studentMapper.saveList(students);
 	}
-
+		
+	/*
+	 * 请假
+	 */
+	public int leave(Leaveprocess leaveprocess) {
+		return this.studentMapper.leave(leaveprocess);
+	}
+	
 	// 学生进行登陆，并且修改cid
 	@Transactional
 	public Student getUserToLogin(Student stu) {
