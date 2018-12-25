@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/sidebar-menu.css">
+    <link rel="stylesheet" href="../css/xssy.css">
+    <style type="text/css">
+        header{
+            color: white;
+            height: 10%;
+            width: 100%;
+            position: fixed;
+            background-color: #78c5f4;
+            top: 0;z-index: 12;
+            font-size: 25px;
+            -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
+        }
+        .lscolor{background-color: #A0C001;color: white}
+        .lscolor2{background-color: #A0C001;color: white}
+    </style>
+</head>
+<body style="  background-color: #e6ecee;">
+<div class="cyy" style="display:none; "></div>
+<header>
+    <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
+    <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
+    <a href="xssy.html" onclick="wdzc()">我的自测</a>
+    <a href="tycs.html">统一测试</a>
+    <a href="dtls.html">历史答题</a>
+    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;某个用户</a>
+    <a style="font-size: 17px"><i class="fa fa-power-off"></i> &nbsp;退出</a>
+</header>
+<div class="ts" style="display: none">
+    <div>提示</div>
+    <div class="tsxx" style="display: none">
+        <p>休息一下</p>
+        <input type="button" value="继续做题">
+    </div>
+    <div class="tsjj" style="display: none">
+        <p>你还有10到题没做，确定交卷吗</p><br>
+        <input type="button" value="继续做题">&nbsp;
+        <input type="button" value="提交试卷">
+    </div>
+</div>
+<div id="stcbl">
+    <p style="text-align: center;font-size: 20px">答题卡</p><br>
+    <p style="margin-left: 12px;">用时：<input id="mytime" type="text" value="00:00" readonly></p>
+    <div class="ths">
+        <div class="th"><a>1</a></div> <div class="th"><a>2</a></div>
+        <div class="th"><a>3</a></div>  <div class="th"><a>4</a></div>
+        <div class="th"><a>5</a></div> <div class="th"><a>6</a></div>
+        <div class="th"><a>7</a></div> <div class="th"><a>8</a></div>
+        <div class="th"><a>9</a></div> <div class="th"><a>10</a></div>
+        <div class="clear" style="border: 0"></div>
+    </div>
+    <div class="cz">
+        <input type="button" value="休息一下" class="xx">
+        <input type="button" value="我要交卷" class="jj">
+    </div>
+</div>
+<div id="stnr">
+    <div class="bt">
+        初识继承和多态
+    </div>
+
+    <div class="ydt">
+        <p style="margin-left: 0"><label>1.</label>在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。</p>
+        <p><i class="fa fa-square-o"></i> A.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+        <p><i class="fa fa-square-o"></i> D.左侧</p>
+        <div class="cz">
+            <a><i class="fa fa-eye"></i> &nbsp;吐槽</a>
+            <a><i class="fa fa-bookmark-o"></i> &nbsp;标记</a>
+            <a><i class="fa fa-star-o"></i> &nbsp;收藏</a>
+        </div>
+    </div>
+
+    <div class="ydt">
+        <p style="margin-left: 0"><label>2.</label>在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+        <p><i class="fa fa-circle-o"></i> A.左侧</p>
+        <p><i class="fa fa-circle-o"></i> B.左侧</p>
+        <p><i class="fa fa-dot-circle-o"></i> C.左侧</p>
+        <p><i class="fa fa-circle-o"></i> D.左侧</p>
+        <div class="cz">
+            <a><i class="fa fa-eye"></i> &nbsp;吐槽</a>
+            <a><i class="fa fa-bookmark-o"></i> &nbsp;标记</a>
+            <a><i class="fa fa-star-o"></i> &nbsp;收藏</a>
+        </div>
+    </div>
+
+    <div class="ydt">
+        <p style="margin-left: 0"><label>2.</label>在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+        <p><i class="fa fa-circle-o"></i> A.左侧</p>
+        <p><i class="fa fa-circle-o"></i> B.左侧</p>
+        <p><i class="fa fa-dot-circle-o"></i> C.左侧</p>
+        <p><i class="fa fa-circle-o"></i> D.左侧</p>
+        <div class="cz">
+            <a><i class="fa fa-eye"></i> &nbsp;吐槽</a>
+            <a><i class="fa fa-bookmark-o"></i> &nbsp;标记</a>
+            <a><i class="fa fa-star-o"></i> &nbsp;收藏</a>
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+
+<script>
+    $(function(){
+        $(".cz .jj").click(function () {
+            $(".cyy").show();
+            $(".ts").show();
+            $(".ts .tsjj").show();
+            clearInterval(timer);
+        });
+        $(".tsjj input:eq(0)").click(function(){
+            $(".cyy").hide();
+            $(".ts").hide();
+            $(".ts .tsjj").hide();
+            ksjs();
+        });
+        $(".cz .xx").click(function () {
+            $(".cyy").show();
+            $(".ts").show();
+            $(".ts .tsxx").show();
+            clearInterval(timer);
+        });
+        $(".tsxx input").click(function(){
+            $(".cyy").hide();
+            $(".ts").hide();
+            $(".ts .tsxx").hide();
+            ksjs();
+        });
+    })
+
+    function wdzc(){
+        if (confirm("要离开这个页面吗？系统可能不会保存您所做的更改.")) {
+            window.location.href="xssy.html";
+        }
+        else {
+
+        }
+    }
+
+    $(document).ready(function(){
+        ksjs();
+    });
+    var oTxt=document.getElementById("mytime");
+    var oStart=document.getElementsByTagName("input")[1];
+    var oStop=document.getElementsByTagName("input")[2];
+    var oReset=document.getElementsByTagName("input")[3];
+
+    var n= 0;
+    var timer=null;
+    //开始计时
+     function ksjs(){
+    clearInterval(timer);
+    // setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+    timer=setInterval(function ()
+    {
+        n++;
+        var m=parseInt(n/3600)
+        var s=parseInt(n/60%60);
+        var M=parseInt(n%60);
+        oTxt.value=toDub(m)+":"+toDub(s);
+        //时分秒  oTxt.value=toDub(m)+":"+toDub(s)+":"+toDub(M);
+    },1000/60);
+     };
+    //暂停并且清空计时器
+    oStop.onclick= function () {
+        clearInterval(timer);
+    }
+    //重置
+    oReset.onclick= function () {
+        oTxt.value="00:00:00";
+        n=0;
+    }
+    //补零
+    function toDub(n){
+        return n<10?"0"+n:""+n;
+    }
+</script>
+</html>

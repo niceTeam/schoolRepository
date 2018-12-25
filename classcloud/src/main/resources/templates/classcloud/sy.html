@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="../dist/sidebar-menu.css">
+    <link rel="stylesheet" href="../css/sy.css">
+    <style type="text/css">
+        .main-sidebar{
+            position: fixed;
+            top: 10%;
+            left: 0;
+            height: 100%;
+            min-height: 100%;
+            width: 180px;
+            z-index: 10;
+            background-color: #222d32;
+
+        }
+        header{
+            height: 10%;
+            width: 100%;
+            position: fixed;
+            background-color: white;
+            top: 0;z-index: 12;
+            text-align: center;
+            font-size: 25px;
+            -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
+        }
+        .bgbk{border: 1px solid #0088DB;}
+        .bgbk2{border: 1px solid #0088DB;}
+    </style>
+
+</head>
+<body style="  background-color: #e6ecee;">
+<div class="stfw" style="display: none">
+    <div style="text-align: center;font-size: 20px">选择范围</div>
+    <div style="overflow: auto;height: 480px">
+    <ul class="shuml">
+        <li>
+            <i class="fa fa-plus-square-o" onclick="dj(this)"></i> <label>📚 第一本书</label>
+            <ul class="zjml">
+                <li>
+                    <i class="fa fa-plus-square-o"></i> <label>📃123</label>
+                    <ul class="zsdml">
+                        <li><label>📑 bcd</label></li>
+                        <li><label>📑 sec</label></li>
+                        <li><label>📑 hfw</label></li>
+                    </ul>
+                </li>
+                <li><i class="fa fa-plus-square-o"></i> <label>📃 234</label></li>
+                <li><i class="fa fa-plus-square-o"></i> <label>📃 345</label></li>
+            </ul>
+        </li>
+        <li>
+            <i class="fa fa-plus-square-o"></i> <label>📚 第二本书</label>
+            <ul class="zjml">
+                <li>
+                    <i class="fa fa-plus-square-o"></i> <label>📃 123</label>
+                </li>
+                <li>
+                    <i class="fa fa-plus-square-o"></i> <label>📃 345</label>
+                    <ul class="zsdml">
+                        <li><label>📑 bcd</label></li>
+                        <li><label>📑 sec</label></li>
+                        <li><label>📑 hfw</label></li>
+                    </ul>
+                </li>
+                <li><i class="fa fa-plus-square-o"></i> <label>📃 345</label></li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+    <div style="margin-top: 10px">
+        <input type="button" value="选择" class="xz"> <input type="button" value="关闭" class="gb">
+    </div>
+</div>
+<div class="cyy" style="display:none; "></div>
+<div class="xzkssj" style="display: none">
+    <div style="text-align: center;font-size: 25px">选择试卷</div>
+    <div>
+        <div style="margin-top: 20px">试卷名称：<input type="text" class="sjmc"><input type="button" value="搜索" class="ss"></div>
+        <div style="border-bottom: 1px solid #0088DB;margin: 20px 0"></div>
+        <div style="height: 300px;overflow: auto;margin-left: 30px;padding: 0 2px">
+            <table class="sjtb">
+                <tr>
+                    <td  style="width: 50px;height: 50px"></td>
+                    <td  style="width: 250px;">名称</td>
+                    <td style="width: 150px">总分</td>
+                    <td style="width: 150px">创建人</td>
+                    <td style="width: 190px">创建时间</td>
+                </tr>
+                <tr >
+                    <td style="text-align: center"><input type="checkbox"></td>
+                    <td>123</td>
+                    <td>100</td>
+                    <td>考试星</td>
+                    <td>2018-11-27 16:39</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><input type="checkbox"></td>
+                    <td>123</td>
+                    <td>100</td>
+                    <td>考试星</td>
+                    <td>2018-11-27 16:39</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><input type="checkbox"></td>
+                    <td>123</td>
+                    <td>100</td>
+                    <td>考试星</td>
+                    <td>2018-11-27 16:39</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><input type="checkbox"></td>
+                    <td>123</td>
+                    <td>100</td>
+                    <td>考试星</td>
+                    <td>2018-11-27 16:39</td>
+                </tr>
+            </table>
+        </div>
+        <div> <input type="button" value="保存" class="bc"><input type="button" value="关闭" class="gb" onclick="gbxgkssj(this)"></div>
+    </div>
+</div>
+<header>
+    头部
+</header>
+
+<div class="bjjyfbdsj" style="display: none">
+    <div class="tmzsdzj">
+        <div class="zongji">总题数：10 题，总分数：100 分</div>
+        <div class="zsdzl">
+            <p style="font-size: 17px;margin-bottom: 15px;">知识点一</p>
+           <p style="margin-bottom: 15px;margin-left: 20px"> 共 &nbsp;<input type="text" style="width: 30px;height: 20px"> &nbsp;题 ，共 10 分</p>
+            <p><a>换题</a><a>换知识点</a></p>
+        </div>
+    </div>
+
+    <div class="tmmk">
+       <div class="zsdsytm">
+        <p class="zsd">知识点一</p>
+        <div>
+            <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+            <p><i class="fa fa-square-o"></i> A.左侧</p>
+            <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+            <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+            <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+            <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+        </div>
+        <div>
+            <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+            <p><i class="fa fa-square-o"></i> A.左侧</p>
+            <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+            <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+            <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+            <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+        </div>
+    </div>
+
+        <div class="zsdsytm">
+            <p class="zsd">知识点二</p>
+            <div>
+                <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+                <p><i class="fa fa-square-o"></i> A.左侧</p>
+                <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+                <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+                <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+                <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+            </div>
+            <div>
+                <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+                <p><i class="fa fa-square-o"></i> A.左侧</p>
+                <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+                <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+                <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+                <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside class="main-sidebar">
+    <section  class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="header">导航</li>
+            <li class="treeview" onclick="shouye(this)">
+                <a href="#">
+                    <i class="fa fa-home"></i> <span >首页</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text-o"></i>
+                    <span>考试管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"> 考试信息管理</a></li>
+                    <li><a href="#" onclick="shitiku(this)"> 试题库</a></li>
+                    <li><a href="#" onclick="shijuaku(this)"> 试卷库</a></li>
+                    <li><a href="#"> 成绩查询</a></li>
+                    <li><a href="#"> 统计分析</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user-o"></i> <span>人员管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"> 考生信息</a></li>
+                    <li><a href="#"> 注册管理</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>学习</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">知识库</a></li>
+                    <li><a href="#">课程管理</a></li>
+                    <li><a href="#">学习纪录</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-gear"></i>
+                    <span>系统管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">子管理员设置</a></li>
+                    <li><a href="#">个性化设置</a></li>
+                    <li><a href="#">管理员操作纪录</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-shield"></i> <span>认证中心</span>
+                    <small class="label pull-right label-danger">BETA</small>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                    <small class="label pull-right label-warning">ATC</small>
+                </a>
+            </li>
+
+        </ul>
+    </section>
+    <section style="position: fixed;top: 92%;">
+        <ul class="sidebar-menu">   <li class="treeview">
+            <a href="#">
+                <i class="fa fa-question-circle-o"></i> <span>帮助</span>
+            </a>
+        </li></ul>
+    </section>
+</aside>
+
+<div class="neirong">
+
+    <div id="shouye" style="display: none">
+       <div class="sygl">
+           <div class="cjks"  onclick="chuangjiankaoshi(this)" onmouseover="xsyd(this)" onmouseout="xxyd(this)">
+           <div><img src="../image/cjks.jpg"></div>
+               <div>
+                   <h4>创建考试</h4>
+                   <p>可选择创建新试卷，或从试卷的库中选择一张试卷</p>
+               </div>
+           </div>
+
+           <div class="cjks" onmouseover="xsyd(this)" onmouseout="xxyd(this)" onclick="tianjiashiti(this,1)">
+               <div><img src="../image/tjst.jpg"></div>
+               <div>
+                   <h4>添加试题</h4>
+                   <p>手动录入试题，完善您的试题库</p>
+               </div>
+           </div>
+
+           <div class="cjks" onmouseover="xsyd(this)" onmouseout="xxyd(this)">
+               <div><img src="image/tjry.jpg"></div>
+               <div>
+                   <h4>添加人员</h4>
+                   <p>填写账号信息和人员信息，添加管理员</p>
+               </div>
+           </div>
+
+           <div class="cjks" onmouseover="xsyd(this)" onmouseout="xxyd(this)" >
+               <div><img src="../image/cjkc.jpg"></div>
+               <div>
+                   <h4>创建课程</h4>
+                   <p>填写课程相关信息</p>
+               </div>
+           </div>
+       </div>
+
+        <div style="margin-left: 20px;margin-top: 40px"><h4>正在进行<a style="margin-left: 950px;font-size: 15px">展开更多</a></h4></div>
+
+        <div class="zzjx">
+          <!--  <div class="zzjxsj">
+                <h3 class="sysjmc">试卷名称</h3>
+                <p class="sykssj">考试时间</p>
+                <p class="sysjfs">试卷分数</p>
+                <p class="sysjlx">试卷类型</p>
+                <p class="sykssc">考试时长</p>
+            </div>
+
+            <div class="clear"></div>-->
+
+            <div style="margin: 60px 0 50px 400px;color: #8c8c8c;">还没有正在进行的考试，点击上方创建一场考试吧~~</div>
+        </div>
+
+        <div style="margin-left: 20px;margin-top: 40px"><h4>即将开始<a style="margin-left: 950px;font-size: 15px">展开更多</a></h4></div>
+        <div class="jjks">
+            <div class="zzjxsj"  onmouseover="sjxs(this)" onmouseout="sjxx(this)">
+                <h3 class="sysjmc">试卷名称</h3>
+                <p class="sykssj">考试时间</p>
+                <p class="sysjfs">试卷分数</p>
+                <p class="sysjlx">试卷类型</p>
+                <p class="sykssc">考试时长</p>
+                <div style="width: 260px;text-align: center;font-size: 15px">
+                    <a onclick="bjks(this)"><i class="fa fa-pencil"></i>编辑</a>
+                </div>
+            </div>
+            <div class="zzjxsj"  onmouseover="sjxs(this)" onmouseout="sjxx(this)">
+                <h3 class="sysjmc">试卷名称</h3>
+                <p class="sykssj">考试时间</p>
+                <p class="sysjfs">试卷分数</p>
+                <p class="sysjlx">试卷类型</p>
+                <p class="sykssc">考试时长</p>
+                <div style="width: 260px;text-align: center;font-size: 15px">
+                    <a onclick="bjks(this)"><i class="fa fa-pencil"></i>编辑</a>
+                </div>
+            </div>
+            <div class="zzjxsj"  onmouseover="sjxs(this)" onmouseout="sjxx(this)">
+                <h3 class="sysjmc">试卷名称</h3>
+                <p class="sykssj">考试时间</p>
+                <p class="sysjfs">试卷分数</p>
+                <p class="sysjlx">试卷类型</p>
+                <p class="sykssc">考试时长</p>
+                <div style="width: 260px;text-align: center;font-size: 15px">
+                    <a onclick="bjks(this)"><i class="fa fa-pencil"></i>编辑</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div >
+
+    <div id="tjst" style="display: none">
+        <div style="position: absolute;margin-top: -10px;margin-left: 850px">
+            <input type="button" value="重置"  class="czst">
+            <input type="button" value="录入"  class="lrst">
+        </div>
+
+        <div class="tmlx">
+            试题分类：
+            <input type="button" class="stfl" value="试题分类">
+
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            试题类型：
+            <select class="stlx">
+                <option>单选</option>
+                <option>多选</option>
+
+            </select>
+        </div>
+
+        <div class="ctnr">
+            <div class="timunr">
+                <input type="button" value="题干" >
+                <a>这里填写题目的描述</a>
+            </div>
+            <textarea class="tigan" onfocus="srtg(this)" onblur="tgwc(this)"></textarea>
+
+        </div>
+
+        <div class="ctnr">
+            <div class="timunr">
+                <input type="button" value="选项" >
+                <a>单/多选题的范围从 2 到 20 </a>
+            </div>
+            <div class="xuanx">
+                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+            </div>
+
+            <div class="mrxx">
+            <div class="xuanx">
+                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+            </div>
+
+            <div class="xuanx">
+                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+                <div class="qxxx" onclick="scxx(this)">x</div>
+            </div>
+
+            <div class="xuanx">
+                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+                <div class="qxxx" onclick="scxx(this)">x</div>
+            </div>
+
+            </div>
+
+
+            <div class="tjygxx">
+                <input type="button" value="添加一个选项" onclick="tjygxx(this)">
+            </div>
+
+
+
+            <div class="timujx">
+                <input type="button" value="解析" >
+                <a>这里填写该问题对应的答案解析 </a>
+            </div>
+
+            <div><textarea class="jiexi" onfocus="srjx(this)" onblur="jxwc(this)"></textarea></div>
+
+        </div>
+
+
+
+    </div>
+
+    <div id="shitk" style="display: none">
+        <div class="stktb">
+            <input type="button" value="≡ 添加试题" class="tjst" onclick="tianjiashiti(this,1)">
+        </div>
+
+        <div style="position: absolute;margin-top: -40px;margin-left: 130px">
+            <select class="stlx">
+                <option>单选</option>
+                <option>多选</option>
+            </select>
+        </div>
+
+        <div  style="position: absolute;margin-top: -40px;margin-left: 225px">
+            <input type="button" value="刷新" class="sxstk">
+            <input type="button" value=" 删除" class="plscst">
+        </div>
+
+        <div style="position: absolute;margin-top: -40px;margin-left: 850px">
+            <input type="text" class="ssuost" placeholder="搜索试题">
+            <div style="position: absolute;margin-left: 210px;margin-top: -25px">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+
+        <div style="background-color: white;margin-top: 10px" >
+            <div>
+                <table class="stbt">
+                    <tr>
+                        <td style="width: 60px;text-align: center"><input type="checkbox" onclick="ckAll(this)" class="cks"></td>
+                        <td  style="width: 100px">题型</td>
+                        <td style="width: 200px">分类</td>
+                        <td style="width: 350px">试题内容</td>
+                        <td style="width: 150px">创建人</td>
+                        <td style="width: 200px">创建时间</td>
+                        <td style="width: 90px">操作</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="margin-top: 10px;height: 370px;" class="xssyst">
+                <table class="stbt">
+                    <tr>
+                        <td style="width: 60px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
+                        <td  style="width: 100px">单选</td>
+                        <td style="width: 200px">试题分类/示例</td>
+                        <td style="width: 350px">一般性的拜访多以（）为最佳交往时间。</td>
+                        <td style="width: 150px">考试星</td>
+                        <td style="width: 200px">2016-11-02 12:00</td>
+                        <td style="width: 90px">
+                            <a title="编辑" onclick="tianjiashiti(this,2)"><i class="fa fa-pencil"></i></a>
+                            &nbsp;
+                            <a title="删除"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    <tr style="height: 5px"></tr>
+                    <tr>
+                        <td style="width: 60px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
+                        <td  style="width: 100px">单选</td>
+                        <td style="width: 200px">试题分类/示例</td>
+                        <td style="width: 350px">一般性的拜访多以（）为最佳交往时间。</td>
+                        <td style="width: 150px">考试星</td>
+                        <td style="width: 200px">2016-11-02 12:00</td>
+                        <td style="width: 90px">
+                            <a title="编辑" onclick="tianjiashiti(this,2)"><i class="fa fa-pencil"></i></a>
+                            &nbsp;
+                            <a title="删除"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    <tr style="height: 5px"></tr>
+                    <tr>
+                        <td style="width: 60px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
+                        <td  style="width: 100px">单选</td>
+                        <td style="width: 200px">试题分类/示例</td>
+                        <td style="width: 350px">一般性的拜访多以（）为最佳交往时间。</td>
+                        <td style="width: 150px">考试星</td>
+                        <td style="width: 200px">2016-11-02 12:00</td>
+                        <td style="width: 90px">
+                            <a title="编辑" onclick="tianjiashiti(this,2)"><i class="fa fa-pencil"></i></a>
+                            &nbsp;
+                            <a title="删除"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding:20px;color: #515151d9;margin-bottom: 20px">
+                共24页纪录
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="shijk" style="display: block">
+        <div class="sjktb">
+            <input type="button" value="试卷预览" class="sjyl" >
+        </div>
+
+        <div  style="position: absolute;margin-top: -40px;margin-left: 130px">
+            <input type="button" value="刷新" class="sxstk">
+            <input type="button" value=" 删除" class="plscst">
+        </div>
+
+        <div style="position: absolute;margin-top: -40px;margin-left: 850px">
+            <input type="text" class="sssj" placeholder="搜索试卷">
+            <div style="position: absolute;margin-left: 210px;margin-top: -25px">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+
+        <div style="background-color: white;margin-top: 10px" >
+            <div>
+                <table class="sjbtou">
+                    <tr>
+                        <td style="width: 80px;text-align: center"><input type="checkbox" onclick="ckAll(this)" class="cks"></td>
+                        <td  style="width: 130px">名称</td>
+                        <td style="width: 200px">考试范围</td>
+                        <td style="width: 150px">试卷总分</td>
+                        <td style="width: 150px">创建人</td>
+                        <td style="width: 200px">创建时间</td>
+                        <td style="width: 150px">使用次数</td>
+                        <td style="width: 90px">操作</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="margin-top: 10px;height: 380px;" class="sjdiv">
+                <table class="sjbsj">
+                    <tr>
+                        <td style="width: 80px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
+                        <td  style="width: 130px">321</td>
+                        <td style="width: 200px">jsp从入门到放弃</td>
+                        <td style="width: 150px">100</td>
+                        <td style="width: 150px">考试星</td>
+                        <td style="width: 200px">2016-11-02 12:00</td>
+                        <td style="width: 150px">3</td>
+                        <td style="width: 90px">
+                            <a title="编辑" onclick="bjsj(this)" zt="1"><i class="fa fa-pencil"></i></a>
+                            &nbsp;
+                            <a title="删除"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    <tr style="height:5px;"></tr>
+                    <tr>
+                        <td style="width: 80px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
+                        <td  style="width: 130px">321</td>
+                        <td style="width: 200px">jsp从入门到放弃</td>
+                        <td style="width: 150px">100</td>
+                        <td style="width: 150px">考试星</td>
+                        <td style="width: 200px">2016-11-02 12:00</td>
+                        <td style="width: 150px">3</td>
+                        <td style="width: 90px">
+                            <a title="编辑" onclick="bjsj(this)" zt="1"><i class="fa fa-pencil"></i></a>
+                            &nbsp;
+                            <a title="删除"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding:20px;color: #515151d9">
+                共24页纪录
+            </div>
+        </div>
+
+    </div>
+
+    <div id="cjks" style="display: none" >
+        <div class="cjksbz">
+            <a class="dyb">第一步：创建考试</a>
+            <a class="drb">第二步：添加试题</a>
+            <a class="dsb">第一步：发布考试</a>
+        </div>
+
+        <div class="cjsjbj" >
+            <div  class="div1" style="display: flex" >
+                <div class="cjxsj">
+                   <h4>创建新试卷</h4>
+                    <table style="margin-top: 10px;margin-left: 20px">
+                        <tr>
+                            <td style="height: 95px;width: 90px">试卷名称:</td>
+                            <td>  <input type="text" class="sjmc" placeholder="输入试卷名称"></td>
+                        </tr>
+                       <!-- <tr>
+                            <td style="height: 50px;">试卷分类:</td>
+                            <td><span class="cjxsjfl" >试卷分类
+                                <div style="position: fixed;margin-left: 75px;margin-top: -18px"><i class="fa fa-th-list"></i>
+                                </div></span>
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <td></td>
+                            <td  style="height: 70px;">
+                                <input type="button" value="下一步" class="cjxsjxyb" style="margin-left: 130px">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="height: 260px;border: 1px solid #CDCDCD;margin-top: 50px;margin-left: 20px"></div>
+
+                 <div class="xzyysj">
+                     <h4>选择已有试卷</h4>
+                     <div class="xzsjcj"><input type="button" value="选择试卷" onclick="ghjyksdsj(this)"></div>
+
+                     <input type="button" value="下一步" class="xzyysjxyb">
+                 </div>
+
+            </div>
+
+            <div class="xtzj" style="display: none;overflow: auto;height: 450px">
+            <div class="tjtmdh" >
+               <div class="yymb">
+                   <i class="fa fa-circle-o"></i>
+                   <label> 选择已有模板</label>
+               </div>
+                <div class="div3" style="display: none">
+                    <div style="display: flex">
+                    <div class="ssmb">
+                        <p>选择的模板：<input type="text" readonly="readonly"></p>
+                        <p><input value="下一步" type="button"></p>
+                    </div>
+
+                    <div >
+                        <div style="border: 1px solid #CDCDCD;padding: 3px 15px;border-radius: 15px;width: 205px;margin-bottom: 10px">
+                            <input type="text" class="cx" placeholder="搜索模板">&nbsp;
+                            <i class="fa fa-search"></i>
+                        </div>
+                     <div style="height: 200px;overflow: auto;border: 1px solid #CDCDCD;">
+                     <table class="xskxmb">
+                       <tr>
+                           <td>模板名称</td>
+                           <td style="width: 120px;;">考试范围</td>
+                           <td>所属年级</td>
+                           <td>每题分数</td>
+                           <td>考试用时</td>
+                           <td>创建人</td>
+                       </tr>
+                       <tr>
+                           <td>123</td>
+                           <td>3dsg</td>
+                           <td>s2</td>
+                           <td>5</td>
+                           <td>100分钟</td>
+                           <td>小明</td>
+                       </tr>
+                       <tr>
+                           <td>123</td>
+                           <td>地方观后感</td>
+                           <td>s2</td>
+                           <td>5</td>
+                           <td>100分钟</td>
+                           <td>小明</td>
+                       </tr>
+                       <tr>
+                           <td>123</td>
+                           <td>地方观后感</td>
+                           <td>s2</td>
+                           <td>5</td>
+                           <td>100分钟</td>
+                           <td>小明</td>
+                       </tr>
+                   </table>
+                     </div>
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="xjmb">
+                <div class="xmb">
+                    <i class="fa fa-check-circle"></i>
+                    <label> 创建新模板</label>
+                </div>
+
+                <div class="cjmbnr">
+                    <div style="display: flex;margin-top: 10px">
+                        <div>
+                         <p class="mbmc">模板名称: <input type="text"></p>
+                         <p class="ssnj">所属年级: <select>
+                             <option value="0">全年级</option>
+                             <option value="1">sl</option>
+                             <option value="2">s2</option>
+                             <option value="3">s3</option>
+                         </select></p>
+                         <p class="ksfw">考试范围: <input type="button" value="全年级" onclick="xzstfw(this,1)"></p>
+                         <p class="cssc">考试时长: <input type="text" style="width: 60px;padding-left: 10px">&nbsp;分钟</p>
+                         <p class="mtfs">每题分数: <input type="text" style="width: 60px;padding-left: 10px">&nbsp;分</p>
+                        </div>
+
+                        <div class="timu">
+                            <div class="zsdtm">
+                            书本：<select class="sb">
+                                    <option>第一本书</option>
+                                  </select>&nbsp;
+                            章节：<select class="sb">
+                                    <option>第二章</option>
+                                  </select>&nbsp;
+                            知识点：<select class="sb">
+                                        <option>jsp</option>
+                                  </select>
+                                <div style="margin-top: 5px">题数：<input type="text" style="width: 100px;padding-left: 10px"></div>
+                            </div>
+
+                            <div class="zsdtm">
+                                书本：<select class="sb">
+                                <option>第一本书</option>
+                            </select>&nbsp;
+                                章节：<select class="sb">
+                                <option>第二章</option>
+                            </select>&nbsp;
+                                知识点：<select class="sb">
+                                <option>jsp</option>
+                            </select>
+                                <div style="margin-top: 5px">
+                                    题数：<input type="text" style="width: 100px;padding-left: 10px">
+                                </div>
+                                <div style="margin-left: 520px;margin-top: -20px;">
+                                    <i class="fa fa-close" onclick="scst(this)"></i>
+                                </div>
+                            </div>
+                         <!--   <div class="zsdtm">
+                                书本：<select class="sb">
+                                <option>第一本书</option>
+                            </select>&nbsp;
+                                章节：<select class="sb">
+                                <option>第二章</option>
+                            </select>&nbsp;
+                                知识点：<select class="sb">
+                                <option>jsp</option>
+                            </select>
+                                <div style="margin-top: 5px">题数：<input type="text" style="width: 100px;padding-left: 10px"></div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="div2">
+                        <input type="button" value="增加试题" class="zjst" onclick="zsst(this)">
+                        <input type="button" value="下一步" class="xyb"></div>
+                </div>
+            </div>
+
+
+    </div>
+
+            <div class="fbks" style="display: none">
+                <div class="ksxxxx">
+                    <table  style="margin-left: 40px;margin-top: 20px">
+                        <tr>
+                            <td style="width: 100px;">考试班级</td>
+                            <td style="width: 400px"><select class="ksbj">
+                                <option>1713</option>
+                                <option>1713</option>
+                                <option>1713</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td>考试分类</td>
+                            <td class="ksfl"><a >考试分类 <i class="fa fa-reorder"></i> </a></td>
+                        </tr>
+                        <tr>
+                            <td>考试时间</td>
+                            <td><input type="datetime-local" class="kssj"> 到 <input type="datetime-local" class="jssj"></td>
+                        </tr>
+                        <tr>
+                            <td>及格分数</td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>考试说明</td>
+                            <td rowspan="3"><textarea class="kssm"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="sjxxxx" style="margin-left: 30px;margin-top: 40px">
+                    <label style="background-color: blue;width: 7px;color: blue" >|</label>
+                    <label style="margin-left: 5px;">试卷信息</label>
+                    <table  >
+                        <tr>
+                            <td colspan="2" style="height: 40px;color: black;border-bottom:1px solid #CDCDCD;background-color: #eaecec61">
+                                <span>试卷名称</span>
+                            <a style="margin-left: 330px" onclick="bjsj(this)" zt="2">编辑试卷 <i class="fa fa-pencil"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>总分:</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>创建人:</td>
+                            <td>考试星</td>
+                        </tr>
+                        <tr>
+                            <td>试题数量:</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>创建时间:</td>
+                            <td>2018-02-10 11:20</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="fabu"><input type="button" value="发布考试">
+                <input type="button" value="试卷预览" class="sjyl" style="border: 1px solid #0088cc;background-color: white;color: #0088cc;padding: 4px 25px">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="bjsj" style="display: none;">
+        <div class="bjjyfbdsj">
+            <div class="fh"><i class="fa fa-caret-left"></i> &nbsp;<a>返回</a></div>
+            <div class="sjmc">试卷名称</div>
+            <div class="yn">
+                <input type="button" value="保存">
+                <input type="button" value="取消">
+            </div>
+            <div class="tmzsdzj">
+                <div class="zongji">总题数：10 题，总分数：100 分</div>
+                <div class="zsdzl">
+                <p style="font-size: 17px;margin-bottom: 15px;">知识点一</p>
+                <p style="margin-bottom: 15px;margin-left: 20px"> 共 &nbsp;
+                    <input type="text" style="width: 30px;height: 20px" value="2"> &nbsp;题 ，
+                    每题 &nbsp;5 &nbsp; 分</p>
+                <p><a>换题</a><a onclick="xzstfw(this,1)">换知识点</a></p>
+            </div>
+                <div class="zsdzl">
+                    <p style="font-size: 17px;margin-bottom: 15px;">知识点二</p>
+                    <p style="margin-bottom: 15px;margin-left: 20px"> 共 &nbsp;
+                        <input type="text" style="width: 30px;height: 20px" value="1"> &nbsp;题 ，
+                        每题 &nbsp;5 &nbsp; 分</p>
+                    <p><a>换题</a><a onclick="xzstfw(this,1)">换知识点</a></p>
+                </div>
+            </div>
+
+            <div class="tmmk">
+                <div class="zsdsytm">
+                    <p class="zsd">知识点一</p>
+                    <div>
+                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+                        <p><i class="fa fa-square-o"></i> A.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+                    </div>
+                    <div>
+                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+                        <p><i class="fa fa-square-o"></i> A.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+                    </div>
+                </div>
+
+                <div class="zsdsytm">
+                    <p class="zsd">知识点二</p>
+                    <div>
+                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+                        <p><i class="fa fa-square-o"></i> A.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+                    </div>
+                    <div>
+                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+                        <p><i class="fa fa-square-o"></i> A.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bjks" style="display: none">
+        <div class="fbks" style="display: flex">
+            <div class="ksxxxx">
+                <table  style="margin-left: 40px;margin-top: 20px">
+                    <tr>
+                        <td style="width: 100px;">考试班级</td>
+                        <td style="width: 400px"><select class="ksbj">
+                            <option>1713</option>
+                            <option>1713</option>
+                            <option>1713</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>考试分类</td>
+                        <td class="ksfl"><a >考试分类 <i class="fa fa-reorder"></i> </a></td>
+                    </tr>
+                    <tr>
+                        <td>考试时间</td>
+                        <td><input type="datetime-local" class="kssj"> 到 <input type="datetime-local" class="jssj"></td>
+                    </tr>
+                    <tr>
+                        <td>及格分数</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>考试说明</td>
+                        <td rowspan="3"><textarea class="kssm"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sjxxxx" style="margin-left: 30px;margin-top: 40px">
+                <label style="background-color: blue;width: 7px;color: blue" >|</label>
+                <label style="margin-left: 5px;">试卷信息</label>
+                <table>
+                    <tr>
+                        <td colspan="2" style="height: 40px;color: black;border-bottom:1px solid #CDCDCD;background-color: #eaecec61">
+                            <span>试卷名称</span>
+                            <a style="margin-left: 330px" onclick="bjsj(this)" zt="3">编辑试卷 <i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>总分:</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>创建人:</td>
+                        <td>考试星</td>
+                    </tr>
+                    <tr>
+                        <td>试题数量:</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>创建时间:</td>
+                        <td>2018-02-10 11:20</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center"><input type="button" value="更换试卷" class="ghsj" onclick="ghjyksdsj(this)"></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="fabu"><input type="button" value="保存修改">
+                <input type="button" value="返回主页" class="fhzy" onclick="shouye(this)" style="border: 1px solid #0088cc;background-color: white;color: #0088cc;padding: 4px 25px">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>-->
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../dist/sidebar-menu.js"></script>
+<script>
+    $.sidebarMenu($('.sidebar-menu'))
+</script>
+<script>
+    $(function(){
+        $(".bjjyfbdsj .fh").click(function(){
+            var zt=$(".bjjyfbdsj .fh").attr("zt");
+            $("#shouye").hide();
+            $("#tjst").hide();
+            $("#shitk").hide();
+            $("#bjsj").hide();
+            if(zt==1){
+                $("#shijk").show();
+                $("#cjks").hide();
+                $("#bjks").hide();
+            }else if(zt=="2"){
+                $("#cjks").show();
+                $("#shijk").hide();
+                $("#bjks").hide();
+            }else if(zt=="3"){
+                $("#bjks").show();
+                $("#shijk").hide();
+                $("#cjks").hide();
+            }
+        })
+        $("[name=ck]").click(function () {
+            if(this.checked==false){
+                $(".cks").prop("checked",false);
+                $(this).prop("checked",true);
+                $(this).parents("tr").addClass("bgbk2");
+            }else{
+                $(this).prop("checked",false);
+                $(this).parents("tr").removeClass("bgbk2");
+            }
+        })
+        $(".sjdiv .sjbsj tr").mousemove(function(){
+            $(this).addClass("bgbk");
+        });
+        $(".sjdiv .sjbsj tr").mouseout(function(){
+            $(this).removeClass("bgbk");
+        });
+        $(".sjdiv .sjbsj tr").click(function(){
+            var a=$(this).find("input[type=checkbox]").prop("checked");
+            if(a==true){
+                $(".cks").prop("checked",false);
+                $(this).find("input[type=checkbox]").prop("checked",false);
+                $(this).removeClass("bgbk2");
+            }else{
+                $(this).find("input[type=checkbox]").prop("checked",true);
+                $(this).addClass("bgbk2");
+            }
+        });
+        $(".xssyst .stbt tr").mousemove(function(){
+            $(this).addClass("bgbk");
+        });
+        $(".xssyst .stbt tr").mouseout(function(){
+            $(this).removeClass("bgbk");
+        });
+        $(".xssyst .stbt tr").click(function(){
+            var a=$(this).find("input[type=checkbox]").prop("checked");
+            if(a==true){
+                $(".cks").prop("checked",false);
+                $(this).find("input[type=checkbox]").prop("checked",false);
+                $(this).removeClass("bgbk2");
+            }else{
+                $(this).find("input[type=checkbox]").prop("checked",true);
+                $(this).addClass("bgbk2");
+            }
+        });
+        $(".xzkssj  .sjtb tr:gt(0)").mouseout(function () {
+            $(this).css("background-color","white");
+        })
+        $(".xzkssj  .sjtb tr:gt(0)").mousemove(function () {
+            $(this).css("background-color","#aebbd26b")
+        })
+        $(".xzkssj  .sjtb tr:gt(0)").click(function () {
+            $(".xzkssj .sjtb tr").find("input").prop("checked",false);
+            $(".xzkssj .sjtb tr").css("border","0px solid #0088DB");
+            $(this).css("border","1px solid #0088DB");
+            $(this).find("input").prop("checked",true);
+        })
+        $(".xzkssj  .sjtb tr input[type=checkbox]").click(function () {
+            $(this).prop("checked",false);
+            $(".xzkssj .sjtb tr").css("border","0px solid #0088DB");
+            $(".xzkssj .sjtb tr").css("border","1px solid #0088DB");
+            $(this).prop("checked",true);
+        })
+        $(".stfw .gb").click(function(){
+           $(".stfw").hide();
+            $(".cyy").hide();
+        })
+        $(".stfw .shuml li label").click(function(){
+            $(".stfw .shuml li label").css("border-color","#7c7c7cbd");
+            $(".stfw .shuml li label").css("background-color","white");
+            $(this).css("background-color","#f4d2ca");
+            $(this).css("border-color","#ff5600");
+        })
+        $(".shuml i").on('click',function(){
+            var d=$(this).attr("class");
+            if(d=="fa fa-plus-square-o"){
+                $(this).attr("class","fa fa-minus-square-o");
+                $(this).next().next().show();
+            }else{
+                $(this).attr("class","fa fa-plus-square-o");
+                $(this).next().next().hide();
+            }
+        })
+        $(".fabu .sjyl").click(function(){
+            window.open('http://localhost:63342/untitled/ksxt/sjyl.html')
+        })
+        $(".div3 .ssmb input[type=button]").click(function(){
+            $(".div1").css("display","none");
+            $(".xtzj").css("display","none");
+            $(".fbks").css("display","flex");
+            $(".cjksbz a").css("color","#999999")
+            $(".cjksbz .dsb").css("color","blue")
+
+        });
+        $(".div2 .xyb").click(function(){
+            $(".div1").css("display","none");
+            $(".xtzj").css("display","none");
+            $(".fbks").css("display","flex");
+            $(".cjksbz a").css("color","#999999")
+            $(".cjksbz .dsb").css("color","blue")
+        });
+        $(".xskxmb tr:gt(0)").click(function(){
+            $(".xskxmb tr:gt(0)").css("background-color","#FFFFFF");
+            $(".xskxmb tr:gt(0)").css("color","#1A2226");
+            $(this).css("background-color","red");
+            $(this).css("color","#FFFFFF");
+
+        })
+        $(".yymb i").click(function(){
+            var a=$(this).attr("class");
+            var b=$(".xmb i").attr("class");
+            if(a=="fa fa-circle-o"&&b=="fa fa-check-circle"){
+                $(this).attr("class","fa fa-check-circle");
+                $(".xmb i").attr("class","fa fa-circle-o");
+                $(".cjmbnr").hide();
+                $(".div3").slideDown();
+            }
+        });
+        $(".xmb i").click(function(){
+            var a=$(this).attr("class");
+            var b=$(".yymb i").attr("class");
+            if(a=="fa fa-circle-o"&&b=="fa fa-check-circle"){
+                $(this).attr("class","fa fa-check-circle");
+                $(".yymb i").attr("class","fa fa-circle-o");
+                $(".cjmbnr").slideDown();
+                $(".div3").hide();
+
+            }
+        })
+        $(".ssnj select").change(function(){
+           var a= $(this).val();
+            if(a!="0"){
+                $(".ksfw input").val("选择范围");
+            }else{
+                $(".ksfw input").val("全年级");
+            }
+        })
+
+
+        $(".cjxsjxyb").click(function(){
+            $(".div1").css("display","none");
+            $(".xtzj").css("display","block");
+            $(".fbks").css("display","none");
+            $(".cjksbz a").css("color","#999999")
+            $(".cjksbz .drb").css("color","blue")
+        });
+        $(".xzyysjxyb").click(function(){
+            $(".div1").css("display","none");
+            $(".fbks").css("display","flex");
+            $(".xtzj").css("display","none");
+            $(".cjksbz a").css("color","#999999")
+            $(".cjksbz .dsb").css("color","blue")
+        })
+    })
+
+    function xzstfw(th,zt){
+        var nr=$(th).val();
+        if(nr=="选择范围"||nr==""){
+            $(".stfw").show();
+            $(".cyy").show();
+        }
+    }
+    function gbxgkssj(th){
+        $(".xzkssj").hide();
+        $(".cyy").hide();
+    }
+    function ghjyksdsj(th){
+        $(".xzkssj").show();
+        $(".cyy").show();
+    }
+
+    function scst(th){
+        $(th).parents(".zsdtm").remove();
+    }
+    function zsst(th){
+        $(".timu").append("<div class=\"zsdtm\">"
+        +"书本：<select class=\"sb\">"
+                +"<option>第一本书</option>"
+                +"</select> &nbsp;"
+                +"章节：<select class=\"sb\">"
+                +"<option>第二章</option>"
+                +"</select> &nbsp;"
+                +"知识点：<select class=\"sb\">"
+                +"<option>jsp</option>"
+                +"</select>"
+                +"<div style=\"margin-top: 5px\">"
+                +"题数：<input type=\"text\" style=\"width: 100px;padding-left: 10px\">"
+        +"</div>"
+        +"<div style=\"margin-left: 520px;margin-top: -20px;\">"
+        +"<i class=\"fa fa-close\" onclick=\"scst(this)\"></i>"
+        +"</div>"
+        +"</div>")
+    }
+    function sjxs(th){
+        $(th).css("margin-top","10px");
+        $(th).css("-webkit-box-shadow","3px 10px 20px #cfcfcf");
+        $(th).css("margin-bottom","10px");
+    }
+    function sjxx(th){
+        $(th).css("margin-top","20px");
+        $(th).css("-webkit-box-shadow","0 0");
+        $(th).css("margin-bottom","0");
+    }
+    function bjsj(th){
+        $("#shouye").hide();
+        $("#tjst").hide();
+        $("#shitk").hide();
+        $("#cjks").hide();
+        $("#shijk").hide();
+        $("#bjsj").show();
+        $("#bjks").hide();
+        var a=$(th).attr("zt");
+        $(".bjjyfbdsj .fh").attr("zt",a);
+    }
+    function bjks(th){
+        $("#shouye").hide();
+        $("#tjst").hide();
+        $("#shitk").hide();
+        $("#cjks").hide();
+        $("#shijk").hide();
+        $("#bjsj").hide();
+        $("#bjks").show();
+    }
+    function shijuaku(th){
+        $("#shouye").hide();
+        $("#tjst").hide();
+        $("#shitk").hide();
+        $("#cjks").hide();
+        $("#shijk").show();
+        $("#bjsj").hide();
+        $("#bjks").hide();
+    }
+    function shitiku(th){
+        $("#bjsj").hide();
+        $("#shouye").hide();
+        $("#tjst").hide();
+        $("#shitk").show();
+        $("#cjks").hide();
+        $("#shijk").hide();
+        $("#bjks").hide();
+    }
+    function tianjiashiti(th,zt){
+        $("#bjsj").hide();
+        $("#shouye").hide();
+        $("#tjst").show();
+        $("#shitk").hide();
+        $("#cjks").hide();
+        $("#shijk").hide();
+        $("#bjks").hide();
+        $("#tjst .lrst").attr("zt",zt)
+    }
+    function shouye(th){
+        $("#bjsj").hide();
+        $("#shouye").show();
+        $("#tjst").hide();
+        $("#shitk").hide();
+        $("#cjks").hide();
+        $("#shijk").hide();
+        $("#bjks").hide();
+    }
+    function chuangjiankaoshi(th){
+        $("#bjsj").hide();
+        $("#cjks").show();
+        $("#shouye").hide();
+        $("#tjst").hide();
+        $("#shitk").hide();
+        $("#shijk").hide();
+        $("#bjks").hide();
+        $(".div1").css("display","flex");
+        $(".xtzj").css("display","none");
+        $(".fbks").css("display","none");
+        $(".cjksbz a").css("color","#999999")
+        $(".cjksbz .dyb").css("color","blue")
+    }
+    //全选
+    function ckAll(th){
+        var cks=document.getElementsByName("ck");
+        for(var i=0;i<cks.length;i++){
+            cks[i].checked=th.checked;
+        }
+        if(th.checked==true){
+            $(".sjbsj tr").addClass("bgbk2");
+            $(".stbt tr:gt(0)").addClass("bgbk2");
+        }else{
+            $(".sjbsj tr").removeClass("bgbk2");
+            $(".stbt tr:gt(0)").removeClass("bgbk2");
+        }
+    }
+    function tjygxx(th){
+        $(".mrxx").append("<div class=\"xuanx\">"
+        +"<div><input type=\"radio\"></div>"
+                +"<textarea class=\"xuanxiang\" onfocus=\"srxx(this)\" onblur=\"xxwc(this)\"></textarea>"
+        +" <div class=\"qxxx\" onclick=\"scxx(this)\">x</div> </div>");
+    }
+    function scxx(th){
+        $(th).parent().remove();
+    }
+    function srtg(th){
+        $(th).css("height","150px");
+    }
+    function tgwc(th){
+        $(th).css("height","60px");
+    }
+    function srxx(th){
+        $(th).css("height","150px");
+    }
+    function xxwc(th){
+        $(th).css("height","36px");
+    }
+    function srjx(th){
+        $(th).css("height","150px");
+    }
+    function jxwc(th){
+        $(th).css("height","100px");
+    }
+   function xsyd(th){
+       $(th).css("margin-top","20px");
+    }
+    function xxyd(th){
+        $(th).css("margin-top","25px");
+        $(th).css("height","99px");
+    }
+</script>
+</body>
+</html>

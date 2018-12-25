@@ -1,0 +1,46 @@
+header a{font-size: 20px;color: white;margin-left: 25px}
+ul li{list-style:none}
+a:hover{text-decoration: none}
+#lsdtjl{height: 560px;margin: 0 30px;margin-top: 65px}
+#lsdtjl .dhl a{color: black;font-size: 18px;padding:14px 20px }
+#lsdtjl .dhl a:first-of-type{border-bottom: 2px solid #A0C001}
+#lsdtjl .dhl{padding: 10px 20px;background-color: white;}
+#lsdtjl .zcls,#lsdtjl .tycsls,#lsdtjl .wdct,#lsdtjl .wdsc{background-color: white;margin-top: 3px;font-size: 19px;color: #656565;padding-bottom: 100px  }
+.zcls .tmlx,.tycsls .tycstm{display: flex;margin:0 30px;padding-bottom:10px;border-bottom: 1px solid #cdcdcd85;padding-top: 25px}
+.tmlx .cz{margin-top: 17px;margin-left: 280px}
+.tycstm .cz{margin-top: 17px;margin-left: 400px}
+.tmlx .cz input{background-color: #B4D40D;padding:7px 30px;color: white;border: 0;margin-left: 30px}
+.tycstm .cz input{background-color: #B4D40D;padding:7px 30px;color: white;border: 0;margin-left: 50px}
+#lsdtjl .wdct a,.wdsc a{color: #656565;}
+.wdct .ctkc,.wdsc .sctm{margin: 0 100px;padding: 25px;border-bottom: 1px solid #cdcdcd85;}
+.wdct .ctkc label,.wdsc .sctm label{width: 650px;font-weight: 200}
+.wdct .ctkc .ctmc,.wdsc .sctm .scmc{width: 350px}
+.ctkc input,.sctm input{background-color: #B4D40D;padding:5px 30px;color: white;border: 0;margin-left: 30px}
+.ztbg{background-color: white;height: 400px;width: 600px;position: fixed;z-index: 99;border: 1px solid #CDCDCD;
+    margin-left: 350px;margin-top: 50px;padding: 10px}
+.ztbg .bgmc{text-align: center;font-size: 18px}
+.ztbg .tj{font-size: 15px}
+.ztbg .tj label:first-of-type{width: 350px}
+.ztbg .dtk{overflow:hidden;border-top: 1px solid #cdcdcd85;margin-right: 30px;border-bottom:1px solid #cdcdcd85;  }
+.ztbg .dtk div{float: left;width: 30px;border: 1px solid #CDCDCD;padding: 3px 0;text-align: center;margin-top: 10px;margin-left: 20px}
+.clear{clear: both;}
+.jxtmbt{padding: 10px 30px;font-size: 20px;width:800px;background-color: white;border: 1px solid #CDCDCD;border-radius:5px;margin-bottom: 5px;text-align: center }
+#ckjx .tmjx{margin-bottom: 20px;background-color: white;width: 800px;padding: 25px;border: 1px solid #CDCDCD;border-radius: 5px}
+#ckjx .tmjx p{font-size: 17px}
+#ckjx .tmjx .cz a{margin-right: 20px}
+#ckjx .tmjx .cz i{font-size: 25px;color: #F76C0F}
+.daan{width: 400px}
+.jxdtk{background-color: white;width: 300px;position: fixed;margin-left: 960px;margin-top: 50px;padding-bottom: 30px}
+.jxdtk p:first-of-type{text-align: center;font-size: 18px;padding: 10px 0}
+.zkct{margin-left: 30px;margin-bottom: 0}
+.dtkxh{padding:0 20px;}
+.dtkxh div{border: 1px solid #CDCDCD; margin-top: 15px;float: left; padding: 3px 0;width: 30px;text-align: center;margin-left: 11px;}
+#jxnr{display: none;overflow: auto;position: fixed;background-color: white;width: 800px;height: 450px;z-index: 40;margin-left:300px }
+#jxnr .bt{font-size: 20px;padding:10px 20px;color: white;background-color:#96BC33;margin-bottom: 10px; }
+.gbtmjx{position: absolute;color: white;font-size: 20px;margin-top: -48px;margin-left: 760px;  }
+.grstjx{border-bottom: 1px solid #96969652;margin: 30px 0}
+.grstjx p:first-of-type{background-color:#96BC33;padding: 5px 20px;margin: 0;font-size: 15px }
+.jxnr{background-color: #DEECF1;padding: 15px 50px;font-size: 16px;}
+.jxcz{margin-top: 20px;margin-left: 450px;margin-bottom: 20px}
+.jxcz label:first-of-type{color: #969696;}
+.jxcz a{margin-left: 20px}

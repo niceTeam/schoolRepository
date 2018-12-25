@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/sjmb.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var date_str = "";
+            for (var i = 0; i <= 23; i++) {
+                var d_;
+                i < 10 ? d_ = "0" + i : d_ = i;
+                date_str = date_str + "<option>" + d_ + "</option><br/>"
+            }
+            $("#_minute").append(date_str);
+            var time_str = "";
+            for (var i = 0; i <= 59; i++) {
+                var t_;
+                i < 10 ? t_ = "0" + i : t_ = i;
+                time_str = time_str + "<option>" + t_ + "</option><br/>"
+            }
+            $("#_second").append(time_str);
+        });
+        $(document).ready(function() {
+                var m_ = 90;
+                var s_ = 00;
+                seconds_ = m_ * 60 + s_ * 1;
+         /*   $("#reset_").click(function() {
+                $("#_minute").val("00");
+                $("#_second").val("00");
+                seconds_ = 0;
+                clearInterval(timer);
+            });*/
+        });
+    </script>
+</head>
+<body  style="  background-color: #e6ecee;">
+<header>
+    头部
+</header>
+
+<div class="dtk">
+   <div class="dtk2">答题卡</div>
+    <p class="sysj">剩余时间:</p>
+    <div style="height: 58px">
+    <form role="form">
+        <div class="time">
+            <div class="digit minutes">
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+            </div>
+            <div class="digit minutes">
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+            </div>
+            <div class="separator"></div>
+            <div class="digit seconds">
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+            </div>
+            <div class="digit seconds">
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+                <div class="segment"></div>
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="dgtmda" style="height: 280px;overflow: auto;margin-top: 10px">
+        <div class="tmbx"><a>1</a></div>  <div class="tmbx"><a>2</a></div>  <div class="tmbx"><a>3</a></div>
+        <div class="tmbx"><a>4</a></div>  <div class="tmbx"><a>5</a></div>  <div class="tmbx"><a>6</a></div>
+        <div class="tmbx"><a>7</a></div>  <div class="tmbx"><a>8</a></div>  <div class="tmbx"><a>9</a></div>
+        <div class="tmbx"><a>10</a></div>  <div class="tmbx"><a>11</a></div>  <div class="tmbx"><a>12</a></div>
+        <div class="tmbx"><a>13</a></div>  <div class="tmbx"><a>14</a></div>  <div class="tmbx"><a>15</a></div>
+        <div class="tmbx"><a>1</a></div>  <div class="tmbx"><a>2</a></div>  <div class="tmbx"><a>3</a></div>
+        <div class="tmbx"><a>4</a></div>  <div class="tmbx"><a>5</a></div>  <div class="tmbx"><a>6</a></div>
+        <div class="tmbx"><a>7</a></div>  <div class="tmbx"><a>8</a></div>  <div class="tmbx"><a>9</a></div>
+        <div class="tmbx"><a>10</a></div>  <div class="tmbx"><a>11</a></div>  <div class="tmbx"><a>12</a></div>
+        <div class="tmbx"><a>13</a></div>  <div class="tmbx"><a>14</a></div>  <div class="tmbx"><a>15</a></div>
+        <div class="tmbx"><a>10</a></div>  <div class="tmbx"><a>11</a></div>  <div class="tmbx"><a>12</a></div>
+        <div class="tmbx"><a>13</a></div>  <div class="tmbx"><a>14</a></div>  <div class="tmbx"><a>15</a></div>
+        <div class="tmbx"><a>10</a></div>  <div class="tmbx"><a>11</a></div>  <div class="tmbx"><a>12</a></div>
+        <div class="tmbx"><a>13</a></div>  <div class="tmbx"><a>14</a></div>  <div class="tmbx"><a>15</a></div>
+        <div class="tmbx"><a>10</a></div>  <div class="tmbx"><a>11</a></div>  <div class="tmbx"><a>12</a></div>
+        <div class="tmbx"><a>13</a></div>  <div class="tmbx"><a>14</a></div>  <div class="tmbx"><a>15</a></div>
+        <div class="tmbx"><a>10</a></div>  <div class="tmbx"><a>11</a></div>  <div class="tmbx"><a>12</a></div>
+        <div class="tmbx"><a>13</a></div>  <div class="tmbx"><a>14</a></div>  <div class="tmbx"><a>15</a></div>
+
+        <div class="clear" style="border: 0"></div>
+    </div>
+    <div class="tijiao"><input type="button" value="提交"></div>
+</div>
+
+<div class="sjmb">
+    <div class="tou">共50题，合计100分</div>
+    <div class="dgtm" >
+        <p style="margin-left: 0">1.在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+        <p><i class="fa fa-circle-o"></i> A.左侧</p>
+        <p><i class="fa fa-circle-o"></i> B.左侧</p>
+        <p><i class="fa fa-dot-circle-o"></i> C.左侧</p>
+        <p><i class="fa fa-circle-o"></i> D.左侧</p>
+    </div>
+
+    <div class="dgtm">
+        <p style="margin-left: 0">2.在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+        <p><i class="fa fa-circle-o"></i> A.左侧</p>
+        <p><i class="fa fa-circle-o"></i> B.左侧</p>
+        <p><i class="fa fa-dot-circle-o"></i> C.左侧</p>
+        <p><i class="fa fa-circle-o"></i> D.左侧</p>
+    </div>
+
+    <div class="dgtm">
+        <p style="margin-left: 0">3.在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+        <p><i class="fa fa-square-o"></i> A.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
+    </div>
+
+    <div class="dgtm">
+        <p style="margin-left: 0">4.在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
+        <p><i class="fa fa-square-o"></i> A.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
+        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
+        <p><i class="fa fa-square-o"></i> D.左侧</p>
+    </div>
+</div>
+
+<script src="../js/countdown.js" type="text/javascript"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script>
+$(function (){
+    $(".dgtm:eq(0)").css("border-top","0");
+})
+</script>
+
+</body>
+</html>

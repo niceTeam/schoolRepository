@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>答题历史</title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/sidebar-menu.css">
+    <link rel="stylesheet" href="../css/dtls.css">
+    <style type="text/css">
+        header{
+            color: white;
+            height: 10%;
+            width: 100%;
+            position: fixed;
+            background-color: #78c5f4;
+            top: 0;z-index: 12;
+            font-size: 25px;
+            -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
+        }
+        .cyy{z-index: 15;width: 100%;height: 100%;position: fixed;background-color: black;opacity: 0.4;margin-top: -70px}
+    </style>
+</head>
+<body style="  background-color: #e6ecee;">
+<div class="cyy" style="display:none; "></div>
+<header>
+    <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
+    <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
+    <a href="xssy.html" onclick="wdzc()">我的自测</a>
+    <a href="tycs.html">统一测试</a>
+    <a href="dtls.html">历史答题</a>
+    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;某个用户</a>
+    <a style="font-size: 17px"><i class="fa fa-power-off"></i> &nbsp;退出</a>
+</header>
+<div class="ztbg" style="display: none">
+    <p class="bgmc">深入类的方法测试报告</p>
+    <div style="position: absolute;margin-top: -35px;margin-left: 550px" class="gbbg">
+        <a>X</a>
+    </div>
+    <div style="margin-left: 20px;margin-top: 20px">
+        <p class="tj">
+            <label>得分：<a>98</a> 分</label>
+            <label>共 <a>50</a> 题,答对：<a>49</a> 题</label>
+        </p>
+        <div class="dtk">
+            <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
+            <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+            <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
+            <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+            <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
+            <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+            <div class="clear" style="border: 0;"></div>
+        </div>
+    </div>
+    <p style="margin-top: 10px;margin-left: 300px">提交时间：<a>2018年7月21日 20:20:14</a></p>
+</div>
+
+<div id="lsdtjl">
+    <div class="dhl">
+        <a>我的自测</a>
+        <a>统一测试</a>
+        <a>我的错题</a>
+        <a>我的收藏</a>
+    </div>
+
+    <div class="zcls" style="display: block">
+        <div class="tmlx">
+            <div>
+                <p>深入类的方法  (做10道/共10道)</p>
+                <p>(考试时间：2018年12月13日 08:22:28 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="再做一遍">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+        <div class="tmlx">
+            <div>
+                <p>深入类的方法  (做10道/共10道)</p>
+                <p>(考试时间：2018年12月13日 08:22:28 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="再做一遍">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+        <div class="tmlx">
+            <div>
+                <p>深入类的方法  (做10道/共10道)</p>
+                <p>(考试时间：2018年12月13日 08:22:28 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="再做一遍">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+        <div class="tmlx">
+            <div>
+                <p>深入类的方法  (做10道/共10道)</p>
+                <p>(考试时间：2018年12月13日 08:22:28 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="再做一遍">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+    </div>
+
+    <div class="tycsls" style="display: none">
+        <div class="tycstm">
+            <div>
+                <p>1625复习试卷6  (做50道/共50道)</p>
+                <p>(考试时间：2018年7月21日 20:20:14 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+        <div class="tycstm">
+            <div>
+                <p>1625复习试卷6  (做50道/共50道)</p>
+                <p>(考试时间：2018年7月21日 20:20:14 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+        <div class="tycstm">
+            <div>
+                <p>1625复习试卷6  (做50道/共50道)</p>
+                <p>(考试时间：2018年7月21日 20:20:14 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+        <div class="tycstm">
+            <div>
+                <p>1625复习试卷6  (做50道/共50道)</p>
+                <p>(考试时间：2018年7月21日 20:20:14 )</p>
+            </div>
+            <div class="cz">
+                <input type="button" value="查看报告">
+                <input type="button" value="试题分析">
+            </div>
+        </div>
+    </div>
+
+    <div class="wdct" style="display: none">
+        <div class="ctkc">
+            <label>
+                <label class="ctmc">深入.NET平台和C#编程</label>
+                <a class="ctsl">(共203道题)</a>
+            </label>
+            <input type="button" value="错题专练" class="ctzl">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="ctkc">
+            <label>
+                <label class="ctmc">使用Java实现面向对象编程</label>
+                <a class="ctsl">(共103道题)</a>
+            </label>
+            <input type="button" value="错题专练" class="ctzl">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="ctkc">
+            <label>
+                <label class="ctmc">使用Java实现数据库编程</label>
+                <a class="ctsl">(共203道题)</a>
+            </label>
+            <input type="button" value="错题专练" class="ctzl">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="ctkc">
+            <label>
+                <label class="ctmc">使用jQuery制作网页交互</label>
+                <a class="ctsl">(共23道题)</a>
+            </label>
+            <input type="button" value="错题专练" class="ctzl">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="ctkc">
+            <label>
+                <label class="ctmc">使用JSP/Servlet开发系统</label>
+                <a class="ctsl">(共120道题)</a>
+            </label>
+            <input type="button" value="错题专练" class="ctzl">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div style="margin: 40px;border-bottom: 1px solid #C0C0C0"></div>
+    </div>
+
+    <div class="wdsc"  style="display: none">
+        <div class="sctm">
+            <label>
+                <label class="scmc">深入.NET平台和C#编程</label>
+                <a class="scsl">(共203道题)</a>
+            </label>
+            <input type="button" value="专练收藏" class="zlsc">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="sctm">
+            <label>
+                <label class="scmc">使用Java实现面向对象编程</label>
+                <a class="scsl">(共203道题)</a>
+            </label>
+            <input type="button" value="专练收藏" class="zlsc">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="sctm">
+            <label>
+                <label class="scmc">使用Java实现数据库编程</label>
+                <a class="scsl">(共203道题)</a>
+            </label>
+            <input type="button" value="专练收藏" class="zlsc">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div class="sctm">
+            <label>
+                <label class="scmc">使用jQuery制作网页交互</label>
+                <a class="scsl">(共203道题)</a>
+            </label>
+            <input type="button" value="专练收藏" class="zlsc">
+            <input type="button" value="查看题目" class="cktm">
+        </div>
+        <div style="margin: 40px;border-bottom: 1px solid #C0C0C0"></div>
+    </div>
+</div>
+</body>
+<script src="../js/jquery-3.2.1.js"></script>
+<script>
+    $(function(){
+        $(".ztbg .gbbg").click(function(){
+           $(".ztbg").hide();
+            $(".cyy").hide();
+        });
+        $(".tmlx .cz input").click(function(){
+           var a= $(this).val();
+            if(a=="查看报告"){
+                $(".ztbg").show();
+                $(".cyy").show();
+            }else if(a=="试题分析"){
+                location.href="stjx.html";
+            }
+        })
+    $("#lsdtjl .dhl a").click(function(){
+        var a=$(this).html();
+        if(a=="我的自测"){
+            $("#lsdtjl .zcls").show();
+            $("#lsdtjl .tycsls").hide();
+            $("#lsdtjl .wdct").hide();
+            $("#lsdtjl .wdsc").hide();
+        }else if(a=="统一测试"){
+            $("#lsdtjl .zcls").hide();
+            $("#lsdtjl .tycsls").show();
+            $("#lsdtjl .wdct").hide();
+            $("#lsdtjl .wdsc").hide();
+        }else if(a=="我的错题"){
+            $("#lsdtjl .zcls").hide();
+            $("#lsdtjl .tycsls").hide();
+            $("#lsdtjl .wdct").show();
+            $("#lsdtjl .wdsc").hide();
+        }else if(a=="我的收藏"){
+            $("#lsdtjl .zcls").hide();
+            $("#lsdtjl .tycsls").hide();
+            $("#lsdtjl .wdct").hide();
+            $("#lsdtjl .wdsc").show();
+        }
+    });
+    $("#lsdtjl .dhl a").click(function(){
+        $("#lsdtjl .dhl a").css("border-bottom","0px solid #A0C001");
+        $(this).css("border-bottom","2px solid #A0C001");
+    });
+
+ })
+</script>
+</html>
