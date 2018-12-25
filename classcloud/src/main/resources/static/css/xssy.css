@@ -1,0 +1,78 @@
+header a{font-size: 20px;color: white;margin-left: 25px}
+.cyy{z-index: 15;width: 100%;height: 100%;position: fixed;background-color: black;opacity: 0.4;margin-top: -62.6px}
+ul li{list-style:none}
+a:hover{text-decoration: none}
+input{outline: none;background-color: white}
+#wdzc .dhl a{color: black;font-size: 18px;padding:14px 20px }
+#wdzc .dhl a:first-of-type{border-bottom: 2px solid #A0C001}
+#wdzc .dhl{padding: 10px 40px;background-color: white;margin: 0 30px}
+.csrk{background-color: white;padding: 20px 30px;margin: 3px 30px 0}
+.csrk .zxjn img{width: 200px;height: 200px;}
+.csrk .zxjn p{font-size: 20px}
+.csrk .zxjn{margin-left: 85px;width: 300px;height: 370px;text-align: center;background-color: #FBF7EE;padding: 20px}
+.zxjn .jrzxjn,.zxjn .jrkcfx,.zxjn .jrmnzt{border: 0;background-color: #62d262fc;padding: 5px 50px;font-size: 20px;border-radius: 40px;color: white}
+.csrk .zxjn .zxjnsum,.csrk .zxjn .mnztsum,.csrk .zxjn .kcfxsum{font-size: 18px;color: #848484d6}
+#wdzc .brdt{display: flex;color:black;font-size: 17px;background-color: white;padding-bottom: 30px;margin:0 30px;}
+#wdzc .brdt div{margin-left: 150px}
+#wdzc .brdt div:first-of-type{margin-left: 240px}
+#wdzc .brdt span{color:#A8D820;font-size: 25px}
+#wdzc .brdt i{font-size: 55px;color:#A8D820;}
+#ztlfx{height: 400px;padding: 40px 40px;background-color: white;margin: 0 30px}
+#bjph,#qxph{background-color: white;padding: 20px 30px;margin: 3px 30px 0}
+.phbtb,.phbtb2{font-size: 19px}
+.phbtb input,.phbtb2 input{border:1px solid #CDCDCD;padding: 7px 20px; }
+.phbtb input:first-of-type{margin-left: 450px; }
+.phbtb2 input:first-of-type{margin-left: 610px}
+#bjph .phb,#qxph .phb2{margin-left: 130px;margin-top: 20px;margin-bottom: 120px}
+#bjph .phb td,#qxph .phb2 td{border: 1px solid #CDCDCD;font-size: 18px;text-align: center}
+#bjph .phb tr:first-of-type td,#qxph .phb2 tr:first-of-type td{background-color:#A0C001;color:white; }
+#xzcstx{position: fixed;background-color: white;z-index: 20;width: 1100px;margin-left: 130px;margin-top: -40px;display: none}
+#xzcstx .bt{padding: 10px;background-color:#A0C001;color:white;font-size: 20px; }
+#xzcstx .bt span{margin-left: 480px}
+#xzcstx .bt a{color: white;margin-left: 450px}
+#xzcstx .xxnr{height: 520px;padding: 20px;border: 1px solid #CDCDCD;margin: 10px }
+.xxnr .kc>li{font-size: 20px;border-bottom: 1px solid #CDCDCD;padding: 20px}
+.xxnr ul li i{font-size: 23px;color:#A0C001 }
+.xxnr .zj li{padding: 10px;color:#5A5A5A}
+.xxnr .zj li label{margin-left: 10px;width: 710px}
+.jdt{background-color: #DCDCDC;border-radius: 45px;width: 150px;}
+.center{
+ position: absolute;margin-left: 450px;margin-top: -30px;
+}
+.message{
+    width:200px;
+    height:35px;
+    font-family:Tahoma;
+    font-size:12px;
+    background-color:#d8e7f0;
+    border:1px solid #187CBE;
+    display:none;
+    line-height:35px;
+    text-align:center;
+    margin-bottom:10px;
+    margin-left:50px; }
+.xxnr .zj input{border: 0;background-color:#A0C001;color: white;padding: 5px 30px; }
+.xxnr .zsd li label{color:#949494;font-weight: 200;width: 680px}
+#stnr{padding-left: 100px;margin-top: 70px;}
+#stnr .ydt{margin-bottom: 20px;background-color: white;width: 800px;padding: 25px;border: 1px solid #CDCDCD;border-radius: 5px}
+#stnr .ydt p{font-size: 18px}
+.ydt .cz{margin-left: 400px;margin-top: 30px}
+.ydt .cz i{font-size: 25px;color: #F76C0F}
+.ydt .cz a{margin-left: 20px}
+#stcbl{background-color: white;width: 300px;margin-left: 950px;position: fixed;padding: 15px 25px;}
+#stnr .bt{padding: 10px 30px;font-size: 20px;width:800px;background-color: white;border: 1px solid #CDCDCD;border-radius:5px;margin-bottom: 5px;text-align: center }
+#stcbl{height: 350px;margin-top: 40px}
+#stcbl p{font-size: 17px}
+#stcbl .ys{color: red;}
+#stcbl .ths{padding-left: 15px;height: 140px;margin-top: -10px}
+#stcbl .ths .th{border: 1px solid #CDCDCD;margin-right: 15px; margin-top: 15px;float: left; padding: 3px 0;width: 30px;  text-align: center;}
+.clear { clear: both;}
+#stcbl .cz{padding-left: 15px}
+#stcbl .cz input{border: 0;background-color:#A0C001;color: white;padding: 5px 20px;font-size: 17px}
+#mytime{color: red;width: 60px;font-size: 20px;border: 0}
+.ts{position: fixed;background-color: white;width: 600px;height: 330px;margin-top: 50px;margin-left: 350px;z-index: 30}
+.ts div:first-of-type{padding: 10px;text-align: center;font-size: 18px;background-color:#A0C001; }
+.tsxx p{font-size: 35px;font-weight: bolder;margin-top: 50px;}
+.tsxx input,.tsjj input{border: 0;padding: 10px 30px;background-color:#A0C001;color: white;font-size: 17px;margin-top: 30px}
+.tsjj p{font-size: 25px;margin-top: 50px;}
+.tsxx,.tsjj{text-align: center}

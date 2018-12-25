@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>云题库</title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/sidebar-menu.css">
+    <link rel="stylesheet" href="../css/xssy.css">
+    <style type="text/css">
+        header{
+            color: white;
+            height: 10%;
+            width: 100%;
+            position: fixed;
+            background-color: #78c5f4;
+            top: 0;z-index: 12;
+            font-size: 25px;
+            -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
+        }
+        .loading{
+            width:200px;
+            height:20px;
+            background: url(../image/bak.png) no-repeat; background-size: 100%;
+        }
+        .loading div{
+            width:0px;
+            height:20px;
+            background:url(../image/pro.png) no-repeat;
+            color:#fff;
+            text-align:center;
+            font-family:Tahoma;
+            font-size:15px;
+            line-height:20px;
+        }
+        .zsd{display: none}
+        .lscolor{background-color: #A0C001;color: white}
+        .lscolor2{background-color: #A0C001;color: white}
+    </style>
+</head>
+<body style="  background-color: #e6ecee;">
+<div class="cyy" style="display:none; "></div>
+<header>
+    <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
+    <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
+    <a href="xssy.html" onclick="wdzc()">我的自测</a>
+    <a href="tycs.html">统一测试</a>
+    <a href="dtls.html">历史答题</a>
+    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;某个用户</a>
+    <a style="font-size: 17px"><i class="fa fa-power-off"></i> &nbsp;退出</a>
+</header>
+<div style="margin-top: 62px">
+    <div id="xzcstx" >
+        <div class="bt"><span>专项技能练习</span><a>X</a></div>
+        <div class="xxnr">
+            <ul class="kc">
+                <li><i class="fa fa-minus-circle"></i><label>【课程】深入.NET平台和C#编程</label>
+                    <ul class="zj">
+                        <li>
+                            <i class="fa fa-plus-circle"></i><label>深入类的方法</label>
+                            <div class="center">
+                                <div class="message"></div>
+                                <div class="loading"><div></div></div>
+                            </div>
+                            <input type="button" value="进入测试">
+                            <ul class="zsd">
+                                <li>
+                                    <label>.NET基本概念</label>
+                                    <div class="center">
+                                        <div class="message"></div>
+                                        <div class="loading"><div></div></div>
+                                    </div>
+                                    <input type="button" value="进入测试">
+                                </li>
+                                <li>
+                                    <label>.NET常用框架级类库</label>
+                                    <div class="center">
+                                        <div class="message"></div>
+                                        <div class="loading"><div></div></div>
+                                    </div>
+                                    <input type="button" value="进入测试">
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <i class="fa fa-plus-circle"></i><label>深入理解多态</label>
+                            <div class="center">
+                                <div class="message"></div>
+                                <div class="loading"><div></div></div>
+                            </div>
+                            <input type="button" value="进入测试">
+                        </li>
+                    </ul>
+                </li>
+                <li><i class="fa fa-minus-circle"></i><label>【课程】使用java实现数据库编程</label></li>
+                <li><i class="fa fa-minus-circle"></i><label>【课程】使用java实现面向对象编程</label></li>
+            </ul>
+        </div>
+    </div>
+    <div id="wdzc" style="display: block">
+        <div class="dhl">
+            <a>分类自测</a>
+            <a>本班排行</a>
+            <a>本校排行</a>
+        </div>
+
+        <div class="flzc" style="display: block">
+            <div class="csrk" style="display: flex">
+            <div class="zxjn">
+                <img src="../image/zxjncs.jpg">
+                <p></p>
+                <p>专项技能型</p>
+                <p class="zxjnsum">完成0道题</p>
+                <input type="button" value="进入" class="jrzxjn" onclick="xztmfw(this)">
+            </div>
+
+            <div class="zxjn">
+                <img src="../image/kcfx.jpeg">
+                <p></p>
+                <p>课程复习型</p>
+                <p class="kcfxsum">完成0道题</p>
+                <input type="button" value="进入" class="jrkcfx"  onclick="xztmfw(this)">
+            </div>
+
+            <div class="zxjn">
+                <img src="../image/mnzc.jpg">
+                <p></p>
+                <p>模拟真题型</p>
+                <p class="mnztsum">完成0道题</p>
+                <input type="button" value="进入" class="jrmnzt"  onclick="xztmfw(this)">
+            </div>
+        </div>
+            <div style="font-size: 20px;background-color: white;padding: 30px 70px;margin:0 30px;"><label>本日答题</label></div>
+            <div class="brdt">
+            <div>
+                <i class="fa fa-line-chart"></i> &nbsp;
+                <label>累计答题数:<span>10</span></label>
+            </div>
+            <div>
+                <i class="fa fa-pencil-square-o"></i>&nbsp;
+                <label>实际答题数:<span>10</span></label>
+            </div>
+            <div>
+                <i class="fa fa-pie-chart"></i> &nbsp;
+                <label>正确率:<span>100%</span></label>
+            </div>
+        </div>
+            <div id="ztlfx">
+
+        </div>
+        </div >
+
+        <div id="bjph" style="display: none">
+            <div class="phbtb">
+                <p><label>时间：<span>2018.12.10~2018.12.13</span></label>
+                    <input type="button" value="本周榜">
+                    <input type="button" value="本月榜">
+                    <input type="button" value="上周榜">
+                    <input type="button" value="月周榜">
+                </p>
+                <p><label>说明：排行榜非实时统计,当天的做题数据无法体现到排行榜上。</label></p>
+            </div>
+            <div class="phb">
+                <table>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">排行</td>
+                        <td style="width: 200px">姓名</td>
+                        <td style="width: 200px">累计答题数</td>
+                        <td style="width: 200px">实际答题数</td>
+                        <td style="width: 200px">正确率</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">1</td>
+                        <td style="width: 200px">张三</td>
+                        <td style="width: 200px">100</td>
+                        <td style="width: 200px">98</td>
+                        <td style="width: 200px">75%</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">2</td>
+                        <td style="width: 200px">李四</td>
+                        <td style="width: 200px">90</td>
+                        <td style="width: 200px">90</td>
+                        <td style="width: 200px">80%</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">3</td>
+                        <td style="width: 200px">张三</td>
+                        <td style="width: 200px">90</td>
+                        <td style="width: 200px">70</td>
+                        <td style="width: 200px">75%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="qxph" style="display: none">
+            <div class="phbtb2">
+                <p><label style="margin-left: 50px">时间：<span>2018.12.10~2018.12.13</span></label>
+                    <input type="button" value="上周榜">
+                    <input type="button" value="月周榜">
+                </p>
+                <p><label> </label></p>
+            </div>
+            <div class="phb2">
+                <table>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">排行</td>
+                        <td style="width: 200px">姓名</td>
+                        <td style="width: 200px">累计答题数</td>
+                        <td style="width: 200px">实际答题数</td>
+                        <td style="width: 200px">正确率</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">1</td>
+                        <td style="width: 200px">张三</td>
+                        <td style="width: 200px">100</td>
+                        <td style="width: 200px">98</td>
+                        <td style="width: 200px">75%</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">2</td>
+                        <td style="width: 200px">李四</td>
+                        <td style="width: 200px">90</td>
+                        <td style="width: 200px">90</td>
+                        <td style="width: 200px">80%</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 150px">3</td>
+                        <td style="width: 200px">张三</td>
+                        <td style="width: 200px">90</td>
+                        <td style="width: 200px">70</td>
+                        <td style="width: 200px">75%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../js/echarts.common.min.js"></script>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('ztlfx'));
+    option = {
+        title: {
+            text: '做题量分析'
+        },
+        legend: {
+            data:['做题量']
+        },
+
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            name:'做题量',
+            type:'line',
+            stack: '总量',
+            data:[12, 13, 10, 13, 9, 23, 21]
+        }]
+    };
+    myChart.setOption(option);
+    $(function(){
+        red();
+        $(".kc .zj input").click(function(){
+            window.location.href="stym.html";
+        });
+        $(".bt a").click(function(){
+            $(".cyy").hide();
+            $("#xzcstx").hide();
+        });
+        $(".xxnr .kc>li>i").click(function(){
+            var a=$(this).attr("class");
+            if(a=="fa fa-plus-circle"){
+                $(this).next().next().show();
+                $(this).attr("class","fa fa-minus-circle");
+            }else{
+                $(this).next().next().hide();
+                $(this).attr("class","fa fa-plus-circle");
+            }
+        });
+       $(".xxnr .zj>li>i").click(function(){
+            var a=$(this).attr("class");
+            if(a=="fa fa-plus-circle"){
+                $(this).next().next().next().next().show();
+                $(this).attr("class","fa fa-minus-circle");
+            }else{
+                $(this).next().next().next().next().hide();
+                $(this).attr("class","fa fa-plus-circle");
+            }
+        })
+        $("#wdzc .dhl a").click(function(){
+           var a=$(this).html();
+            if(a=="分类自测"){
+                $(".flzc").show();
+                $("#bjph").hide();
+                $("#qxph").hide();
+            }else if(a=="本班排行"){
+                $(".flzc").hide();
+                $("#qxph").hide();
+                $("#bjph").show();
+            }else if(a=="本校排行"){
+                $(".flzc").hide();
+                $("#bjph").hide();
+                $("#qxph").show();
+            }
+        });
+        $(".phbtb input").click(function(){
+            $(".phbtb input").removeClass("lscolor");
+            $(this).addClass("lscolor");
+        });
+        $(".phbtb2 input").click(function(){
+            $(".phbtb2 input").removeClass("lscolor");
+            $(this).addClass("lscolor");
+        });
+        $(".phbtb input,.phbtb2 input").mousemove(function(){
+            $(this).addClass("lscolor2");
+        });
+        $(".phbtb input,.phbtb2 input").mouseout(function(){
+            $(this).removeClass("lscolor2");
+        });
+        $("header a").click(function(){
+            $("header a").css("color","white");
+            $(this).css("color","black");
+        });
+
+        $(".dhl a").click(function(){
+            $(".dhl a").css("border-bottom","0px solid #A0C001");
+            $(this).css("border-bottom","2px solid #A0C001");
+        });
+    })
+    function xztmfw(th){
+        $(".cyy").show();
+        $("#xzcstx").show();
+
+    }
+    function red(){
+        $(".phb tr:eq(1) td:eq(1)").css("color","red");
+        $(".phb tr:even").css("background-color","#F0F0F0");
+        $(".phbtb input:first-of-type").addClass("lscolor");
+
+        $(".phbtb2 input:first-of-type").addClass("lscolor");
+        $(".phb2 tr:even").css("background-color","#F0F0F0");
+    }
+</script>
+<script type="text/javascript">
+    var progress_id = "loading";
+    function SetProgress(progress) {
+        if (progress) {
+            $("." + progress_id + " > div").css("width", String(progress) + "%"); //控制#loading div宽度
+            $("." + progress_id + " > div").html(String(progress) + "%"); //显示百分比
+        }
+    }
+    var i=0;
+    function doProgress(a) {
+        if (i <= 50) {
+            setTimeout("doProgress()");
+            SetProgress(i);
+            i++;
+        }
+    }
+    $(document).ready(function() {
+        doProgress(50);
+    });
+</script>
+
+
+</html>

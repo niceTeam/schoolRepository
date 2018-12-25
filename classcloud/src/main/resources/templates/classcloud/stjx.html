@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>题目解析</title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/sidebar-menu.css">
+    <link rel="stylesheet" href="../css/dtls.css">
+    <style type="text/css">
+        header{
+            color: white;
+            height: 10%;
+            width: 100%;
+            position: fixed;
+            background-color: #78c5f4;
+            top: 0;z-index: 12;
+            font-size: 25px;
+            -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
+        }
+        .cyy{z-index: 15;width: 100%;height: 100%;position: fixed;background-color: black;opacity: 0.4;margin-top: -70px}
+    </style>
+</head>
+<body style="  background-color: #e6ecee;">
+<div class="cyy" style="display:none;"></div>
+<header>
+    <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
+    <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
+    <a href="xssy.html" onclick="wdzc()">我的自测</a>
+    <a href="tycs.html">统一测试</a>
+    <a href="dtls.html">历史答题</a>
+    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;某个用户</a>
+    <a style="font-size: 17px"><i class="fa fa-power-off"></i> &nbsp;退出</a>
+</header>
+<div class="jxdtk">
+    <p>答题卡</p>
+    <p class="zkct"><input type="checkbox" > 只看错题</p>
+    <div class="dtkxh">
+        <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
+        <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+        <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
+        <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+        <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
+        <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+        <div class="clear" style="border: 0;"></div>
+    </div>
+</div>
+<div id="jxnr">
+    <p class="bt"><i class="fa fa-file-text-o"></i> 试题解析</p>
+    <div class="gbtmjx">X</div>
+    <div style="padding:0 20px;overflow: auto;">
+        <div class="grstjx">
+            <div style="border: 1px solid #CDCDCD;">
+                <p><label style="width: 150px">
+                    <i class="fa fa-file-text-o"></i>&nbsp;&nbsp;试题解析</label>
+                    <label>2016-8-18 10:44</label></p>
+                <div class="jxnr">
+                    本题考查访问修饰符，private仅仅只能由类自己访问
+                </div>
+            </div>
+            <div class="jxcz">
+                <label>10个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5个人踩</label>
+                <label>
+                    <a><i class="fa fa-thumbs-o-up"></i>点赞</a>
+                    <a><i class="fa fa-thumbs-o-down"></i>踩</a>
+                </label>
+            </div>
+        </div>
+        <div class="grstjx">
+            <div style="border: 1px solid #CDCDCD;">
+                <p><label style="width: 150px">
+                    <i class="fa fa-file-text-o"></i>&nbsp;&nbsp;试题解析</label>
+                    <label>2016-8-18 10:44</label></p>
+                <div class="jxnr">
+                    本题考查访问修饰符，private仅仅只能由类自己访问
+                </div>
+            </div>
+            <div class="jxcz">
+                <label>10个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5个人踩</label>
+                <label>
+                    <a><i class="fa fa-thumbs-o-up"></i>点赞</a>
+                    <a><i class="fa fa-thumbs-o-down"></i>踩</a>
+                </label>
+            </div>
+        </div>
+        <div class="grstjx">
+            <div style="border: 1px solid #CDCDCD;">
+                <p><label style="width: 150px">
+                    <i class="fa fa-file-text-o"></i>&nbsp;&nbsp;试题解析</label>
+                    <label>2016-8-18 10:44</label></p>
+                <div class="jxnr">
+                    本题考查访问修饰符，private仅仅只能由类自己访问
+                </div>
+            </div>
+            <div class="jxcz">
+                <label>10个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5个人踩</label>
+                <label>
+                    <a><i class="fa fa-thumbs-o-up"></i>点赞</a>
+                    <a><i class="fa fa-thumbs-o-down"></i>踩</a>
+                </label>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div style="margin-top: 70px;margin-left: 100px" id="ckjx">
+    <div class="jxtmbt">
+        初识继承和多态
+    </div>
+    <div class="tmjx">
+    <p><label>1.</label>在C#中，已定义A类，若在其中定义方法public void B（int x）{}和public string B（int b）{}，这两个方法是</p>
+    <p>A:基于返回值不同的重载</p>
+    <p>B:基于参数类型不同的重载</p>
+    <p>C:基于参数名称不同的重载</p>
+    <p>D:不是重载</p>
+    <div class="cz">
+        <label class="daan">正确答案是：A ， 你的回答是：B</label>
+        <a onclick="ckjx(this)"><i class="fa fa-file-text-o"></i> 试题解析</a>
+        <a><i class="fa fa-eye"></i> 吐槽</a>
+        <a><i class="fa fa-star-o"></i> 收藏</a>
+    </div>
+</div>
+    <div class="tmjx">
+        <p><label>1.</label>在C#中，已定义A类，若在其中定义方法public void B（int x）{}和public string B（int b）{}，这两个方法是</p>
+        <p>A:基于返回值不同的重载</p>
+        <p>B:基于参数类型不同的重载</p>
+        <p>C:基于参数名称不同的重载</p>
+        <p>D:不是重载</p>
+        <div class="cz">
+            <label class="daan">正确答案是：A ， 你的回答是：B</label>
+            <a onclick="ckjx(this)"><i class="fa fa-file-text-o"></i> 试题解析</a>
+            <a><i class="fa fa-eye"></i> 吐槽</a>
+            <a><i class="fa fa-star-o"></i> 收藏</a>
+        </div>
+    </div>
+    <div class="tmjx">
+        <p><label>1.</label>在C#中，已定义A类，若在其中定义方法public void B（int x）{}和public string B（int b）{}，这两个方法是</p>
+        <p>A:基于返回值不同的重载</p>
+        <p>B:基于参数类型不同的重载</p>
+        <p>C:基于参数名称不同的重载</p>
+        <p>D:不是重载</p>
+        <div class="cz">
+            <label class="daan">正确答案是：A ， 你的回答是：B</label>
+            <a onclick="ckjx(this)"><i class="fa fa-file-text-o"></i> 试题解析</a>
+            <a><i class="fa fa-eye"></i> 吐槽</a>
+            <a><i class="fa fa-star-o"></i> 收藏</a>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery-3.2.1.js"></script>
+<script>
+    $(function(){
+        $(".gbtmjx").click(function(){
+            $("#jxnr").hide();
+            $(".cyy").hide();
+        })
+    })
+    function ckjx(th){
+        $("#jxnr").show();
+        $(".cyy").show();
+    }
+</script>
+</html>
