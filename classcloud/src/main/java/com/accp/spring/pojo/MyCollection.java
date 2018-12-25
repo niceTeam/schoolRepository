@@ -2,6 +2,8 @@ package com.accp.spring.pojo;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.TypeAlias;
+
 import lombok.Data;
 
 /**
@@ -10,7 +12,7 @@ import lombok.Data;
  *
  */
 @Data
-public class Collection implements Serializable {
+public class MyCollection implements Serializable {
 
 	/**
 	 * 
