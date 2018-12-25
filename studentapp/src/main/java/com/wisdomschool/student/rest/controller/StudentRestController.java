@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wisdomschool.student.pojo.Leaveprocess;
 import com.wisdomschool.student.pojo.Student;
 import com.wisdomschool.student.service.StudentService;
 import com.wisdomschool.student.util.MapInfo;
@@ -21,9 +22,19 @@ import com.wisdomschool.student.util.MapInfo;
 @RestController
 @RequestMapping("/rest/student")
 public class StudentRestController {
+	
 	@Autowired
 	private StudentService studentService;
 
+	/*
+	 * 请假
+	 */
+	@PostMapping("/leave")
+	public int leave(Leaveprocess leaveprocess) {
+		System.out.println("111111");
+		return this.studentService.leave(leaveprocess);
+	}
+	
 	/**
 	 * 得到所有的学生
 	 * 
