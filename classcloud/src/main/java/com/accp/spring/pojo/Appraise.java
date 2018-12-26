@@ -17,6 +17,30 @@ public class Appraise implements Serializable {
 	 */
 	private static final long serialVersionUID = 4211817746212755370L;
 	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getAppraise() {
+		return appraise;
+	}
+	public void setAppraise(int appraise) {
+		this.appraise = appraise;
+	}
+	public int getStuId() {
+		return stuId;
+	}
+	public void setStuId(int stuId) {
+		this.stuId = stuId;
+	}
+	public int getAnalyzeId() {
+		return analyzeId;
+	}
+	public void setAnalyzeId(int analyzeId) {
+		this.analyzeId = analyzeId;
+	}
 	private int appraise;
 	private int stuId;
 	private int analyzeId;
