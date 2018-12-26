@@ -265,9 +265,9 @@ a:hover{text-decoration: none;color:#0088DB }
 .xzkssj .bc{background-color: #0088DB;color: white;padding: 5px 20px;border-radius: 3px;border: 0;margin-left: 350px}
 .xzkssj .sjmc{height: 30px;border-radius: 3px;border: 1px solid #CDCDCD;padding: 0 5px}
 li{list-style:none;padding-top: 15px;  }
-.stfw{box-shadow:  0 0 3px black;padding: 10px;position: fixed;background-color: white;z-index: 50; width: 500px;height: 570px;margin-left: 420px;margin-top: 30px;border-radius: 5px}
-.stfw .shuml ul{display: none;}
-.stfw .shuml li label{border: 1px solid #7c7c7cbd;padding: 3px 15px;border-radius: 5px;background-color: white}
-.stfw .xz{border: 0;background-color: #0088DB;color: white;padding: 5px 30px;border-radius: 3px;margin-left: 150px}
-.stfw .gb{border: 1px solid #0088DB;background-color: white;color: #0088DB;padding: 4px 30px;border-radius: 3px}
+.stfw,.ctfw{box-shadow:  0 0 3px black;padding: 10px;position: fixed;background-color: white;z-index: 50; width: 500px;height: 570px;margin-left: 420px;margin-top: 30px;border-radius: 5px}
+.stfw .shuml ul,.ctfw .shuml ul{display: none;}
+.stfw .shuml li label,.ctfw  .shuml li label{border: 1px solid #7c7c7cbd;padding: 3px 15px;border-radius: 5px;background-color: white}
+.stfw .xz,.ctfw .xz{border: 0;background-color: #0088DB;color: white;padding: 5px 30px;border-radius: 3px;margin-left: 150px}
+.stfw .gb,.ctfw .gb{border: 1px solid #0088DB;background-color: white;color: #0088DB;padding: 4px 30px;border-radius: 3px}
 .xzkssj  .sjtb tr{height: 40px;background-color: white;}

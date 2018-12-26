@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>考试云首页</title>
     <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
@@ -24,12 +24,16 @@
             height: 10%;
             width: 100%;
             position: fixed;
-            background-color: white;
+            background-image: url("../image/dhbj.jpg");
+            background-size: 200px 150px;
             top: 0;z-index: 12;
-            text-align: center;
             font-size: 25px;
+            font-family: 幼圆;
             -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
         }
+        header a{color: black}
+        header .glymc{font-size: 17px;}
+        header .tcdl{font-size: 17px;}
         .bgbk{border: 1px solid #0088DB;}
         .bgbk2{border: 1px solid #0088DB;}
     </style>
@@ -73,6 +77,48 @@
             </ul>
         </li>
     </ul>
+    </div>
+    <div style="margin-top: 10px">
+        <input type="button" value="选择" class="xz"> <input type="button" value="关闭" class="gb">
+    </div>
+</div>
+<div class="ctfw" style="display: none;">
+    <div style="text-align: center;font-size: 20px">选择范围</div>
+    <div style="overflow: auto;height: 480px">
+        <ul class="shuml">
+            <li>
+                <i class="fa fa-plus-square-o" onclick="dj(this)"></i> <label>📚 第一本书</label>
+                <ul class="zjml">
+                    <li>
+                        <i class="fa fa-plus-square-o"></i> <label>📃123</label>
+                        <ul class="zsdml">
+                            <li><label>📑 bcd</label></li>
+                            <li><label>📑 sec</label></li>
+                            <li><label>📑 hfw</label></li>
+                        </ul>
+                    </li>
+                    <li><i class="fa fa-plus-square-o"></i> <label>📃 234</label></li>
+                    <li><i class="fa fa-plus-square-o"></i> <label>📃 345</label></li>
+                </ul>
+            </li>
+            <li>
+                <i class="fa fa-plus-square-o"></i> <label>📚 第二本书</label>
+                <ul class="zjml">
+                    <li>
+                        <i class="fa fa-plus-square-o"></i> <label>📃 123</label>
+                    </li>
+                    <li>
+                        <i class="fa fa-plus-square-o"></i> <label>📃 345</label>
+                        <ul class="zsdml">
+                            <li><label>📑 bcd</label></li>
+                            <li><label>📑 sec</label></li>
+                            <li><label>📑 hfw</label></li>
+                        </ul>
+                    </li>
+                    <li><i class="fa fa-plus-square-o"></i> <label>📃 345</label></li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="margin-top: 10px">
         <input type="button" value="选择" class="xz"> <input type="button" value="关闭" class="gb">
@@ -127,7 +173,13 @@
     </div>
 </div>
 <header>
-    头部
+    <div style="margin-top: 15px;">
+        <label style="font-weight: 200;margin-left: 650px">考试云</label>
+        <a style="margin-left: 250px"><i class="fa fa-user" style="font-size: 20px"></i></a>
+        <a class="glymc">一个管理员</a>
+        <a style="margin-left: 30px"><i class="fa fa-power-off"></i></a>
+        <a class="tcdl">退出</a>
+    </div>
 </header>
 
 <div class="bjjyfbdsj" style="display: none">
@@ -269,7 +321,7 @@
 
 <div class="neirong">
 
-    <div id="shouye" style="display: none">
+    <div id="shouye" style="display: block;">
        <div class="sygl">
            <div class="cjks"  onclick="chuangjiankaoshi(this)" onmouseover="xsyd(this)" onmouseout="xxyd(this)">
            <div><img src="../image/cjks.jpg"></div>
@@ -288,7 +340,7 @@
            </div>
 
            <div class="cjks" onmouseover="xsyd(this)" onmouseout="xxyd(this)">
-               <div><img src="image/tjry.jpg"></div>
+               <div><img src="../image/tjry.jpg"></div>
                <div>
                    <h4>添加人员</h4>
                    <p>填写账号信息和人员信息，添加管理员</p>
@@ -365,8 +417,9 @@
 
         <div class="tmlx">
             试题分类：
-            <input type="button" class="stfl" value="试题分类">
-
+            <select class="stfl">
+                 <option value="1">S1</option>
+            </select>
             &nbsp; &nbsp; &nbsp; &nbsp;
             试题类型：
             <select class="stlx">
@@ -523,7 +576,7 @@
 
     </div>
 
-    <div id="shijk" style="display: block">
+    <div id="shijk" style="display: none">
         <div class="sjktb">
             <input type="button" value="试卷预览" class="sjyl" >
         </div>
@@ -1004,6 +1057,17 @@
 </script>
 <script>
     $(function(){
+    	cxnj();
+    	$(".tmlx .stfl").change(function(){
+    		 var z=$(this).val();
+    		 
+    		 $(".ctfw").show();
+             $(".cyy").show();
+    	});
+    	 $(".ctfw .gb").click(function(){
+           $(".cyy").hide();
+            $(".ctfw").hide();
+        });
         $(".bjjyfbdsj .fh").click(function(){
             var zt=$(".bjjyfbdsj .fh").attr("zt");
             $("#shouye").hide();
@@ -1107,7 +1171,7 @@
             }
         })
         $(".fabu .sjyl").click(function(){
-            window.open('http://localhost:63342/untitled/ksxt/sjyl.html')
+        	location.href="sjyl"
         })
         $(".div3 .ssmb input[type=button]").click(function(){
             $(".div1").css("display","none");
@@ -1345,6 +1409,16 @@
         $(th).css("margin-top","25px");
         $(th).css("height","99px");
     }
+    
+    //查询所有年级
+   function cxnj(){
+	   $(".tmlx .stfl").html("");
+	    $.getJSON("cxgrade",function(date){
+	    	$.each(date,function(){
+ 				$(".tmlx .stfl").append("<option value=\""+this.gId+"\">"+this.gName+"</option>");
+ 			})
+ 		  })
+   }
 </script>
 </body>
 </html>
