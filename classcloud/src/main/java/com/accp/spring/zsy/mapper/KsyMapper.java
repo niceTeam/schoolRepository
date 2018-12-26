@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.accp.spring.pojo.Book;
-import com.accp.spring.pojo.Course;
 import com.accp.spring.pojo.Grade;
 import com.accp.spring.pojo.Knowledge;
 import com.accp.spring.zsy.pojo.Books;

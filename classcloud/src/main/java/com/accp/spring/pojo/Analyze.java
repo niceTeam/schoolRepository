@@ -17,6 +17,48 @@ public class Analyze implements Serializable {
 	 */
 	private static final long serialVersionUID = 989031606358645490L;
 	private int analyzeId;
+	public int getAnalyzeId() {
+		return analyzeId;
+	}
+	public void setAnalyzeId(int analyzeId) {
+		this.analyzeId = analyzeId;
+	}
+	public int getQtId() {
+		return qtId;
+	}
+	public void setQtId(int qtId) {
+		this.qtId = qtId;
+	}
+	public int getAnalyzeContent() {
+		return analyzeContent;
+	}
+	public void setAnalyzeContent(int analyzeContent) {
+		this.analyzeContent = analyzeContent;
+	}
+	public int getStuId() {
+		return stuId;
+	}
+	public void setStuId(int stuId) {
+		this.stuId = stuId;
+	}
+	public int getAnalyzeTime() {
+		return analyzeTime;
+	}
+	public void setAnalyzeTime(int analyzeTime) {
+		this.analyzeTime = analyzeTime;
+	}
+	public int getYes() {
+		return yes;
+	}
+	public void setYes(int yes) {
+		this.yes = yes;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	private int qtId;
 	private int analyzeContent;
 	private int stuId;

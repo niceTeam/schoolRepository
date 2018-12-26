@@ -86,45 +86,16 @@
     <div style="text-align: center;font-size: 20px">选择范围</div>
     <div style="overflow: auto;height: 480px">
         <ul class="shuml">
-            <li>
-                <i class="fa fa-plus-square-o" onclick="dj(this)"></i> <label>📚 第一本书</label>
-                <ul class="zjml">
-                    <li>
-                        <i class="fa fa-plus-square-o"></i> <label>📃123</label>
-                        <ul class="zsdml">
-                            <li><label>📑 bcd</label></li>
-                            <li><label>📑 sec</label></li>
-                            <li><label>📑 hfw</label></li>
-                        </ul>
-                    </li>
-                    <li><i class="fa fa-plus-square-o"></i> <label>📃 234</label></li>
-                    <li><i class="fa fa-plus-square-o"></i> <label>📃 345</label></li>
-                </ul>
-            </li>
-            <li>
-                <i class="fa fa-plus-square-o"></i> <label>📚 第二本书</label>
-                <ul class="zjml">
-                    <li>
-                        <i class="fa fa-plus-square-o"></i> <label>📃 123</label>
-                    </li>
-                    <li>
-                        <i class="fa fa-plus-square-o"></i> <label>📃 345</label>
-                        <ul class="zsdml">
-                            <li><label>📑 bcd</label></li>
-                            <li><label>📑 sec</label></li>
-                            <li><label>📑 hfw</label></li>
-                        </ul>
-                    </li>
-                    <li><i class="fa fa-plus-square-o"></i> <label>📃 345</label></li>
-                </ul>
-            </li>
+            
         </ul>
     </div>
     <div style="margin-top: 10px">
         <input type="button" value="选择" class="xz"> <input type="button" value="关闭" class="gb">
     </div>
 </div>
+
 <div class="cyy" style="display:none; "></div>
+
 <div class="xzkssj" style="display: none">
     <div style="text-align: center;font-size: 25px">选择试卷</div>
     <div>
@@ -1059,8 +1030,25 @@
     $(function(){
     	cxnj();
     	$(".tmlx .stfl").change(function(){
-    		 var z=$(this).val();
-    		 
+    		 var gId=$(this).val();
+    		 $(".ctfw .shuml").html("");
+    		 $.getJSON("cxBook/"+gId,function(date){
+    			 $.each(date,function(){
+    				 $(".ctfw .shuml").append("  <li>"+
+    			               " <i class=\"fa fa-plus-square-o\" onclick=\"dj(this)\"></i> <label bookid='"+this.bookId+"'>📚 "+this.bookName+"</label>"+
+    			               " <ul class=\"zjml\">"+    			                 
+    			               " </ul>"+
+    			           " </li>");
+    				  $.each(this.listc,function(i,obj){
+    					$(".zjml").append("<li><i class=\"fa fa-plus-square-o\" onclick=\"dj(this)\"></i> <label courseId='"+this.courseId+"'>📃"+obj.courseName+"</label>"+
+			                       " <ul class=\"zsdml\">"+
+		                           " <li><label>📑 bcd</label></li>"+
+		                           " <li><label>📑 sec</label></li>"+
+		                           " <li><label>📑 hfw</label></li>"+
+		                       "</ul> </li>")
+    				 }) 
+    			 })
+    		 });
     		 $(".ctfw").show();
              $(".cyy").show();
     	});
@@ -1160,16 +1148,7 @@
             $(this).css("background-color","#f4d2ca");
             $(this).css("border-color","#ff5600");
         })
-        $(".shuml i").on('click',function(){
-            var d=$(this).attr("class");
-            if(d=="fa fa-plus-square-o"){
-                $(this).attr("class","fa fa-minus-square-o");
-                $(this).next().next().show();
-            }else{
-                $(this).attr("class","fa fa-plus-square-o");
-                $(this).next().next().hide();
-            }
-        })
+       
         $(".fabu .sjyl").click(function(){
         	location.href="sjyl"
         })
@@ -1419,6 +1398,16 @@
  			})
  		  })
    }
+    function dj(th){
+    	  var d=$(th).attr("class");
+          if(d=="fa fa-plus-square-o"){
+              $(th).attr("class","fa fa-minus-square-o");
+              $(th).next().next().show();
+          }else{
+              $(th).attr("class","fa fa-plus-square-o");
+              $(th).next().next().hide();
+          }
+    }
 </script>
 </body>
 </html>

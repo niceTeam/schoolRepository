@@ -17,6 +17,48 @@ public class Question implements Serializable{
 	 */
 	private static final long serialVersionUID = 7262039908838861549L;
 	private int qtId;
+	public int getQtId() {
+		return qtId;
+	}
+	public void setQtId(int qtId) {
+		this.qtId = qtId;
+	}
+	public String getQtQuest() {
+		return qtQuest;
+	}
+	public void setQtQuest(String qtQuest) {
+		this.qtQuest = qtQuest;
+	}
+	public int getKnowId() {
+		return knowId;
+	}
+	public void setKnowId(int knowId) {
+		this.knowId = knowId;
+	}
+	public String getQtSendTime() {
+		return QtSendTime;
+	}
+	public void setQtSendTime(String qtSendTime) {
+		QtSendTime = qtSendTime;
+	}
+	public int getTeaId() {
+		return teaId;
+	}
+	public void setTeaId(int teaId) {
+		this.teaId = teaId;
+	}
+	public String getPrivary() {
+		return privary;
+	}
+	public void setPrivary(String privary) {
+		this.privary = privary;
+	}
+	public int getIsDel() {
+		return isDel;
+	}
+	public void setIsDel(int isDel) {
+		this.isDel = isDel;
+	}
 	private String qtQuest;
 	private int knowId;
 	private String QtSendTime;
