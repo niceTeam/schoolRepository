@@ -19,6 +19,15 @@ public class Classes implements Serializable {
 	private int classId;
 	private String cName;
 	private int gId;
+	private String graduateTime;//毕业时间
+	
+	
+	public String getGraduateTime() {
+		return graduateTime;
+	}
+	public void setGraduateTime(String graduateTime) {
+		this.graduateTime = graduateTime;
+	}
 	public int getClassId() {
 		return classId;
 	}
@@ -42,7 +51,8 @@ public class Classes implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Classes [classId=" + classId + ", cName=" + cName + ", gId=" + gId + "]";
+		return "Classes [classId=" + classId + ", cName=" + cName + ", gId=" + gId + ", graduateTime=" + graduateTime
+				+ "]";
 	}
 	
 }
