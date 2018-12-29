@@ -20,6 +20,13 @@
             background-color: #222d32;
 
         }
+         .tmlx input{
+            padding: 4px 20px;
+            border: 1px solid #2fa0ec;
+            color: #2fa0ec;
+            background-color: white;
+            border-radius: 5px;
+        }
         header{
             height: 10%;
             width: 100%;
@@ -36,10 +43,12 @@
         header .tcdl{font-size: 17px;}
         .bgbk{border: 1px solid #0088DB;}
         .bgbk2{border: 1px solid #0088DB;}
+        .ygzsd{border-color:#7c7c7cbd;background-color: white;}
     </style>
 
 </head>
 <body style="  background-color: #e6ecee;">
+
 <div class="stfw" style="display: none">
     <div style="text-align: center;font-size: 20px">选择范围</div>
     <div style="overflow: auto;height: 480px">
@@ -82,6 +91,7 @@
         <input type="button" value="选择" class="xz"> <input type="button" value="关闭" class="gb">
     </div>
 </div>
+
 <div class="ctfw" style="display: none;">
     <div style="text-align: center;font-size: 20px">选择范围</div>
     <div style="overflow: auto;height: 480px">
@@ -147,7 +157,8 @@
     <div style="margin-top: 15px;">
         <label style="font-weight: 200;margin-left: 650px">考试云</label>
         <a style="margin-left: 250px"><i class="fa fa-user" style="font-size: 20px"></i></a>
-        <a class="glymc">一个管理员</a>
+        <a class="glymc" th:text="${uname}"></a>
+        <span th:text="${uid}" class="uid" style="display: none"></span>
         <a style="margin-left: 30px"><i class="fa fa-power-off"></i></a>
         <a class="tcdl">退出</a>
     </div>
@@ -292,7 +303,7 @@
 
 <div class="neirong">
 
-    <div id="shouye" style="display: block;">
+    <div id="shouye" style="display: none;">
        <div class="sygl">
            <div class="cjks"  onclick="chuangjiankaoshi(this)" onmouseover="xsyd(this)" onmouseout="xxyd(this)">
            <div><img src="../image/cjks.jpg"></div>
@@ -380,10 +391,10 @@
 
     </div >
 
-    <div id="tjst" style="display: none">
+    <div id="tjst" style="display: none;">
         <div style="position: absolute;margin-top: -10px;margin-left: 850px">
             <input type="button" value="重置"  class="czst">
-            <input type="button" value="录入"  class="lrst">
+            <input type="button" value="录入"  class="lrst" >
         </div>
 
         <div class="tmlx">
@@ -391,11 +402,12 @@
             <select class="stfl">
                  <option value="1">S1</option>
             </select>
+             <input type="button" value="选择知识点">
             &nbsp; &nbsp; &nbsp; &nbsp;
             试题类型：
             <select class="stlx">
-                <option>单选</option>
-                <option>多选</option>
+                <option value="1">单选</option>
+                <option value="2">多选</option>
 
             </select>
         </div>
@@ -415,21 +427,21 @@
                 <a>单/多选题的范围从 2 到 20 </a>
             </div>
             <div class="xuanx">
-                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+                <div><input type="radio" name="y"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
             </div>
 
             <div class="mrxx">
             <div class="xuanx">
-                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+                <div><input type="radio" name="y"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
             </div>
 
             <div class="xuanx">
-                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+                <div><input type="radio" name="y"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
                 <div class="qxxx" onclick="scxx(this)">x</div>
             </div>
 
             <div class="xuanx">
-                <div><input type="radio"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
+                <div><input type="radio" name="y"></div><textarea class="xuanxiang" onfocus="srxx(this)" onblur="xxwc(this)"></textarea>
                 <div class="qxxx" onclick="scxx(this)">x</div>
             </div>
 
@@ -455,15 +467,15 @@
 
     </div>
 
-    <div id="shitk" style="display: none">
+    <div id="shitk" style="display: block;">
         <div class="stktb">
             <input type="button" value="≡ 添加试题" class="tjst" onclick="tianjiashiti(this,1)">
         </div>
 
         <div style="position: absolute;margin-top: -40px;margin-left: 130px">
             <select class="stlx">
-                <option>单选</option>
-                <option>多选</option>
+                <option value="1">单选</option>
+                <option value="2">多选</option>
             </select>
         </div>
 
@@ -496,20 +508,7 @@
 
             <div style="margin-top: 10px;height: 370px;" class="xssyst">
                 <table class="stbt">
-                    <tr>
-                        <td style="width: 60px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
-                        <td  style="width: 100px">单选</td>
-                        <td style="width: 200px">试题分类/示例</td>
-                        <td style="width: 350px">一般性的拜访多以（）为最佳交往时间。</td>
-                        <td style="width: 150px">考试星</td>
-                        <td style="width: 200px">2016-11-02 12:00</td>
-                        <td style="width: 90px">
-                            <a title="编辑" onclick="tianjiashiti(this,2)"><i class="fa fa-pencil"></i></a>
-                            &nbsp;
-                            <a title="删除"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
-                    <tr style="height: 5px"></tr>
+                   
                     <tr>
                         <td style="width: 60px;height: 40px;text-align: center"><input type="checkbox" name="ck"></td>
                         <td  style="width: 100px">单选</td>
@@ -1040,22 +1039,96 @@
     			               " </ul>"+
     			           " </li>");
     				  $.each(this.listc,function(i,obj){
-    					$(".zjml").append("<li><i class=\"fa fa-plus-square-o\" onclick=\"dj(this)\"></i> <label courseId='"+this.courseId+"'>📃"+obj.courseName+"</label>"+
+    					$(".shuml .zjml").append("<li><i class=\"fa fa-plus-square-o\" onclick=\"dj(this)\"></i> <label courseId='"+this.courseId+"'>📃"+obj.courseName+"</label>"+
 			                       " <ul class=\"zsdml\">"+
-		                           " <li><label>📑 bcd</label></li>"+
-		                           " <li><label>📑 sec</label></li>"+
-		                           " <li><label>📑 hfw</label></li>"+
-		                       "</ul> </li>")
+		                           "</ul> </li>")
+		                       $.each(obj.listk,function(i,objk){
+		                    	   $(".zjml .zsdml").append( " <li>"+
+		                           " <label knowId='"+objk.knowId+"' onclick=\"xzzsd(this,'"+objk.knowName+"','"+objk.knowId+"')\">📑  "+objk.knowName,+"</label></li>");
+		                       });
     				 }) 
     			 })
     		 });
     		 $(".ctfw").show();
              $(".cyy").show();
     	});
+    	
+    	//重置
+    	$("#tjst .czst").click(function(){
+    		$("#tjst textarea").val("");
+    		$("input[name=y]").prop("checked",false);
+    	});
+    	
+    	//选择知识点
+    	$(".ctfw .xz").click(function(){   	
+    		 $(".ctfw").hide();
+             $(".cyy").hide();
+    	});
+    	
+    	$(".tmlx .stlx").change(function(){
+    		if($(this).val()=="2"){
+    			$(".xuanx input").attr("type","checkbox");
+    		}else{
+    			$(".xuanx input").attr("type","radio");
+    		}
+    	})
+    	
+    
+    	
+    	$("#tjst .lrst").click(function(){
+    		var c=1;//判断选项是否为空
+    		var idDouble=$(".stlx").val();//1单选，2多选
+    		var zsdid=$(".tmlx input").attr("zsdid");//获取知识点id
+    		var zsdname=$(".tmlx input").val();//判断是否选择了知识点
+    		var uid=$(".uid").html();//获取用户id
+    		var zt=$(this).attr("zt");//判断是修改还是新增题目
+    		var wt=$(".ctnr .tigan").val();//问题	
+    		var jx=$(".jiexi").val();//解析
+    		var a=$(".xuanxiang");//获取选项个数
+    		var yn=$("[name=y]");
+    		var z="";
+    		var zs=2;
+    		for(i=0;i<a.length;i++){
+    			
+    			z=$(yn[i]).prop("checked");   
+    			if(z==true){
+    				zs=1;
+    			}
+    			if(a.eq(i).val()==""){
+    				c=2;
+    			}
+    		}
+
+    		if(zt=="1"){
+    			if(wt!=""&&c==1&&jx!=""&&zsdname!="选择知识点"&&zs!=2){
+    				
+    				var param="wt="+wt+"&jx="+jx+"&uid="+uid+"&idDouble="+idDouble+"&zsdid="+zsdid;
+    				
+    				$.ajax({
+    					type:"POST",
+    					url:"xztm",
+    					data:param,
+    					success:function(res){
+    						xzxx(res);
+    					}
+    				}); 
+    			}else if(zsdname=="选择知识点"){
+    				alert("请先选择题目的知识点");
+    			}else if(zs==2){
+    				alert("请选择正确答案");
+    			}else{
+    				alert("请将信息填写完整再录入");
+    			}
+    		}else if(zt=="2"){
+    			alert("修改");
+    		} 
+    	})
+    	
     	 $(".ctfw .gb").click(function(){
            $(".cyy").hide();
             $(".ctfw").hide();
         });
+    	
         $(".bjjyfbdsj .fh").click(function(){
             var zt=$(".bjjyfbdsj .fh").attr("zt");
             $("#shouye").hide();
@@ -1076,6 +1149,7 @@
                 $("#cjks").hide();
             }
         })
+        
         $("[name=ck]").click(function () {
             if(this.checked==false){
                 $(".cks").prop("checked",false);
@@ -1086,12 +1160,15 @@
                 $(this).parents("tr").removeClass("bgbk2");
             }
         })
+        
         $(".sjdiv .sjbsj tr").mousemove(function(){
             $(this).addClass("bgbk");
         });
+        
         $(".sjdiv .sjbsj tr").mouseout(function(){
             $(this).removeClass("bgbk");
         });
+        
         $(".sjdiv .sjbsj tr").click(function(){
             var a=$(this).find("input[type=checkbox]").prop("checked");
             if(a==true){
@@ -1103,12 +1180,15 @@
                 $(this).addClass("bgbk2");
             }
         });
+        
         $(".xssyst .stbt tr").mousemove(function(){
             $(this).addClass("bgbk");
         });
+        
         $(".xssyst .stbt tr").mouseout(function(){
             $(this).removeClass("bgbk");
         });
+        
         $(".xssyst .stbt tr").click(function(){
             var a=$(this).find("input[type=checkbox]").prop("checked");
             if(a==true){
@@ -1120,28 +1200,34 @@
                 $(this).addClass("bgbk2");
             }
         });
+        
         $(".xzkssj  .sjtb tr:gt(0)").mouseout(function () {
             $(this).css("background-color","white");
         })
+        
         $(".xzkssj  .sjtb tr:gt(0)").mousemove(function () {
             $(this).css("background-color","#aebbd26b")
         })
+        
         $(".xzkssj  .sjtb tr:gt(0)").click(function () {
             $(".xzkssj .sjtb tr").find("input").prop("checked",false);
             $(".xzkssj .sjtb tr").css("border","0px solid #0088DB");
             $(this).css("border","1px solid #0088DB");
             $(this).find("input").prop("checked",true);
         })
+        
         $(".xzkssj  .sjtb tr input[type=checkbox]").click(function () {
             $(this).prop("checked",false);
             $(".xzkssj .sjtb tr").css("border","0px solid #0088DB");
             $(".xzkssj .sjtb tr").css("border","1px solid #0088DB");
             $(this).prop("checked",true);
         })
+        
         $(".stfw .gb").click(function(){
            $(".stfw").hide();
             $(".cyy").hide();
         })
+        
         $(".stfw .shuml li label").click(function(){
             $(".stfw .shuml li label").css("border-color","#7c7c7cbd");
             $(".stfw .shuml li label").css("background-color","white");
@@ -1152,6 +1238,7 @@
         $(".fabu .sjyl").click(function(){
         	location.href="sjyl"
         })
+        
         $(".div3 .ssmb input[type=button]").click(function(){
             $(".div1").css("display","none");
             $(".xtzj").css("display","none");
@@ -1160,6 +1247,7 @@
             $(".cjksbz .dsb").css("color","blue")
 
         });
+        
         $(".div2 .xyb").click(function(){
             $(".div1").css("display","none");
             $(".xtzj").css("display","none");
@@ -1167,6 +1255,7 @@
             $(".cjksbz a").css("color","#999999")
             $(".cjksbz .dsb").css("color","blue")
         });
+        
         $(".xskxmb tr:gt(0)").click(function(){
             $(".xskxmb tr:gt(0)").css("background-color","#FFFFFF");
             $(".xskxmb tr:gt(0)").css("color","#1A2226");
@@ -1174,6 +1263,7 @@
             $(this).css("color","#FFFFFF");
 
         })
+        
         $(".yymb i").click(function(){
             var a=$(this).attr("class");
             var b=$(".xmb i").attr("class");
@@ -1184,6 +1274,7 @@
                 $(".div3").slideDown();
             }
         });
+        
         $(".xmb i").click(function(){
             var a=$(this).attr("class");
             var b=$(".yymb i").attr("class");
@@ -1195,6 +1286,7 @@
 
             }
         })
+        
         $(".ssnj select").change(function(){
            var a= $(this).val();
             if(a!="0"){
@@ -1212,6 +1304,7 @@
             $(".cjksbz a").css("color","#999999")
             $(".cjksbz .drb").css("color","blue")
         });
+        
         $(".xzyysjxyb").click(function(){
             $(".div1").css("display","none");
             $(".fbks").css("display","flex");
@@ -1228,10 +1321,12 @@
             $(".cyy").show();
         }
     }
+    
     function gbxgkssj(th){
         $(".xzkssj").hide();
         $(".cyy").hide();
     }
+    
     function ghjyksdsj(th){
         $(".xzkssj").show();
         $(".cyy").show();
@@ -1240,6 +1335,7 @@
     function scst(th){
         $(th).parents(".zsdtm").remove();
     }
+    
     function zsst(th){
         $(".timu").append("<div class=\"zsdtm\">"
         +"书本：<select class=\"sb\">"
@@ -1259,16 +1355,19 @@
         +"</div>"
         +"</div>")
     }
+    
     function sjxs(th){
         $(th).css("margin-top","10px");
         $(th).css("-webkit-box-shadow","3px 10px 20px #cfcfcf");
         $(th).css("margin-bottom","10px");
     }
+    
     function sjxx(th){
         $(th).css("margin-top","20px");
         $(th).css("-webkit-box-shadow","0 0");
         $(th).css("margin-bottom","0");
     }
+    
     function bjsj(th){
         $("#shouye").hide();
         $("#tjst").hide();
@@ -1289,6 +1388,7 @@
         $("#bjsj").hide();
         $("#bjks").show();
     }
+    
     function shijuaku(th){
         $("#shouye").hide();
         $("#tjst").hide();
@@ -1298,6 +1398,7 @@
         $("#bjsj").hide();
         $("#bjks").hide();
     }
+    
     function shitiku(th){
         $("#bjsj").hide();
         $("#shouye").hide();
@@ -1307,6 +1408,7 @@
         $("#shijk").hide();
         $("#bjks").hide();
     }
+    
     function tianjiashiti(th,zt){
         $("#bjsj").hide();
         $("#shouye").hide();
@@ -1317,6 +1419,7 @@
         $("#bjks").hide();
         $("#tjst .lrst").attr("zt",zt)
     }
+    
     function shouye(th){
         $("#bjsj").hide();
         $("#shouye").show();
@@ -1326,6 +1429,7 @@
         $("#shijk").hide();
         $("#bjks").hide();
     }
+    
     function chuangjiankaoshi(th){
         $("#bjsj").hide();
         $("#cjks").show();
@@ -1340,6 +1444,7 @@
         $(".cjksbz a").css("color","#999999")
         $(".cjksbz .dyb").css("color","blue")
     }
+    
     //全选
     function ckAll(th){
         var cks=document.getElementsByName("ck");
@@ -1356,34 +1461,43 @@
     }
     function tjygxx(th){
         $(".mrxx").append("<div class=\"xuanx\">"
-        +"<div><input type=\"radio\"></div>"
+        +"<div><input type=\"radio\" name=\"y\"></div>"
                 +"<textarea class=\"xuanxiang\" onfocus=\"srxx(this)\" onblur=\"xxwc(this)\"></textarea>"
         +" <div class=\"qxxx\" onclick=\"scxx(this)\">x</div> </div>");
     }
+    
     function scxx(th){
         $(th).parent().remove();
     }
+    
     function srtg(th){
         $(th).css("height","150px");
     }
+    
     function tgwc(th){
         $(th).css("height","60px");
     }
+    
     function srxx(th){
         $(th).css("height","150px");
     }
+    
     function xxwc(th){
         $(th).css("height","36px");
     }
+    
     function srjx(th){
         $(th).css("height","150px");
     }
+    
     function jxwc(th){
         $(th).css("height","100px");
     }
+    
    function xsyd(th){
        $(th).css("margin-top","20px");
     }
+   
     function xxyd(th){
         $(th).css("margin-top","25px");
         $(th).css("height","99px");
@@ -1407,6 +1521,71 @@
               $(th).attr("class","fa fa-plus-square-o");
               $(th).next().next().hide();
           }
+    }
+    //选中添加试题属于哪个知识点
+    function xzzsd(th,zsd,zsdid){
+    	 $(".ctfw li label").css("border-color","#7c7c7cbd");
+    	 $(".ctfw li label").css("background-color","white");
+         $(th).css("background-color","#f4d2ca");
+         $(th).css("border-color","#ff5600");
+         $(".tmlx input").val(zsd);
+         $(".tmlx input").attr("zsdid",zsdid);
+    }
+    //新增选项
+    function xzxx(id){
+    	var a=$(".xuanxiang");
+    	var yn=$("[name=y]");
+    	var xx=[];//选项
+    	var param=[];
+    	var isRight=0;
+    	var xb="ABCDEFGHIJKLMNOPQRSTUVWHYZ";
+    	var idDouble=$(".stlx").val();//1单选，2多选
+    	var z="";
+		for(i=0;i<a.length;i++){
+			
+			z=$(yn[i]).prop("checked");
+
+			  if(z==true){
+				 isRight=1;
+			 }else{
+				 isRight=2;
+			 } 
+			 
+			  var da={'qtId':id,'opORder':xb[i],'rightOption':a.eq(i).val(),'isRight':isRight};
+			  param.push(da);
+			 
+		}
+		 console.info(JSON.stringify(param));
+			 $.ajax({
+				type:"POST",
+				url:"xztmxx",
+				dataType:"json",
+			    contentType:"application/json",
+				data:JSON.stringify(param),
+				success:function(res){
+					
+						alert("发表成功！");
+						$("#tjst textarea").val("");
+			    		$("input[name=y]").prop("checked",false);
+				}
+			}); 
+    }
+    //查询试题库
+    function cxstk(){
+    	$(".xssyst").append("<tr>
+                        "<td style=\"width: 60px;height: 40px;text-align: center\"><input type=\"checkbox\" name=\"ck\"></td>"+
+                        "<td  style=\"width: 100px\">单选</td>"+
+                        "<td style=\"width: 200px\">试题分类/示例</td>"+
+                        "<td style=\"width: 350px\">一般性的拜访多以（）为最佳交往时间。</td>"+
+                        "<td style=\"width: 150px\">考试星</td>"+
+                        "<td style=\"width: 200px\">2016-11-02 12:00</td>"+
+                        "<td style=\"width: 90px\">"+
+                            "<a title=\"编辑\" onclick=\"tianjiashiti(this,2)\"><i class=\"fa fa-pencil\"></i></a>"+
+                            "&nbsp;"+
+                            "<a title=\"删除\"><i class=\"fa fa-trash-o\"></i></a>"+
+                        "</td>"+
+                    "</tr>"+
+                    "<tr style=\"height: 5px\"></tr>")
     }
 </script>
 </body>

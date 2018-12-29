@@ -17,6 +17,8 @@ public class Analyze implements Serializable {
 	 */
 	private static final long serialVersionUID = 989031606358645490L;
 	private int analyzeId;
+
+	private int qtId;
 	public int getAnalyzeId() {
 		return analyzeId;
 	}
@@ -29,10 +31,10 @@ public class Analyze implements Serializable {
 	public void setQtId(int qtId) {
 		this.qtId = qtId;
 	}
-	public int getAnalyzeContent() {
+	public String getAnalyzeContent() {
 		return analyzeContent;
 	}
-	public void setAnalyzeContent(int analyzeContent) {
+	public void setAnalyzeContent(String analyzeContent) {
 		this.analyzeContent = analyzeContent;
 	}
 	public int getStuId() {
@@ -41,10 +43,10 @@ public class Analyze implements Serializable {
 	public void setStuId(int stuId) {
 		this.stuId = stuId;
 	}
-	public int getAnalyzeTime() {
+	public String getAnalyzeTime() {
 		return analyzeTime;
 	}
-	public void setAnalyzeTime(int analyzeTime) {
+	public void setAnalyzeTime(String analyzeTime) {
 		this.analyzeTime = analyzeTime;
 	}
 	public int getYes() {
@@ -59,10 +61,9 @@ public class Analyze implements Serializable {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	private int qtId;
-	private int analyzeContent;
+	private String analyzeContent;
 	private int stuId;
-	private int analyzeTime;
+	private String analyzeTime;
 	private int yes;//赞(的数量)
 	private int no;//踩(的数量)
 	@Override
@@ -70,8 +71,6 @@ public class Analyze implements Serializable {
 		return "Analyze [analyzeId=" + analyzeId + ", qtId=" + qtId + ", analyzeContent=" + analyzeContent + ", stuId="
 				+ stuId + ", analyzeTime=" + analyzeTime + ", yes=" + yes + ", no=" + no + "]";
 	}
-	
-	
 	
 	/**
 	 * analyzeId INT PRIMARY KEY AUTO_INCREMENT,

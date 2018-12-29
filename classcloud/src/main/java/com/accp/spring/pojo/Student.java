@@ -17,113 +17,141 @@ public class Student implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int stuId;
-	private int stuName;
-	private int stuUserName;
-	private int stuPwd;
-	private int classId;
-	private int stuSex;
-	private int stuBirth;
-	private int stuImage;
-	private int stuPhone;
-	private int stuType;
-	private int stuStartTime;
-	private int stuEndTime;
-	private int stuIdNumber;
-	private int styAddress;
-	private int cId;
 	public int getStuId() {
 		return stuId;
 	}
+
 	public void setStuId(int stuId) {
 		this.stuId = stuId;
 	}
-	public int getStuName() {
+
+	public String getStuName() {
 		return stuName;
 	}
-	public void setStuName(int stuName) {
+
+	public void setStuName(String stuName) {
 		this.stuName = stuName;
 	}
-	public int getStuUserName() {
+
+	public String getStuUserName() {
 		return stuUserName;
 	}
-	public void setStuUserName(int stuUserName) {
+
+	public void setStuUserName(String stuUserName) {
 		this.stuUserName = stuUserName;
 	}
-	public int getStuPwd() {
+
+	public String getStuPwd() {
 		return stuPwd;
 	}
-	public void setStuPwd(int stuPwd) {
+
+	public void setStuPwd(String stuPwd) {
 		this.stuPwd = stuPwd;
 	}
+
 	public int getClassId() {
 		return classId;
 	}
+
 	public void setClassId(int classId) {
 		this.classId = classId;
 	}
-	public int getStuSex() {
+
+	public String getStuSex() {
 		return stuSex;
 	}
-	public void setStuSex(int stuSex) {
+
+	public void setStuSex(String stuSex) {
 		this.stuSex = stuSex;
 	}
-	public int getStuBirth() {
+
+	public String getStuBirth() {
 		return stuBirth;
 	}
-	public void setStuBirth(int stuBirth) {
+
+	public void setStuBirth(String stuBirth) {
 		this.stuBirth = stuBirth;
 	}
-	public int getStuImage() {
+
+	public String getStuImage() {
 		return stuImage;
 	}
-	public void setStuImage(int stuImage) {
+
+	public void setStuImage(String stuImage) {
 		this.stuImage = stuImage;
 	}
-	public int getStuPhone() {
+
+	public String getStuPhone() {
 		return stuPhone;
 	}
-	public void setStuPhone(int stuPhone) {
+
+	public void setStuPhone(String stuPhone) {
 		this.stuPhone = stuPhone;
 	}
+
 	public int getStuType() {
 		return stuType;
 	}
+
 	public void setStuType(int stuType) {
 		this.stuType = stuType;
 	}
-	public int getStuStartTime() {
+
+	public String getStuStartTime() {
 		return stuStartTime;
 	}
-	public void setStuStartTime(int stuStartTime) {
+
+	public void setStuStartTime(String stuStartTime) {
 		this.stuStartTime = stuStartTime;
 	}
-	public int getStuEndTime() {
+
+	public String getStuEndTime() {
 		return stuEndTime;
 	}
-	public void setStuEndTime(int stuEndTime) {
+
+	public void setStuEndTime(String stuEndTime) {
 		this.stuEndTime = stuEndTime;
 	}
-	public int getStuIdNumber() {
+
+	public String getStuIdNumber() {
 		return stuIdNumber;
 	}
-	public void setStuIdNumber(int stuIdNumber) {
+
+	public void setStuIdNumber(String stuIdNumber) {
 		this.stuIdNumber = stuIdNumber;
 	}
-	public int getStyAddress() {
+
+	public String getStyAddress() {
 		return styAddress;
 	}
-	public void setStyAddress(int styAddress) {
+
+	public void setStyAddress(String styAddress) {
 		this.styAddress = styAddress;
 	}
+
 	public int getcId() {
 		return cId;
 	}
+
 	public void setcId(int cId) {
 		this.cId = cId;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
+	private String stuName;
+	private String stuUserName;
+	private String stuPwd;
+	private int classId;
+	private String stuSex;
+	private String stuBirth;
+	private String stuImage;
+	private String stuPhone;
+	private int stuType;
+	private String stuStartTime;
+	private String stuEndTime;
+	private String stuIdNumber;
+	private String styAddress;
+	private int cId;
+
 	@Override
 	public String toString() {
 		return "Student [stuId=" + stuId + ", stuName=" + stuName + ", stuUserName=" + stuUserName + ", stuPwd="

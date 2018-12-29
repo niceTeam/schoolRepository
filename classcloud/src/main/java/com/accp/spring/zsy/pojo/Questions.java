@@ -1,21 +1,13 @@
-package com.accp.spring.pojo;
+package com.accp.spring.zsy.pojo;
 
 import java.io.Serializable;
 
-import lombok.Data;
-
-/**
- * 题目题库
- * @author zml
- *
- */
-@Data
-public class Question implements Serializable{
-
+public class Questions implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7262039908838861549L;
+	private static final long serialVersionUID = 5711945209358536536L;
+	
 	private int qtId;
 	public int getQtId() {
 		return qtId;
@@ -59,22 +51,24 @@ public class Question implements Serializable{
 	public void setIsDel(int isDel) {
 		this.isDel = isDel;
 	}
+	public String getZsd() {
+		return zsd;
+	}
+	public void setZsd(String zsd) {
+		this.zsd = zsd;
+	}
+	public String getFbr() {
+		return fbr;
+	}
+	public void setFbr(String fbr) {
+		this.fbr = fbr;
+	}
 	private String qtQuest;
 	private int knowId;
 	private String QtSendTime;
 	private int teaId;
 	private String privary;//私密度 私有题库1、或公开题库2
 	private int isDel;//是否删除 1否 2是
-	private int idDouble;
-	public int getIdDouble() {
-		return idDouble;
-	}
-	public void setIdDouble(int idDouble) {
-		this.idDouble = idDouble;
-	}
-	@Override
-	public String toString() {
-		return "Question [qtId=" + qtId + ", qtQuest=" + qtQuest + ", knowId=" + knowId + ", QtSendTime=" + QtSendTime
-				+ ", teaId=" + teaId + ", privary=" + privary + ", isDel=" + isDel + "]";
-	}
+	private String zsd;//知识点
+	private String fbr;//发布人
 }
