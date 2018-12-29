@@ -7,12 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.accp.spring.pojo.Analyze;
 import com.accp.spring.pojo.Book;
 import com.accp.spring.pojo.Grade;
 import com.accp.spring.pojo.Knowledge;
+import com.accp.spring.pojo.QuesOption;
+import com.accp.spring.pojo.Question;
+import com.accp.spring.pojo.Teacher;
 import com.accp.spring.zsy.mapper.KsyMapper;
 import com.accp.spring.zsy.pojo.Books;
 import com.accp.spring.zsy.pojo.Courses;
+import com.accp.spring.zsy.pojo.Questions;
 
 import io.lettuce.core.dynamic.annotation.Param;
 
@@ -41,23 +46,29 @@ public class KsyService {
 					 course.setListk(this.ksyMapper.cxKnowledge(courseId));
 			   }
 		  }
-		 
-		/* for(int i=0;i<book.size();i++) {
-			int bookId=book.get(i).getBookId();
-			book.get(i).setListc(this.ksyMapper.cxCourse(bookId));
-			
-			  for(int is=0;i<book.get(i).getListc().size();is++) {
-				 int courseId=book.get(i).getListc().get(is).getCourseId();
-				 System.out.println(courseId);
-				 book.get(i).getListc().get(is).setListk(this.ksyMapper.cxKnowledge(courseId));
-			  }
-		 }*/
 		
 		return book;
 	}
 	
-	public List<Knowledge> cxCourse(int courseId){
-		
-		return null;
+	public Teacher dl(String teaUserName,String teaPwd) {
+		return this.ksyMapper.dl(teaUserName, teaPwd);
 	}
+	
+	@Transactional
+	public int xztmwt(Question question) {
+		this.ksyMapper.xztmwt(question);
+		int teaId=question.getTeaId();
+		Question q=this.ksyMapper.cxxzdtmid(teaId);
+		return q.getQtId();
+	}
+	
+	public int xztmjx(Analyze analyze) {
+		
+		return this.ksyMapper.xztmjx(analyze);
+	}
+	
+	public int xztmxx(QuesOption quesOption) {
+		return this.ksyMapper.xztmxx(quesOption);
+	}
+	
 }

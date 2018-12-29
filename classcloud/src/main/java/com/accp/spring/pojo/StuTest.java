@@ -17,64 +17,78 @@ public class StuTest implements Serializable{
 	 */
 	private static final long serialVersionUID = -3326321618917105910L;
 	private int stuTestId;
-	private int stuId;
-	private int examId;
-	private int status;
-	private int startTime;
-	private int commitTime;
-	private int commitStyle;
-	private int score;
 	public int getStuTestId() {
 		return stuTestId;
 	}
+
 	public void setStuTestId(int stuTestId) {
 		this.stuTestId = stuTestId;
 	}
+
 	public int getStuId() {
 		return stuId;
 	}
+
 	public void setStuId(int stuId) {
 		this.stuId = stuId;
 	}
+
 	public int getExamId() {
 		return examId;
 	}
+
 	public void setExamId(int examId) {
 		this.examId = examId;
 	}
+
 	public int getStatus() {
 		return status;
 	}
+
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getStartTime() {
+
+	public String getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(int startTime) {
+
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
-	public int getCommitTime() {
+
+	public String getCommitTime() {
 		return commitTime;
 	}
-	public void setCommitTime(int commitTime) {
+
+	public void setCommitTime(String commitTime) {
 		this.commitTime = commitTime;
 	}
+
 	public int getCommitStyle() {
 		return commitStyle;
 	}
+
 	public void setCommitStyle(int commitStyle) {
 		this.commitStyle = commitStyle;
 	}
+
 	public int getScore() {
 		return score;
 	}
+
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
+	private int stuId;
+	private int examId;
+	private int status;
+	private String startTime;
+	private String commitTime;
+	private int commitStyle;
+	private int score;
+
 	@Override
 	public String toString() {
 		return "StuTest [stuTestId=" + stuTestId + ", stuId=" + stuId + ", examId=" + examId + ", status=" + status

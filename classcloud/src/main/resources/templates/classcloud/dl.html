@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .div1{
+            border: 0px solid ivory;
+            width: 500px;
+            height:400px;
+            -moz-box-shadow:0 0 5px 5px rgba(196, 114, 80, 0.38);
+            -webkit-box-shadow:0 0 5px 5px #06c;
+            box-shadow:0 0 3px 3px rgba(196, 52, 36, 0.38);
+            background-color: rgba(221, 56, 39, 0.05);
+            position:fixed;
+            margin-left: 400px;
+            margin-top: 100px;
+        }
+        .yxzh{
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            outline:none;
+            border: 0px;
+        }
+        .yxmm{
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            outline:none;
+            border: 0px;
+        }
+        .dl:hover{
+            color: ivory;
+            color: #0066FF;
+        }
+    </style>
+</head>
+<body style="background-image:url(../image/bjt.jpg); ">
+<div class="div1">
+<h1 style="margin-left: 140px;font-family: 宋体;color: #f4ffef">校园管理系统</h1>
+    <div class="div2" style="border: 1px solid rgba(0, 0, 0, 0.22);width: 350px;height: 50px;margin-left: 70px;margin-top: 50px;background-color: ivory">
+    <img src="../image/zh.jpg" height="50px" ><div style="position: absolute;margin-top: -45px;margin-left: 55px" >
+    <input placeholder="账号" class="yxzh"></div>
+</div>
+    <div class="div3" style="border: 1px solid rgba(0, 0, 0, 0.22);width: 350px;height: 50px;margin-left: 70px;margin-top: 20px;background-color: ivory">
+        <img src="../image/mm.jpg" height="50px" ><div style="position: absolute;margin-top: -45px;margin-left: 55px" >
+        <input placeholder="密码" class="yxmm"></div>
+    </div>
+    <div style="margin-left: 200px;margin-top: 20px">
+        <select style="height: 25px;width: 80px;padding-left: 10px" class="sf">
+            <option>管理员</option>
+            <option>学生</option>
+        </select>
+    </div>
+    <div>
+        <input class="dl"  type="button" value="登录" style="width: 200px;height: 40px;font-size: 20px;background-color: red; border: 0px;margin-top: 30px;margin-left: 140px;outline:none;">
+    </div>
+    <a href="" style="margin-left: 430px;text-decoration:none;">去注册</a>
+</div>
+</body>
+<script src="../js/jquery-3.2.1.js"></script>
+<script>
+    $(function(){
+    	$(".dl").click(function(){
+    		var user=$(".yxzh").val();
+    		var pwd=$(".yxmm").val();
+    		if(user!=""&&pwd!=""){
+    			var sf=$(".sf").val();
+    			if(sf=="管理员"){
+    				 var i=0;
+    				 $.ajaxSettings.async = false;
+    				 $.getJSON("yz/"+user+"/"+pwd,function(date){
+    					i=date.teaId;
+    				});
+    				
+    				 if(i==0){
+    					 alert("账号或密码错误！");
+    				 }else{
+    					 alert("登陆成功");
+    					 location.href="zy";
+    				 }
+    				
+    			}else if(sf=="学生"){
+    				
+    			}
+    		}else{
+    			alert("请先输入账号和密码！")
+    		}
+    	})
+       $(".yxzh").focus(function(){
+           $(".div2").css("border","1px solid red");
+       })
+        $(".yxzh").blur(function(){
+            $(".div2").css("border","1px solid rgba(0, 0, 0, 0.22)");
+        })
+
+        $(".yxmm").focus(function(){
+            $(".div3").css("border","1px solid red");
+        })
+        $(".yxmm").blur(function(){
+            $(".div3").css("border","1px solid rgba(0, 0, 0, 0.22)");
+        })
+    });
+</script>
+</html>

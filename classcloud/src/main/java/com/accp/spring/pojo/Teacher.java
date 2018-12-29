@@ -17,106 +17,132 @@ public class Teacher implements Serializable {
 	 */
 	private static final long serialVersionUID = -4832962415795788240L;
 	private int teaId;
-	private int teaName;
-	private int teaUserName;
-	private int teaPwd;
-	private int teaImage;
-	private int teaType;
-	private int teaPhone;
-	private int teaSex;
-	private int teaBirth;
-	private int teaStartTime;
-	private int teaEndTime;
-	private int teaIdNumber;
-	private int teaAddress;
-	private int cId;
+	private String teaName;
 	public int getTeaId() {
 		return teaId;
 	}
+
 	public void setTeaId(int teaId) {
 		this.teaId = teaId;
 	}
-	public int getTeaName() {
+
+	public String getTeaName() {
 		return teaName;
 	}
-	public void setTeaName(int teaName) {
+
+	public void setTeaName(String teaName) {
 		this.teaName = teaName;
 	}
-	public int getTeaUserName() {
+
+	public String getTeaUserName() {
 		return teaUserName;
 	}
-	public void setTeaUserName(int teaUserName) {
+
+	public void setTeaUserName(String teaUserName) {
 		this.teaUserName = teaUserName;
 	}
-	public int getTeaPwd() {
+
+	public String getTeaPwd() {
 		return teaPwd;
 	}
-	public void setTeaPwd(int teaPwd) {
+
+	public void setTeaPwd(String teaPwd) {
 		this.teaPwd = teaPwd;
 	}
-	public int getTeaImage() {
+
+	public String getTeaImage() {
 		return teaImage;
 	}
-	public void setTeaImage(int teaImage) {
+
+	public void setTeaImage(String teaImage) {
 		this.teaImage = teaImage;
 	}
+
 	public int getTeaType() {
 		return teaType;
 	}
+
 	public void setTeaType(int teaType) {
 		this.teaType = teaType;
 	}
-	public int getTeaPhone() {
+
+	public String getTeaPhone() {
 		return teaPhone;
 	}
-	public void setTeaPhone(int teaPhone) {
+
+	public void setTeaPhone(String teaPhone) {
 		this.teaPhone = teaPhone;
 	}
-	public int getTeaSex() {
+
+	public String getTeaSex() {
 		return teaSex;
 	}
-	public void setTeaSex(int teaSex) {
+
+	public void setTeaSex(String teaSex) {
 		this.teaSex = teaSex;
 	}
-	public int getTeaBirth() {
+
+	public String getTeaBirth() {
 		return teaBirth;
 	}
-	public void setTeaBirth(int teaBirth) {
+
+	public void setTeaBirth(String teaBirth) {
 		this.teaBirth = teaBirth;
 	}
-	public int getTeaStartTime() {
+
+	public String getTeaStartTime() {
 		return teaStartTime;
 	}
-	public void setTeaStartTime(int teaStartTime) {
+
+	public void setTeaStartTime(String teaStartTime) {
 		this.teaStartTime = teaStartTime;
 	}
-	public int getTeaEndTime() {
+
+	public String getTeaEndTime() {
 		return teaEndTime;
 	}
-	public void setTeaEndTime(int teaEndTime) {
+
+	public void setTeaEndTime(String teaEndTime) {
 		this.teaEndTime = teaEndTime;
 	}
-	public int getTeaIdNumber() {
+
+	public String getTeaIdNumber() {
 		return teaIdNumber;
 	}
-	public void setTeaIdNumber(int teaIdNumber) {
+
+	public void setTeaIdNumber(String teaIdNumber) {
 		this.teaIdNumber = teaIdNumber;
 	}
-	public int getTeaAddress() {
+
+	public String getTeaAddress() {
 		return teaAddress;
 	}
-	public void setTeaAddress(int teaAddress) {
+
+	public void setTeaAddress(String teaAddress) {
 		this.teaAddress = teaAddress;
 	}
+
 	public int getcId() {
 		return cId;
 	}
+
 	public void setcId(int cId) {
 		this.cId = cId;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
+	private String teaUserName;
+	private String teaPwd;
+	private String teaImage;
+	private int teaType;
+	private String teaPhone;
+	private String teaSex;
+	private String teaBirth;
+	private String teaStartTime;
+	private String teaEndTime;
+	private String teaIdNumber;
+	private String teaAddress;
+	private int cId;
+
 	@Override
 	public String toString() {
 		return "Teacher [teaId=" + teaId + ", teaName=" + teaName + ", teaUserName=" + teaUserName + ", teaPwd="
