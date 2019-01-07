@@ -30,15 +30,14 @@ input{outline: none;background-color: white}
 #xzcstx .bt{padding: 10px;background-color:#A0C001;color:white;font-size: 20px; }
 #xzcstx .bt span{margin-left: 480px}
 #xzcstx .bt a{color: white;margin-left: 450px}
-#xzcstx .xxnr{height: 520px;padding: 20px;border: 1px solid #CDCDCD;margin: 10px }
+#xzcstx .xxnr{height: 520px;padding: 20px;border: 1px solid #CDCDCD;margin: 10px;overflow: auto; }
 .xxnr .kc>li{font-size: 20px;border-bottom: 1px solid #CDCDCD;padding: 20px}
 .xxnr ul li i{font-size: 23px;color:#A0C001 }
 .xxnr .zj li{padding: 10px;color:#5A5A5A}
-.xxnr .zj li label{margin-left: 10px;width: 710px}
+.xxnr .zj li label{margin-left: 10px;width: 700px}
 .jdt{background-color: #DCDCDC;border-radius: 45px;width: 150px;}
-.center{
- position: absolute;margin-left: 450px;margin-top: -30px;
-}
+.center{position: absolute;margin-left: 450px;margin-top: -30px;}
+.kcfxcs{border: 0;background-color: #A0C001;color: white; padding: 4px 25px;}
 .message{
     width:200px;
     height:35px;
@@ -52,7 +51,7 @@ input{outline: none;background-color: white}
     margin-bottom:10px;
     margin-left:50px; }
 .xxnr .zj input{border: 0;background-color:#A0C001;color: white;padding: 5px 30px; }
-.xxnr .zsd li label{color:#949494;font-weight: 200;width: 680px}
+.xxnr .zsd li label{color:#949494;font-weight: 200;width: 670px}
 #stnr{padding-left: 100px;margin-top: 70px;}
 #stnr .ydt{margin-bottom: 20px;background-color: white;width: 800px;padding: 25px;border: 1px solid #CDCDCD;border-radius: 5px}
 #stnr .ydt p{font-size: 18px}
