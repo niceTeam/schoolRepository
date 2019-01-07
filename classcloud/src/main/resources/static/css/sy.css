@@ -225,7 +225,7 @@ a:hover{text-decoration: none;color:#0088DB }
 .xjmb{margin-top: 10px}
 .yymb,{margin-top: 10px;margin-left: 20px}
 .cjmbnr dt,.cjmbnr dd{float: left}
-.cjmbnr select{height: 27px;padding: 0 20px}
+.cjmbnr select{height: 27px;padding: 0 5px;width: 120px}
 .cjmbnr .ksfw input{border: 1px solid #0088cc;background-color: white;color: #0088cc;padding: 3px 20px;border-radius: 5px}
 .cjmbnr .timu{margin-left: 20px}
 .timu .zsdtm{margin-bottom: 20px;border: 1px solid #CDCDCD;padding: 15px 5px 10px 30px;border-radius: 5px;width: 580px}
@@ -271,3 +271,4 @@ li{list-style:none;padding-top: 15px;  }
 .stfw .xz,.ctfw .xz{border: 0;background-color: #0088DB;color: white;padding: 5px 30px;border-radius: 3px;margin-left: 150px}
 .stfw .gb,.ctfw .gb{border: 1px solid #0088DB;background-color: white;color: #0088DB;padding: 4px 30px;border-radius: 3px}
 .xzkssj  .sjtb tr{height: 40px;background-color: white;}
+.stbt .stnr{overflow: hidden; text-overflow:ellipsis;  white-space: nowrap;width: 310px}

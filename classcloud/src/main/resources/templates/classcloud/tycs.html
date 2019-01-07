@@ -26,11 +26,12 @@
 <header>
     <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
     <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
-    <a href="xssy.html" onclick="wdzc()">我的自测</a>
-    <a href="tycs.html">统一测试</a>
-    <a href="dtls.html">历史答题</a>
-    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;某个用户</a>
-    <a style="font-size: 17px"><i class="fa fa-power-off"></i> &nbsp;退出</a>
+    <a href="xszy" onclick="wdzc()">我的自测</a>
+    <a href="tycs">统一测试</a>
+    <a href="dtls">历史答题</a>
+    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;<span th:text="${xname}" class="xname"></span></a>
+    <span th:text="${xid}" class="xid" style="display: none"></span>
+    <a style="font-size: 17px" href="dl"><i class="fa fa-power-off"></i> &nbsp;退出</a>
 </header>
 <div id="csnr">
     <div class="div1">

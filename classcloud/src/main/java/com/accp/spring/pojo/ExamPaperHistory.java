@@ -18,11 +18,11 @@ public class ExamPaperHistory implements Serializable{
 	private static final long serialVersionUID = 2077097368746840391L;
 	private int paperId;
 	private int epId;
-	private int paperName;
+	private String paperName;
 	private int passrate;
 	private int useCount;
-	private int createTime;
-	private int lastUpdTime;
+	private String createTime;
+	private String lastUpdTime;
 	private int lastUpdPerson;
 	private int isForbid;
 	public int getPaperId() {
@@ -37,10 +37,10 @@ public class ExamPaperHistory implements Serializable{
 	public void setEpId(int epId) {
 		this.epId = epId;
 	}
-	public int getPaperName() {
+	public String getPaperName() {
 		return paperName;
 	}
-	public void setPaperName(int paperName) {
+	public void setPaperName(String paperName) {
 		this.paperName = paperName;
 	}
 	public int getPassrate() {
@@ -55,16 +55,16 @@ public class ExamPaperHistory implements Serializable{
 	public void setUseCount(int useCount) {
 		this.useCount = useCount;
 	}
-	public int getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
-	public int getLastUpdTime() {
+	public String getLastUpdTime() {
 		return lastUpdTime;
 	}
-	public void setLastUpdTime(int lastUpdTime) {
+	public void setLastUpdTime(String lastUpdTime) {
 		this.lastUpdTime = lastUpdTime;
 	}
 	public int getLastUpdPerson() {
@@ -78,6 +78,13 @@ public class ExamPaperHistory implements Serializable{
 	}
 	public void setIsForbid(int isForbid) {
 		this.isForbid = isForbid;
+	}
+	public int createPerson;
+	public int getCreatePerson() {
+		return createPerson;
+	}
+	public void setCreatePerson(int createPerson) {
+		this.createPerson = createPerson;
 	}
 	@Override
 	public String toString() {

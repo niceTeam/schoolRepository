@@ -64,6 +64,7 @@
     $(function(){
     	$(".dl").click(function(){
     		var user=$(".yxzh").val();
+    		var zh=user;
     		var pwd=$(".yxmm").val();
     		if(user!=""&&pwd!=""){
     			var sf=$(".sf").val();
@@ -82,7 +83,18 @@
     				 }
     				
     			}else if(sf=="学生"){
+    				 var i=0;
+    				 $.ajaxSettings.async = false;
+    				 $.getJSON("xsyz/"+zh+"/"+pwd,function(date){
+    					i=date.stuId;
+    				});
     				
+    				 if(i==0){
+    					 alert("账号或密码错误！");
+    				 }else{
+    					 alert("登陆成功");
+    					 location.href="xszy";
+    				 }
     			}
     		}else{
     			alert("请先输入账号和密码！")
