@@ -29,6 +29,7 @@ import com.accp.spring.pojo.MyCollection;
 import com.accp.spring.pojo.PaperTitle;
 import com.accp.spring.pojo.QuesOption;
 import com.accp.spring.pojo.Question;
+import com.accp.spring.pojo.StuTest;
 import com.accp.spring.pojo.Student;
 import com.accp.spring.pojo.Teacher;
 import com.accp.spring.zsy.pojo.Bookjd;
@@ -37,6 +38,7 @@ import com.accp.spring.zsy.pojo.Courses;
 import com.accp.spring.zsy.pojo.Ctrelations;
 import com.accp.spring.zsy.pojo.ExamPaperHistorys;
 import com.accp.spring.zsy.pojo.ExamPapers;
+import com.accp.spring.zsy.pojo.Examinations;
 import com.accp.spring.zsy.pojo.Questions;
 import com.accp.spring.zsy.pojo.Sjtmzsd;
 import com.accp.spring.zsy.service.KsyService;
@@ -101,11 +103,12 @@ public class KsyController {
 		model.addAttribute("zt",request.getSession().getAttribute("zt"));
 		return "classcloud/stym.html";
 	}
+	
 
 	@ResponseBody
 	@RequestMapping(value="/stymcz/{id}/{mc}/{zt}",method=RequestMethod.GET)
 	public int stymcz(@PathVariable int id,@PathVariable String mc,@PathVariable int zt,HttpServletRequest request,HttpSession session) {
-		//传值
+		//传值到
 		request.getSession().setAttribute("stid",id);
 		request.getSession().setAttribute("fwmc",mc);
 		request.getSession().setAttribute("zt",zt);
@@ -140,6 +143,23 @@ public class KsyController {
 		model.addAttribute("uname",request.getSession().getAttribute("yhm"));
 		model.addAttribute("uid",request.getSession().getAttribute("yhid"));
 		return "classcloud/sy.html";
+	}
+	
+	@GetMapping("/sjyl")
+	public String sjyl(HttpServletRequest request,HttpSession session,Model model) {
+		//登录成功后跳到试卷预览页面
+		model.addAttribute("uname",request.getSession().getAttribute("yhm"));
+		model.addAttribute("uid",request.getSession().getAttribute("yhid"));
+		model.addAttribute("sjid",request.getSession().getAttribute("sjid"));
+		return "classcloud/sjyl.html";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/bcsjid/{sjid}",method=RequestMethod.GET)
+	public  int bcsjid(@PathVariable int sjid,HttpServletRequest request,HttpSession session){
+		//传试卷id到试卷预览页面
+		request.getSession().setAttribute("sjid", sjid);
+		return 1;
 	}
 	
 	@ResponseBody
@@ -418,7 +438,7 @@ public class KsyController {
 	@ResponseBody
 	@RequestMapping(value="/cxygsj/{sjid}",method=RequestMethod.GET)
 	public ExamPaperHistorys cxygsj(@PathVariable int sjid) {
-		//查询试卷 
+		//查询单个试卷 
 		return this.ksyService.cxygsj(sjid);
 	}
 	
@@ -448,6 +468,76 @@ public class KsyController {
 	public int xzks(@RequestBody Examination examination) {
 		//发布考试
 		return this.ksyService.xzks(examination);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxsyks/{pageIndex}",method=RequestMethod.GET)
+	public PageInfo<Examinations> cxsyks(@PathVariable int pageIndex){
+		//查询所有考试
+		return this.ksyService.cxsyks(pageIndex);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxwkks",method=RequestMethod.GET)
+	public PageInfo<Examinations> cxwkks( String time,int pageSize){
+		//查询即将进行的考试
+		return this.ksyService.cxwkks(time,pageSize);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxzzjxks",method=RequestMethod.GET)
+	public PageInfo<Examinations> cxzzjxks( String time,int pageSize){
+		//查询正在进行的考试
+		return this.ksyService.cxzzjxks(time,pageSize);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/ghsjzsdtm/{zsdid}/{sjid}/{sum}",method=RequestMethod.GET)
+	public int ghsjzsdtm(@PathVariable int zsdid,@PathVariable int sjid,@PathVariable int sum) {
+		//跟换试卷知识点中的题目
+		return this.ksyService.ghsjzsdtm(zsdid, sjid, sum);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/ghsjzsd/{jzsdid}/{xzsdid}/{sum}/{sjid}",method=RequestMethod.GET)
+	public int ghsjzsd(@PathVariable int jzsdid,@PathVariable int xzsdid,@PathVariable int sum,@PathVariable int sjid) {
+		//跟换试卷的知识点
+		return this.ksyService.ghsjzsd(jzsdid, xzsdid, sum, sjid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxBooks",method=RequestMethod.GET)
+	public List<Books> cxBooks(){
+		//查询所有课程
+		return this.ksyService.cxBooks();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxsjmb/{mbid}",method=RequestMethod.GET)
+	public List<ExamPaperKnowledge> cxsjmb(@PathVariable int mbid){
+		//查询模板中的知识点
+		return this.ksyService.cxsjmb(mbid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xzksryxx/{xsid}/{sjid}/{kssj}/{jssj}",method=RequestMethod.GET)
+	public int cxcjksxy(String xsid,int sjid,String kssj,String jssj){
+		//新增考试人员信息
+		return this.ksyService.cxcjksxy(xsid, sjid, kssj, jssj);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxycks/{ksid}",method=RequestMethod.GET)
+	public Examinations cxycks(@PathVariable int ksid) {
+		//根据id查询考试信息
+		return this.ksyService.cxycks(ksid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xgksxx",method=RequestMethod.POST)
+	public int xgksxx(@RequestBody Examinations ks) {
+		//修改考试信息
+		return this.ksyService.xgksxx(ks);
 	}
 }
 	

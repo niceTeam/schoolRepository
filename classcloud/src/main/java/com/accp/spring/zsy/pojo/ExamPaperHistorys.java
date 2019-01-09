@@ -93,5 +93,12 @@ public class ExamPaperHistorys implements Serializable{
 	}
 	private String teaName;
 	private int score;
+	private int createPerson;
+	public int getCreatePerson() {
+		return createPerson;
+	}
+	public void setCreatePerson(int createPerson) {
+		this.createPerson = createPerson;
+	}
 
 }

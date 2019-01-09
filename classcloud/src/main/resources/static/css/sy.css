@@ -6,6 +6,8 @@
    padding-bottom: 10px;
 }
 
+#ksgl .stktb .cjks{margin-left: 20px;border-radius: 5px; background-color: #2fa0ec;color: white; border: 0px;padding: 5px 15px;}
+
 .sygl{
     display: flex;
 }
