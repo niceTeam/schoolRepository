@@ -104,4 +104,5 @@ public interface YtkMapper {
 	@Select("select s.*,g.gName,g.gId,c.cName from `student` s,`classes` c,`grade` g where s.classId=c.classId and g.gId=c.gId and s.stuId=#{xid}")
 	Students cxxsbj(@Param("xid")int xid);
 	
+	
 }

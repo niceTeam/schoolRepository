@@ -213,7 +213,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"> 考试信息管理</a></li>
+                    <li><a href="#" onclick="kaoshiguanli(this)"> 考试信息管理</a></li>
                     <li><a href="#" onclick="shitiku(this)"> 试题库</a></li>
                     <li><a href="#" onclick="shijuaku(this)"> 试卷库</a></li>
                     <li><a href="#"> 成绩查询</a></li>
@@ -320,52 +320,13 @@
         <div style="margin-left: 20px;margin-top: 40px"><h4>正在进行<a style="margin-left: 950px;font-size: 15px">展开更多</a></h4></div>
 
         <div class="zzjx">
-          <!--  <div class="zzjxsj">
-                <h3 class="sysjmc">试卷名称</h3>
-                <p class="sykssj">考试时间</p>
-                <p class="sysjfs">试卷分数</p>
-                <p class="sysjlx">试卷类型</p>
-                <p class="sykssc">考试时长</p>
-            </div>
-
-            <div class="clear"></div>-->
-
+         
             <div style="margin: 60px 0 50px 400px;color: #8c8c8c;">还没有正在进行的考试，点击上方创建一场考试吧~~</div>
         </div>
 
-        <div style="margin-left: 20px;margin-top: 40px"><h4>即将开始<a style="margin-left: 950px;font-size: 15px">展开更多</a></h4></div>
+        <div style="margin-left: 20px;margin-top: 40px"><h4>即将开始<a style="margin-left: 950px;font-size: 15px" calss="xssyjjks">展开更多</a></h4></div>
         <div class="jjks">
-            <div class="zzjxsj"  onmouseover="sjxs(this)" onmouseout="sjxx(this)">
-                <h3 class="sysjmc">试卷名称</h3>
-                <p class="sykssj">考试时间</p>
-                <p class="sysjfs">试卷分数</p>
-                <p class="sysjlx">试卷类型</p>
-                <p class="sykssc">考试时长</p>
-                <div style="width: 260px;text-align: center;font-size: 15px">
-                    <a onclick="bjks(this)"><i class="fa fa-pencil"></i>编辑</a>
-                </div>
-            </div>
-            <div class="zzjxsj"  onmouseover="sjxs(this)" onmouseout="sjxx(this)">
-                <h3 class="sysjmc">试卷名称</h3>
-                <p class="sykssj">考试时间</p>
-                <p class="sysjfs">试卷分数</p>
-                <p class="sysjlx">试卷类型</p>
-                <p class="sykssc">考试时长</p>
-                <div style="width: 260px;text-align: center;font-size: 15px">
-                    <a onclick="bjks(this)"><i class="fa fa-pencil"></i>编辑</a>
-                </div>
-            </div>
-            <div class="zzjxsj"  onmouseover="sjxs(this)" onmouseout="sjxx(this)">
-                <h3 class="sysjmc">试卷名称</h3>
-                <p class="sykssj">考试时间</p>
-                <p class="sysjfs">试卷分数</p>
-                <p class="sysjlx">试卷类型</p>
-                <p class="sykssc">考试时长</p>
-                <div style="width: 260px;text-align: center;font-size: 15px">
-                    <a onclick="bjks(this)"><i class="fa fa-pencil"></i>编辑</a>
-                </div>
-            </div>
-            <div class="clear"></div>
+         	<!-- 即将开始的考试  -->
         </div>
 
     </div >
@@ -506,7 +467,7 @@
 
     <div id="shijk" style="display: block;">
         <div class="sjktb">
-            <input type="button" value="试卷预览" class="sjyl" >
+            <input type="button" value="试卷预览" class="sjyl" onclick="shijuanyl(this)">
         </div>
 
         <div  style="position: absolute;margin-top: -40px;margin-left: 130px">
@@ -568,13 +529,7 @@
                             <td style="height: 95px;width: 90px">试卷名称:</td>
                             <td>  <input type="text" class="sjmc" placeholder="输入试卷名称"></td>
                         </tr>
-                       <!-- <tr>
-                            <td style="height: 50px;">试卷分类:</td>
-                            <td><span class="cjxsjfl" >试卷分类
-                                <div style="position: fixed;margin-left: 75px;margin-top: -18px"><i class="fa fa-th-list"></i>
-                                </div></span>
-                            </td>
-                        </tr>-->
+                     
                         <tr>
                             <td></td>
                             <td  style="height: 70px;">
@@ -605,7 +560,7 @@
                     <div style="display: flex">
                     <div class="ssmb">
                         <p>选择的模板：<input type="text" readonly="readonly"></p>
-                        <p><input value="下一步" type="button"></p>
+                        <p><input value="下一步" type="button" onclick="ymbcjsj(this)"></p>
                     </div>
 
                     <div >
@@ -614,16 +569,9 @@
                             <i class="fa fa-search"></i>
                         </div>
                      <div style="height: 200px;overflow: auto;border: 1px solid #CDCDCD;">
-                     <table class="xskxmb">
-                       <tr>
-                           <td>模板名称</td>
-                           <td style="width: 120px;;">考试范围</td>
-                           <td>所属年级</td>
-                           <td>每题分数</td>
-                           <td>考试用时</td>
-                       </tr>           
-                 
-                   </table>
+                     	<table class="xskxmb">
+                        	<!-- 模板内容  -->                
+                   		</table>
                      </div>
                     </div>
                     </div>
@@ -699,13 +647,19 @@
                     <table  style="margin-left: 40px;margin-top: 20px">
                         <tr>
                             <td style="width: 100px;">选择班级</td>
-                            <td style="width: 400px"><select class="ksbj">
-                                <option>1713</option>
-                            </select></td>
+                            <td style="width: 400px">
+	                            <select class="ksbj">
+	                                <option>1713</option>
+	                            </select>
+                            </td>                            
                         </tr>
                         <tr>
                             <td>考试班级</td>
-                            <td class="ksfl"><input type="text" readonly="readonly"></td>
+                            <td class="ksfl">
+                            	<input type="text" readonly="readonly">
+                            	&nbsp;&nbsp;
+                            	<label onclick="cxbj(this)"><a>重选班级</a></label>
+                            </td>
                         </tr>
                         <tr>
                             <td>考试时间</td>
@@ -758,7 +712,7 @@
                     </table>
                 </div>
                 <div class="fabu"><input type="button" value="发布考试" onclick="fbks(this)">
-                <input type="button" value="试卷预览" class="sjyl" style="border: 1px solid #0088cc;background-color: white;color: #0088cc;padding: 4px 25px">
+                <input type="button" value="试卷预览" class="sjyls2" style="border: 1px solid #0088cc;background-color: white;color: #0088cc;padding: 4px 25px">
                 </div>
             </div>
 
@@ -774,65 +728,15 @@
                 <input type="button" value="取消">
             </div>
             <div class="tmzsdzj">
-                <div class="zongji">总题数：10 题，总分数：100 分</div>
+                <div class="zongji">总题数：<label class='t'></label> 题，总分数：<label class='f'></label> 分</div>
                 <div id="zsdlb">
-	                <div class="zsdzl">
-	                <p style="font-size: 17px;margin-bottom: 15px;">知识点一</p>
-	                <p style="margin-bottom: 15px;margin-left: 20px"> 共 &nbsp;
-	                    <input type="text" style="width: 30px;height: 20px" value="2"> &nbsp;题 ，
-	                    每题 &nbsp;5 &nbsp; 分</p>
-	                <p><a>换题</a><a onclick="xzstfw(this,1)">换知识点</a></p>
+	                     <!-- 知识点列表 -->
 	            </div>
-	                <div class="zsdzl">
-	                    <p style="font-size: 17px;margin-bottom: 15px;">知识点二</p>
-	                    <p style="margin-bottom: 15px;margin-left: 20px"> 共 &nbsp;
-	                        <input type="text" style="width: 30px;height: 20px" value="1"> &nbsp;题 ，
-	                        每题 &nbsp;5 &nbsp; 分</p>
-	                    <p><a>换题</a><a onclick="xzstfw(this,1)">换知识点</a></p>
-	                </div>
-	            </div>
+	            
             </div>
 
             <div class="tmmk">
-                <div class="zsdsytm">
-                    <p class="zsd">知识点一</p>
-                    <div>
-                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
-                        <p><i class="fa fa-square-o"></i> A.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
-                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
-                    </div>
-                    <div>
-                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
-                        <p><i class="fa fa-square-o"></i> A.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
-                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
-                    </div>
-                </div>
-
-                <div class="zsdsytm">
-                    <p class="zsd">知识点二</p>
-                    <div>
-                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
-                        <p><i class="fa fa-square-o"></i> A.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
-                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
-                    </div>
-                    <div>
-                        <p style="margin-left: 0">在机场、商厦、地铁等公共场所乘自动扶梯时应靠（）站立,另一侧供有急事赶路的人快行。(5分)</p>
-                        <p><i class="fa fa-square-o"></i> A.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> B.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> C.左侧</p>
-                        <p><i class="fa fa-check-square-o"></i> D.左侧</p>
-                        <p style="color: #656262c9">答案：A  &nbsp;解析：这么简单都不知道？</p>
-                    </div>
-                </div>
+               		<!-- 知识点题目详情  -->     
             </div>
         </div>
     </div>
@@ -845,13 +749,15 @@
                         <td style="width: 100px;">考试班级</td>
                         <td style="width: 400px"><select class="ksbj">
                             <option>1713</option>
-                            <option>1713</option>
-                            <option>1713</option>
+                           
                         </select></td>
                     </tr>
                     <tr>
                         <td>考试班级</td>
-                        <td class="ksfl"><input type="text" readonly="readonly"></td>
+                        <td class="ksfl">
+                        	<input type="text" readonly="readonly">
+                        	<label onclick="cxbj(this)"><a>重选班级</a></label>
+                        </td>
                     </tr>
                     <tr>
                         <td>考试时间</td>
@@ -878,39 +784,92 @@
                 <label style="background-color: blue;width: 7px;color: blue" >|</label>
                 <label style="margin-left: 5px;">试卷信息</label>
                 <table>
-                    <tr>
-                        <td colspan="2" style="height: 40px;color: black;border-bottom:1px solid #CDCDCD;background-color: #eaecec61">
-                            <span>试卷名称</span>
+                     <tr>
+                            <td colspan="2" style="height: 40px;color: black;border-bottom:1px solid #CDCDCD;background-color: #eaecec61">
+                                <span class="fbsjmc">试卷名称</span>
                             <a style="margin-left: 330px" onclick="bjsj(this,0,0)" zt="3">编辑试卷 <i class="fa fa-pencil"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>总分:</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>创建人:</td>
-                        <td>考试星</td>
-                    </tr>
-                    <tr>
-                        <td>试题数量:</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>创建时间:</td>
-                        <td>2018-02-10 11:20</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: center"><input type="button" value="更换试卷" class="ghsj" onclick="ghjyksdsj(this)"></td>
-                    </tr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>总分:</td>
+                            <td class="fbsjzf">100</td>
+                        </tr>
+                        <tr>
+                            <td>创建人:</td>
+                            <td class="fbcjr">考试星</td>
+                        </tr>
+                        <tr>
+                            <td>试题数量:</td>
+                            <td class="fbstsl">50</td>
+                        </tr>
+                        <tr>
+                            <td>创建时间:</td>
+                            <td class="fbcjsj">2018-02-10 11:20</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td colspan="2" style="text-align: center"><input type="button" value="更换试卷" class="ghsj" onclick="ghjyksdsj(this)"></td>
+                   		</tr>
                 </table>
 
             </div>
-            <div class="fabu"><input type="button" value="保存修改">
+            <div class="fabu"><input type="button" value="保存修改" onclick="bcxg()">
                 <input type="button" value="返回主页" class="fhzy" onclick="shouye(this)" style="border: 1px solid #0088cc;background-color: white;color: #0088cc;padding: 4px 25px">
             </div>
         </div>
     </div>
+
+
+	 <div id="ksgl" style="display: none;">
+        <div class="stktb">
+            <input type="button" value="创建考试" class="cjks" >
+        </div>
+
+        <div  style="position: absolute;margin-top: -40px;margin-left: 200px">
+            <input type="button" value="刷新" class="sxstk">
+            <input type="button" value=" 删除" class="plscst">
+        </div>
+
+        <div style="position: absolute;margin-top: -40px;margin-left: 850px">
+            <input type="text" class="ssuost" placeholder="查询考试">
+            <div style="position: absolute;margin-left: 210px;margin-top: -25px">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+
+        <div style="background-color: white;margin-top: 10px" >
+            <div>
+                <table class="stbt">
+                    <tr>
+                        <td style="width: 60px;text-align: center"><input type="checkbox" onclick="ckAll(this)" class="cks"></td>
+                        <td  style="width: 150px">考试名称</td>
+                        <td style="width: 120px">总分</td>
+                        <td style="width: 150px">题目数量</td>
+                        <td style="width: 150px">创建人</td>
+                        <td style="width: 200px">开始时间</td>
+                        <td style="width: 200px">结束时间</td>
+                        <td style="width: 150px">操作</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="margin-top: 10px;height: 370px;" class="xssyst">
+                <table class="stbt">
+
+                </table>
+            </div>
+
+            <div style="padding:20px;color: #515151d9;margin-bottom: 20px;text-align: center">
+                 <input type="button" value="上一页" data-val="1" id="prePage3">
+                &nbsp;<span id="currentPage3">1 / 2</span>&nbsp;
+                <input type="button" value="下一页" data-val="1" id="nextPage3">&nbsp;&nbsp;&nbsp;
+                                       跳到第 <input type="text" style="width: 50px" class="fanye"> 页
+            </div>
+        </div>
+
+    </div>
+
+
 
 </div>
 
@@ -926,7 +885,21 @@
     	cxsybook();
     	cxtbj();
     	xsxjk(1);
+    	cxjjksdks(3);
+    	cxzzjxks(3);
     	//$("body").css("overflow","hidden");	
+    	
+    	$(".sjyls2").click(function(){
+    		var sjid=$(".sjxxxx .fbsjmc").attr("sjid");
+    		
+    		$.getJSON("bcsjid/"+sjid,function(date){
+  				location.href="sjyl";
+  			})
+    	})
+    	
+    	$(".xssyjjks").click(function(){
+    		cxjjksdks(100);
+    	})
     	
     	$("#shitk .sxstk").click(function(){
     		cxstk(1);
@@ -960,6 +933,15 @@
 		$("#nextPage2").click(function(){
 			var currentPage=$(this).attr("data-val");
 			xsxjk(currentPage);
+		});
+		$("#prePage3").click(function(){
+			var currentPage=$(this).attr("data-val");
+			cxsyks(currentPage);
+		});
+    	
+		$("#nextPage3").click(function(){
+			var currentPage=$(this).attr("data-val");
+			cxsyks(currentPage);
 		});
 		
     	$(".tmlx .stfl").change(function(){
@@ -1103,14 +1085,19 @@
         
         $(".ksxxxx .ksbj").change(function(){
         	  var a=$(this).find("option:selected").text();
+        	  var a2=$(this).val();
         	  var bj=$(".ksxxxx .ksfl input").val();
+        	  var bj2=$(".ksxxxx .ksfl input").attr("bjid");
+        	  
         	  if(a!="选择班级"){
 	        	  if(bj==""){
 	        		  $(".ksxxxx .ksfl input").val(a);
+	        		  $(".ksxxxx .ksfl input").attr("bjid",a2);
 	        	  }else if(bj.indexOf(a)!=-1){
 	        		  
 	        	  }else{
 	        		  $(".ksxxxx .ksfl input").val(bj+","+a);
+	        		  $(".ksxxxx .ksfl input").attr("bjid",bj2+","+a2);
 	        	  }
         	  }
         })
@@ -1127,15 +1114,7 @@
         $(".fabu .sjyl").click(function(){
         	location.href="sjyl"
         })
-        
-        $(".div3 .ssmb input[type=button]").click(function(){
-            $(".div1").css("display","none");
-            $(".xtzj").css("display","none");
-            $(".fbks").css("display","flex");
-            $(".cjksbz a").css("color","#999999")
-            $(".cjksbz .dsb").css("color","blue")
-
-        });
+    
         
         $(".div2 .xyb").click(function(){
         	var a=$(".zsdtm");
@@ -1229,34 +1208,56 @@
         });
         
         $(".xzyysjxyb").click(function(){
-        	
-        	var sjid=$(".xzyysj .xzsjcj input").attr("sjid");
-        	cxsjxx(sjid);
-        	
-            /* $(".div1").css("display","none");
-            $(".fbks").css("display","flex");
-            $(".xtzj").css("display","none");
-            $(".cjksbz a").css("color","#999999")
-            $(".cjksbz .dsb").css("color","blue") */
+        	var a=$(".xzsjcj input").val();
+
+        	if(a!="选择试卷"){
+	        	var sjid=$(".xzyysj .xzsjcj input").attr("sjid");
+	        	cxsjxx(sjid);
+        	}else{
+        		alert("请先选择试卷");
+        	}
+           
         })
     })
 
     function fbks(th){
-    	var fw=$("#cjks .ksfl").val();
-    	alert(fw);
-    	/* var param={'examPaperId':$(".fbsjmc").attr("sjid"),'classId':$(".cjxsj .sjmc").val(),'createPerson':$(".uid").html(),'lastUpdPerson':$(".uid").html()};
-	  	 $.ajax({
-			type:"POST",
-			url:"xzsj",
-			dataType:"json",
-		    contentType:"application/json",
-			data:JSON.stringify(param),
-			success:function(res){					
-				xzsjtm(res);
-			}
-		});  */
+    	var fw=$("#cjks .ksfl input").attr("bjid");
+    	var sj=$("#cjks .kssj").val();
+    	var sj2=sj.replace(/T/," ");
+    	var js=$("#cjks .jssj").val();
+    	var js2=js.replace(/T/," ");
+    	var wbk=$("#cjks .kssm").val();
+    	var sjid=$(".fbsjmc").attr("sjid");
+    	if(sj!=""&&js!=""&&fw!=""&&wbk!=""){
+	    	 var param={'examPaperId':sjid,'classId':fw,'teaId':$(".fbcjr").attr("tid"),'startTime':sj2,'endTime':js2};
+		  	  $.ajax({
+				type:"POST",
+				url:"xzks",
+				dataType:"json",
+			    contentType:"application/json",
+				data:JSON.stringify(param),
+				success:function(res){					
+					
+					xzksryxx(sjid,sj2,js2,fw);
+					$("#cjks .kssm").val("");
+					$("#cjks .ksxxxx input").val("");
+					$("#cjks .ksbj").val(0);
+					$("#cjks .kssj").val("");
+					$("#cjks .jssj").val("");
+					chuangjiankaoshi();
+					
+				}
+			}); 
+    	}else{
+    		alert("请先将考试信息填写完整");
+    	}
     }
     
+    function xzksryxx(sjid,kssj,jssj,xsid){
+    	$.getJSON("xzksryxx/"+xsid,+"/"+shid+"/"+kssj+"/"+jssj,function(date){
+    		alert("发布成功");
+    	})
+    }
     function sbchange(th){
     		var bookId=$(th).val();
     		$(th).next().html("<option value=\"0\">选择课程</option>");    		
@@ -1332,7 +1333,7 @@
     		$.each(date.list,function(){
     			$(".sjdiv .sjbsj").append("<tr>"
                       +"<td style=\"width: 80px;height: 40px;text-align: center\">"
-                      +"<input type=\"checkbox\" name=\"ck\"></td>"
+                      +"<input type=\"checkbox\" name=\"ck\" sjid='"+this.paperId+"'></td>"
                       +"<td  style=\"width: 150px\">"+this.paperName+"</td>"
                       +"<td style=\"width: 150px\">"+this.tmsum+"</td>"
                       +"<td style=\"width: 150px\">"+this.score+"</td>"
@@ -1347,15 +1348,15 @@
                       +"<tr style=\"height:5px;\"></tr>");
     		})
     		
-    		 $(".sjdiv .sjbsj tr").mousemove(function(){
+    		 $("#shijk .sjbsj tr").mousemove(function(){
     	            $(this).addClass("bgbk");
     	        });
     	        
-    	        $(".sjdiv .sjbsj tr").mouseout(function(){
+    	        $("#shijk .sjbsj tr").mouseout(function(){
     	            $(this).removeClass("bgbk");
     	        });
     	        
-    	        $(".sjdiv .sjbsj tr").click(function(){
+    	        $("#shijk .sjbsj tr").click(function(){
     	            var a=$(this).find("input[type=checkbox]").prop("checked");
     	            if(a==true){
     	                $(".cks").prop("checked",false);
@@ -1443,6 +1444,7 @@
     		$(".fbsjmc").html(date.paperName);
     		$(".fbsjzf").html(date.score);
     		$(".fbcjr").html(date.teaName);
+    		$(".fbcjr").attr("tid",date.createPerson);
     		$(".fbstsl").html(date.tmsum);
     		$(".fbcjsj").html(date.createTime);
     		
@@ -1471,6 +1473,12 @@
     function ghjyksdsj(th){
     	var pageIndex=1;
     	var pageSize=100;
+    	
+    	var zt=$(th).val();
+    	if(zt=="更换试卷"){
+ 			$(".xzkssj").attr("zt","2");
+    	}
+    	
     	
     	$(".xzkssj .sjtb").html(" <tr> "
                 +"<td  style=\"width: 50px;height: 50px\"></td>"
@@ -1510,6 +1518,11 @@
             
             $(".xzsjcj input").val(sjmc);
             $(".xzsjcj input").attr("sjid",sjid);
+            
+            var zt=$(".xzkssj").attr("zt");
+            if(zt=="2"){
+            	cxsjxx(sjid);
+            }
         })
         
         $(".xzkssj  .sjtb tr input[type=checkbox]").click(function () {
@@ -1523,6 +1536,8 @@
             
             $(".xzsjcj input").val(sjmc);
             $(".xzsjcj input").attr("sjid",sjid);
+            
+           
         })
         
     	})
@@ -1568,7 +1583,7 @@
     	}    	
 	    var time1=sj.replace(sj.substring(11,13),hours);	   
     	var time2=time1.replace(time1.substring(14,16),miuth);
-        $(".jssj").val(time2);
+        $(th).next().val(time2);
     	
     }
   	//查询老师带的班级
@@ -1663,9 +1678,18 @@
     }
     
     function bjsj(th,sjid,sjmc){
+    	if(sjid!="0"){
+    		
+    	}else{
+    		
+    		sjmc=$(".sjxxxx .fbsjmc").html();
+    		sjid=$(".sjxxxx .fbsjmc").attr("sjid");
+    		
+    	}
     	var a=$(th).attr("zt");
         $(".bjjyfbdsj .fh").attr("zt",a);
         $(".bjjyfbdsj .sjmc").html(sjmc);
+        
         $("#shouye").hide();
         $("#tjst").hide();
         $("#shitk").hide();
@@ -1688,24 +1712,47 @@
                        +"<p style='margin-bottom: 15px;margin-left: 20px'> 共 &nbsp;"
                        +" <input type='text' style=\"width: 30px;height: 20px\" value='"+this.tmsum+"'>" 
                        +" &nbsp;题 ，每题 &nbsp;<label>"+this.score+"</label> &nbsp; 分</p>"
-                       +" <p><a onclick='ghsjtm('"+this.knowId+"')'>换题</a><a onclick=\"xzstfw(this,1)\">换知识点</a></p>"
+                       +" <p><a onclick=\"ghsjtm('"+this.knowId+"','"+sjid+"')\">换题</a><a onclick=\"ghzsd('"+this.knowId+"','"+sjid+"')\">换知识点</a></p>"
                        +"</div>");
     		})
     	})
     	
-    	var a=$(".zsdzl");
+    	var a=$("#zsdlb .zsdzl");
     	var sum=0;
     	var tm=0;
     	for(var i=0;i<a.length;i++){
-    		sum+=$(a[i]).find("input").val();
-    		tm+=$(a[i]).find("label").html();
+    		
+    		var tmsl=$(a[i]).find("input").val();
+
+    		tm=parseInt(tm)+parseInt(tmsl);
+    		
+    		sum=$(a[i]).find("label").html();
     	}
+    	
+    	sum=tm*parseInt(sum);
     	$(".zongji .t").html(tm);
     	$(".zongji .f").html(sum);
     	$(".bjjyfbdsj .sjmc").attr("sjid",sjid);
     	
     	cxsjtm(sjid);
     }
+  	
+  	//跟换试卷题目
+  	function ghsjtm(zsdid,sjid){
+  		var sum=0;
+  		var a=$("#zsdlb .zsdzl");
+  		for(var i=0;i<a.length;i++){
+  			if($(a[i]).attr("zsdid")==zsdid){
+  				sum=$(a[i]).find("input").val();
+  				break;
+  			}
+  		}
+  		$.getJSON("ghsjzsdtm/"+zsdid+"/"+sjid+"/"+sum,function(date){
+  			
+  				cxsjtmzsd(sjid);
+  				alert("更换成功");  			
+  		})
+  	}
   	
   	//查询试卷题目及答案解析
   	function cxsjtm(sjid){
@@ -1766,6 +1813,58 @@
         $("#shijk").hide();
         $("#bjsj").hide();
         $("#bjks").show();
+        $("#ksgl").hide();
+        
+        var zt=$(th).attr("zt");
+        var sjid=$(th).parents(".zzjxsj").find(".sysjmc").attr("sjid");
+        var ksid=$(th).parents(".zzjxsj").find(".sysjmc").attr("ksid");
+        var fbr=$(th).parents(".zzjxsj").find(".sysjmc").attr("fbr");
+        var uid=$(".uid").html();
+        if(zt=="2"){
+        	if(fbr==uid){
+        		
+	        	$.getJSON("cxycks/"+ksid,function(date){
+	        		
+	        		cxsjxx(sjid);
+	        		hqbjmc(date.classId);
+	        		var ks=date.startTime;
+	        			ks=ks.replace(/ /,"T");
+	        			
+	        		var js=date.endTime;
+	        			js=js.replace(/ /,"T");
+	        			
+	        	    $("#bjks .kssj").val(ks);
+		        	$("#bjks .jssj").val(js);
+		        	$("#bjks .fbsjmc").attr("ksid",ksid);
+	        	})
+	        	
+        	}else{
+        		alert("只能编辑自己发布的试卷！");
+        	}
+        }
+    }
+    
+    //获取有编辑的考试的班级名称
+    function hqbjmc(bjid){
+    	
+    	var uid=$(".uid").html();
+    	var arr=new Array();
+		arr=bjid.split(",");
+		var bjmc="";
+		
+		$.ajaxSettings.async = false;
+    	$.getJSON("cxtbj/"+uid,function(date){
+    		$.each(date,function(i,obj){
+    			if(arr[i]==obj.classId){
+    				
+    				bjmc+=obj.cName+",";
+    			}
+
+    		})
+    	})
+    	
+    	bjmc = bjmc.slice(0,bjmc.length-1);
+    	$("#bjks .ksfl input").val(bjmc);
     }
     
     function shijuaku(th){
@@ -1776,6 +1875,8 @@
         $("#shijk").show();
         $("#bjsj").hide();
         $("#bjks").hide();
+        $("#ksgl").hide();
+        xsxjk(1);
     }
     
     function shitiku(th){
@@ -1786,6 +1887,8 @@
         $("#cjks").hide();
         $("#shijk").hide();
         $("#bjks").hide();
+        $("#ksgl").hide();
+        cxstk(1);
     }
     
     function tianjiashiti(th,zt){
@@ -1796,6 +1899,7 @@
         $("#cjks").hide();
         $("#shijk").hide();
         $("#bjks").hide();
+        $("#ksgl").hide();
         $("#tjst .lrst").attr("zt",zt)
     }
     
@@ -1807,6 +1911,7 @@
         $("#cjks").hide();
         $("#shijk").hide();
         $("#bjks").hide();
+        $("#ksgl").hide();
     }
     
     function chuangjiankaoshi(th){
@@ -1817,11 +1922,71 @@
         $("#shitk").hide();
         $("#shijk").hide();
         $("#bjks").hide();
+        $("#ksgl").hide();
         $(".div1").css("display","flex");
         $(".xtzj").css("display","none");
         $(".fbks").css("display","none");
         $(".cjksbz a").css("color","#999999")
         $(".cjksbz .dyb").css("color","blue")
+    }
+    
+    function kaoshiguanli(th){
+    	$("#bjsj").hide();
+        $("#shouye").hide();
+        $("#tjst").hide();
+        $("#shitk").hide();
+        $("#cjks").hide();
+        $("#shijk").hide();
+        $("#bjks").hide();
+        $("#ksgl").show();
+        cxsyks(1);
+    }
+    
+    function cxsyks(pageIndex){
+    	
+    	$("#ksgl .stbt:eq(1)").html("");
+    	
+    	$.getJSON("cxsyks/"+pageIndex,function(date){
+    		
+    		$("#prePage3").attr("data-val",date.prePage);
+    		$("#currentPage3").html(date.pageNum+"/"+date.pages);
+    		$("#nextPage3").attr("data-val",date.nextPage);
+    		
+    		$.each(date.list,function(){
+    			$("#ksgl .stbt:eq(1)").append("<tr>"
+                       +"<td style=\"width: 58px;height: 40px;text-align: center\">"
+                       +"<input type=\"checkbox\" name=\"ck\"></td>"
+                       +"<td style='width: 150px'>"+this.paperName+"</td>"
+                       +"<td style='width: 120px'>"+this.zscore+"</td>"
+                       +" <td style='width: 150px'>"+this.tmsum+"</td>"
+                       +"<td style='width: 150px'>"+this.teaName+"</td>"
+                       +"<td style='width: 200px'>"+this.startTime+"</td>"
+                       +"<td style='width: 200px'>"+this.endTime+"</td>"
+                       +"<td style='width: 150px'><a title=\"查看详情\" >"
+                       +"<i class=\"fa fa-newspaper-o\"></i></a>"
+                       +"</td></tr>");
+    		});
+    		
+    		 $("#ksgl .stbt:eq(1) tr").mousemove(function(){
+	             $(this).addClass("bgbk");
+	         });
+	         
+	         $("#ksgl .stbt:eq(1) tr").mouseout(function(){
+	             $(this).removeClass("bgbk");
+	         });
+	         
+	         $("#ksgl .stbt:eq(1) tr").click(function(){
+	             var a=$(this).find("input[type=checkbox]").prop("checked");
+	             if(a==true){
+	                 $(".cks").prop("checked",false);
+	                 $(this).find("input[type=checkbox]").prop("checked",false);
+	                 $(this).removeClass("bgbk2");
+	             }else{
+	                 $(this).find("input[type=checkbox]").prop("checked",true);
+	                 $(this).addClass("bgbk2");
+	             }
+	         });
+    	})
     }
     
     //全选
@@ -1969,9 +2134,7 @@
 						dataType:"json",
 					    contentType:"application/json",
 						success:function(res){					
-								/* alert("修改成功！");
-								$("#tjst textarea").val("");
-					    		$("input[name=y]").prop("checked",false); */
+							
 						}
 					}); 
 			  }
@@ -2048,27 +2211,28 @@
 		                        "</td>"+
 		                    "</tr>"+
 		                    "<tr style=\"height: 5px\"></tr>");
-		    	
-		    	 $(".xssyst .stbt tr").mousemove(function(){
-		             $(this).addClass("bgbk");
-		         });
-		         
-		         $(".xssyst .stbt tr").mouseout(function(){
-		             $(this).removeClass("bgbk");
-		         });
-		         
-		         $(".xssyst .stbt tr").click(function(){
-		             var a=$(this).find("input[type=checkbox]").prop("checked");
-		             if(a==true){
-		                 $(".cks").prop("checked",false);
-		                 $(this).find("input[type=checkbox]").prop("checked",false);
-		                 $(this).removeClass("bgbk2");
-		             }else{
-		                 $(this).find("input[type=checkbox]").prop("checked",true);
-		                 $(this).addClass("bgbk2");
-		             }
-		         });
-		    	});       
+  	
+		    	});     
+	    	 $("#shitk .stbt tr").mousemove(function(){
+	             $(this).addClass("bgbk");
+	         });
+	         
+	         $("#shitk .stbt tr").mouseout(function(){
+	             $(this).removeClass("bgbk");
+	         });
+	         
+	         $("#shitk .stbt tr").click(function(){
+	             var a=$(this).find("input[type=checkbox]").prop("checked");
+	             if(a==true){
+	                 $(".cks").prop("checked",false);
+	                 $(this).find("input[type=checkbox]").prop("checked",false);
+	                 $(this).removeClass("bgbk2");
+	             }else{
+	                 $(this).find("input[type=checkbox]").prop("checked",true);
+	                 $(this).addClass("bgbk2");
+	             }
+	         });
+	    	
 	      })
     }
     
@@ -2179,7 +2343,7 @@
             "</tr>");
     	 $.getJSON("cxksmb",function(date){
   			$.each(date,function(){
-  				$(".xskxmb").append(" <tr>"+
+  				$(".xskxmb").append(" <tr mbid='"+this.eqId+"'>"+
                         "<td class=\"mobanmc\">"+this.epName+"</td>"+
                         "<td><div class='mbmc' title='"+this.testRange+"'>"+this.testRange+"<div></td>"+
                         "<td>"+this.gName+"</td>"+
@@ -2196,6 +2360,8 @@
   	             $(this).css("color","#FFFFFF");
   	             var mbmc=$(this).find(".mobanmc").html();
   	             $(".ssmb input[type=text]").val(mbmc);
+  	             var mbid=$(this).attr("mbid");
+  	             $(".ssmb input[type=text]").attr("mbid",mbid);
   	         });
   		 });
     	   	
@@ -2277,6 +2443,28 @@
   		 });
   	}
   	
+  	//试卷预览
+  	function shijuanyl(th){
+  		var a=$("#shijk .sjbsj input");
+  		var b=0;
+  		var sjid=0;
+  		for(var i=0;i<a.length;i++){
+  			if($(a[i]).prop("checked")==true){
+  				sjid=$(a[i]).attr("sjid");
+  				b++;
+  			}
+  		}
+  		if(b>1){
+  			alert("一次只能选择一张试卷预览");
+  		}else if(b==1){
+  			$.getJSON("bcsjid/"+sjid,function(date){
+  				location.href="sjyl";
+  			})
+  		}else{
+  			alert("请先选择一张试卷预览");
+  		}
+  	}
+  	
   //查询课程
   	function cxbooks(gId){
   		$(".zsdtm .sb").html("<option value=\"0\">选择课程</option>");
@@ -2312,6 +2500,7 @@
     		 });
   	}
   	
+  	//三级联动
   	function  xsctzsd(gId){
   		 $(".ctfw .shuml").html("");
 		 $.getJSON("cxBook/"+gId,function(date){
@@ -2335,6 +2524,270 @@
 			 })
 		 });
   	}
-  </script>
+  	
+  	//换试卷的知识点
+	function  ghzsd(zsdid,sjid){
+		
+ 		 $(".stfw .shuml").html("");
+ 		 
+ 		 $.getJSON("cxBooks",function(date){
+ 			 
+			 $.each(date,function(i,objb){
+				 var li=$("<li>"+
+				            "<i class=\"fa fa-plus-square-o\" onclick=\"dj(this)\"></i> <label bookId=\""+this.bookId+"\" >📚 "+this.bookName+"</label>"+
+			             "<ul class=\"zjml\"></ul></li>");
+				 $(".stfw .shuml").append(li);
+				 
+				  $.each(this.listc,function(is,obj){
+					  var li2=$("<li>"+
+		                    "<i class=\"fa fa-plus-square-o\" onclick=\"dj(this)\"></i> <label courseId='"+obj.courseId+"' >📃"+obj.courseName+"</label>"+
+		                    "<ul class=\"zsdml\"></ul></li>")
+						li.find(" .zjml").append(li2);
+		                    
+	                $.each(obj.listk,function(ik,objk){
+	                	if(objk.knowId==zsdid){
+	                		
+	                	}else{
+	                		
+	                    	 li2.find(".zsdml").append( " <li>"+
+	                         " <label knowId='"+objk.knowId+"' onclick=\"ghsjzsd('"+objk.knowId+"','"+zsdid+"','"+sjid+"')\">📑  "+objk.knowName+"</label></li>");
+	                	}
+	                });
+				 });
+			 });
+			 
+			 $(".stfw .zsdml li label").click(function(){
+	                $(".stfw .shuml li label").css("border-color","#7c7c7cbd");
+	                $(".stfw .shuml li label").css("background-color","white");
+	                $(this).css("background-color","#f4d2ca");
+	                $(this).css("border-color","#ff5600");
+	            });			 
+		 });
+		 
+		 $(".stfw").show();
+         $(".cyy").show();
+ 	}
+  	
+  	function ghsjzsd(xzsdid,jzsdid,sjid){
+  		alert(jzsdid);
+  		var sum=0;
+  		var a=$("#zsdlb .zsdzl");
+  		for(var i=0;i<a.length;i++){
+  			if($(a[i]).attr("zsdid")==jzsdid){
+  				sum=$(a[i]).find("input").val();
+  				break;
+  			}
+  		}
+  		
+  		$.getJSON("ghsjzsd/"+jzsdid+"/"+xzsdid+"/"+sum+"/"+sjid,function(date){
+  			
+	  			cxsjtmzsd(sjid);		
+	  			alert("更换成功！");
+  		})
+  	}
+  	
+  	
+  	//查询即将开始的考试
+  	function cxjjksdks(pageSize){
+  		var today;
+        today = new Date();
+        intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+        intMonths = today.getMonth() + 1; //得到月份，要加1
+        intDays = today.getDate(); //得到日期
+        intHours = today.getHours(); //得到小时 
+        intMinutes = today.getMinutes(); //得到分钟
+        if(intMonths<10){
+        	intMonths="0"+intMonths;
+        }
+        if(intDays<10){
+        	intDays="0"+intDays;
+        }
+        if(intHours<10){
+        	intHours="0"+intHours;
+        }
+        if(intMinutes<10){
+        	intMinutes="0"+intMinutes;
+        }
+        var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes;
+        
+        $(".jjks").html("");
+        
+        $.getJSON("cxwkks?time="+time+"&pageSize="+pageSize,function(date){
+        	
+        	$.each(date.list,function(){
+        		
+        		
+        		var min1=parseInt(this.endTime.substr(11,2))*60+parseInt(this.endTime.substr(14,2));
+        		var min2=parseInt(this.startTime.substr(11,2))*60+parseInt(this.startTime.substr(14,2));
+        		var n=min1-min2;
+        		
+        		$(".jjks").append("<div class=\"zzjxsj\" onmouseover=\"sjxs(this)\" onmouseout=\"sjxx(this)\">"
+                        +"<h3 class=\"sysjmc\" ksid='"+this.examId+"' fbr='"+this.teaId+"' sjid='"+this.examPaperId+"'>"+this.paperName+"</h3>"
+                        +"<p class=\"sykssj\">考试时间："+this.startTime+"</p>"
+                        +"<p class=\"sysjfs\">试卷总分："+this.zscore+"</p>"
+                        +"<p class=\"sysjlx\">考试时长："+n+"</p>"
+                        +"<p class=\"sykssc\">题目数量："+this.tmsum+"</p>"
+                        +"<div style=\"width: 260px;text-align: center;font-size: 15px\">"
+                        +"<a onclick=\"bjks(this)\" zt='2'><i class=\"fa fa-pencil\"></i>编辑</a>"
+                        +" </div></div>");
+        	});
+        	
+        })
+        
+        var i=$(".jjks .zzjxsj");
+        if(i.length<1){
+        	$(".jjks").html("<div style=\"margin: 60px 0 50px 400px;color: #8c8c8c;\">还没有即将开始的考试，点击上方创建一场考试吧~~</div>");
+        }
+        
+      	//每秒执行一次,showTime()  
+        //setTimeout("cxjjksdks(1)",60000);  
+  	}
+  	
+  	function cxzzjxks(pageSize){
+  		var today;
+        today = new Date();
+        intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+        intMonths = today.getMonth() + 1; //得到月份，要加1
+        intDays = today.getDate(); //得到日期
+        intHours = today.getHours(); //得到小时 
+        intMinutes = today.getMinutes(); //得到分钟
+        if(intMonths<10){
+        	intMonths="0"+intMonths;
+        }
+        if(intDays<10){
+        	intDays="0"+intDays;
+        }
+        if(intHours<10){
+        	intHours="0"+intHours;
+        }
+        if(intMinutes<10){
+        	intMinutes="0"+intMinutes;
+        }
+        var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes;
+        
+        $(".zzjx").html("");
+        
+        $.getJSON("cxzzjxks?time="+time+"&pageSize="+pageSize,function(date){
+        	
+        	$.each(date.list,function(){
+        		
+        		
+        		var min1=parseInt(this.endTime.substr(11,2))*60+parseInt(this.endTime.substr(14,2));
+        		var min2=parseInt(this.startTime.substr(11,2))*60+parseInt(this.startTime.substr(14,2));
+        		var n=min1-min2;
+        		
+        		$(".zzjx").append("<div class=\"zzjxsj\" onmouseover=\"sjxs(this)\" onmouseout=\"sjxx(this)\">"
+                        +"<h3 class=\"sysjmc\">"+this.paperName+"</h3>"
+                        +"<p class=\"sykssj\">考试时间："+this.startTime+"</p>"
+                        +"<p class=\"sysjfs\">试卷总分："+this.zscore+"</p>"
+                        +"<p class=\"sysjlx\">考试时长："+n+"</p>"
+                        +"<p class=\"sykssc\">题目数量："+this.tmsum+"</p>"                   
+                        +"</div>");
+        	});
+        	
+        })
+  			
+  		var i=$(".zzjx .zzjxsj");
+        if(i.length<1){
+        	
+  			$(".zzjx").html("<div style=\"margin: 60px 0 50px 400px;color: #8c8c8c;\">还没有正在进行的考试，点击上方创建一场考试吧~~</div>")
+        }
+        
+      //setTimeout("cxzzjxks(1)",60000);  
+  }
+  	
+	//选择已有模板
+  function	ymbcjsj(th){
+  		var epId= $(".ssmb input[type=text]").attr("mbid");		
+  		var param={'epId':epId,'paperName':$(".cjxsj .sjmc").val(),'createPerson':$(".uid").html(),'lastUpdPerson':$(".uid").html()};
+  		//新增试卷
+  		$.ajax({
+			type:"POST",
+			url:"xzsj",
+			dataType:"json",
+		    contentType:"application/json",
+			data:JSON.stringify(param),
+			success:function(res){					
+				xzsjtms(res);
+			}
+		}); 
+  		
+  		
+  	
+  	}
+  
+	//查询模板中的知识点
+  function xzsjtms(epId){
+				
+  		$.getJSON("cxsjmb/"+mbid,function(date){
+  			$.each(date,function(){
+  				var dx={'qtId':this.knowId,'examId':count};
+				param.push(dx);
+				
+				xztm2(this.kmowId,this.count,epId);
+				
+  			})
+  		})
+  }
+  
+	//新增试卷题目
+  function xztm2(zsdid,sum,examId){
+	  var param=[]; 
+	  $.ajaxSettings.async = false;
+		$.getJSON("cxsjtm/"+zsdid+"/"+sum,function(date){
+			$.each(date,function(){
+				var dx={'qtId':this.qtId,'examId':examId};
+				param.push(dx);
+			});
+			
+		})
+		
+	console.info(JSON.stringify(param));
+	  $.ajax({
+		type:"POST",
+		url:"xzsjtm",
+		dataType:"json",
+	    contentType:"application/json",
+		data:JSON.stringify(param),
+		success:function(res){	
+			cxsjxx(examId);
+			
+			$(".div1").css("display","none");
+	        $(".xtzj").css("display","none");
+	        $(".fbks").css("display","flex");
+	        $(".cjksbz a").css("color","#999999")
+	        $(".cjksbz .dsb").css("color","blue")
+		}
+	}); 
+  }
+	
+	function cxbj(th){
+		$(th).prev().val("");
+	}
+	
+	function bcxg(){
+		var ksbj=$("#bjks .ksfl input").attr("bjid");
+		var sj=$("#bjks .kssj").val();
+    	var sj2=sj.replace(/T/," ");
+    	var js=$("#bjks .jssj").val();
+    	var js2=js.replace(/T/," "); 
+    	var sjid=$("#bjks .fbsjmc").attr("sjid");
+
+    	var param={'examPaperId':sjid,'classId':ksbj,'teaId':$(".uid").html(),'startTime':sj2,'endTime':js2,'examId':$("#bjks .fbsjmc").attr("ksid")}; 
+    	
+    	 $.ajax({
+    			type:"POST",
+    			url:"xgksxx",
+    			dataType:"json",
+    		    contentType:"application/json",
+    			data:JSON.stringify(param),
+    			success:function(res){	
+    				
+    				alert("修改成功！");
+    			}
+    		}); 
+    	
+	}
+  </script>;
 </body>
 </html>

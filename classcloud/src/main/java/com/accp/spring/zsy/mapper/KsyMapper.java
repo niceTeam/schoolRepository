@@ -19,12 +19,15 @@ import com.accp.spring.pojo.Knowledge;
 import com.accp.spring.pojo.PaperTitle;
 import com.accp.spring.pojo.QuesOption;
 import com.accp.spring.pojo.Question;
+import com.accp.spring.pojo.StuTest;
+import com.accp.spring.pojo.Student;
 import com.accp.spring.pojo.Teacher;
 import com.accp.spring.zsy.pojo.Books;
 import com.accp.spring.zsy.pojo.Courses;
 import com.accp.spring.zsy.pojo.Ctrelations;
 import com.accp.spring.zsy.pojo.ExamPaperHistorys;
 import com.accp.spring.zsy.pojo.ExamPapers;
+import com.accp.spring.zsy.pojo.Examinations;
 import com.accp.spring.zsy.pojo.Questions;
 import com.accp.spring.zsy.pojo.Sjtmzsd;
 
@@ -38,6 +41,11 @@ public interface KsyMapper {
 	//查询课程
 	@Select("Select * from Book where gId=#{gId}")
 	List<Books> cxBook(@Param("gId")int gId);
+
+	
+	//查询所有课程
+	@Select("Select * from Book ")
+	List<Books> cxBooks();
 
 	
 	//查询所有课程
@@ -118,7 +126,7 @@ public interface KsyMapper {
 	List<ExamPapers> cxksmb();
 	
 	//随机查询n道题目
-	@Select("SELECT * FROM `question`  where knowid in(#{zsdid}) and isDel=1  ORDER BY RAND() LIMIT #{sum}")
+	@Select("SELECT * FROM `question`  where knowid in(${zsdid}) and isDel=1  ORDER BY RAND() LIMIT #{sum}")
 	List<Questions> sjcxtm(@Param("zsdid")String zsdid,@Param("sum") int sum);
 	
 	//新增试卷模板
@@ -140,7 +148,7 @@ public interface KsyMapper {
 	int cxxzsjid(@Param("uid") int uid);
 	
 	//发布考试
-	@Insert("insert into `examination` (`examPaperId`, `classId`,`teaId`,`epSendTime`, `tartTime`, `endTime`)\r\n" + 
+	@Insert("insert into `examination` (`examPaperId`, `classId`,`teaId`,`epSendTime`, `startTime`, `endTime`)\r\n" + 
 			"values(#{examPaperId},#{classId},#{teaId},NOW(),#{startTime},#{endTime});")
 	int xzks(Examination examination);
 	
@@ -165,7 +173,7 @@ public interface KsyMapper {
 	ExamPaperHistorys cxygsj(@Param("sjid") int sjid);
 	
 	//模糊查询试卷
-	@Select("select e.*,t.teaName,(SELECT count(*) FROM  `papertitle` p where p.examId=e.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=e.epId ) as score from `exampaperhistory` e,`teacher` t where e.createPerson=t.teaId and isForbid=1 and (paperName like '%#{name}%' or createPerson like '%#{name}%')")
+	@Select("select e.*,t.teaName,(SELECT count(*) FROM  `papertitle` p where p.examId=e.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=e.epId ) as score from `exampaperhistory` e,`teacher` t where e.createPerson=t.teaId and isForbid=1 and (paperName like '%${name}%' or createPerson like '%${name}%')")
 	List<ExamPaperHistorys> mhcxsj(@Param("name") String name);
 	
 	//查询单个模板
@@ -179,4 +187,49 @@ public interface KsyMapper {
 	//查询试卷题目及答案解析
 	@Select("select q.*,(select analyzeContent from `ANALYZE` a where a.qtId=p.qtId order by analyzeId )as jiexi from `papertitle` p,`question` q where p.qtid=q.qtid and p.examId=#{sjid}")
 	List<Questions> cxsjtm(@Param("sjid")int sjid);
+	
+	//查询所有考试
+	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId ")
+	List<Examinations> cxsyks();
+	
+	//查询即将进行的考试
+	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId and startTime>#{time}")
+	List<Examinations> cxwkks(@Param("time")String time);
+	
+	//查询正在进行的考试
+	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId and ea.endTime>#{time}>ea.startTime")
+	List<Examinations> cxzzjxks(@Param("time")String time);
+	
+	//查询试卷某个知识点中的题目
+	@Select("select q.qtid  from `exampaperhistory` eh,`papertitle` p,`question` q where eh.paperId=p.examId and q.qtId=p.qtId and eh.paperId=#{sjid} and q.knowId=#{zsdid}")
+	List<Question> cxsjdzsdtm(@Param("zsdid")int zsdid,@Param("sjid")int sjid);
+	
+	//随机查询n个试卷某个知识点中没有的题目
+	@Select("select qtid  from `question` where knowId=#{zsdid} and qtId not in(${tmid}) ORDER BY RAND() LIMIT #{sum}")
+	List<Question> cxsjzsdnottm(@Param("zsdid")int zsdid,@Param("tmid")String tmid,@Param("sum")int sum);
+	
+	//删除试卷知识点中原有的题目
+	@Delete("Delete from PaperTitle where qtId=#{qtId} and examId=#{sjid}")
+	int scsjzsdyydtm(@Param("sjid")int sjid,@Param("qtId")int qtId);
+	
+	//查询模板中的知识点
+	@Select("select * from ExamPaperKnowledge where epId=#{mbid}")
+	List<ExamPaperKnowledge> cxsjmb(@Param("mbid")int mbid);
+	
+	//新增考试人员信息
+	@Insert("insert into ` stutest ` (` stuId `, ` examId `, ` STATUS `, ` startTime `, ` commitTime `, ` commitStyle `, ` score `)\r\n" + 
+			"values(#{stuId}, #{examId}, #{status},#{startTime},#{commitTime},#{commitStyle},#{score})")
+	int xzksryxx(StuTest stuTest);
+	
+	//查询参加考试的学生
+	@Select("select * from `student` where classId in(${xsid})")
+	List<Student> cxcjksxy(@Param("xsid")String xsid);
+	
+	//根据id查询考试信息
+	@Select("select * from Examination where examId=#{ksid}")
+	Examinations cxycks(@Param("ksid")int ksid);
+	
+	//修改考试信息
+	@Update("update Examination set examPaperId=#{examPaperId},classId=#{classId},epSendTime=NOW(),startTime=#{startTime},endTime=#{endTime} where examId=#{examId}")
+	int xgksxx(Examinations ks);
 }
