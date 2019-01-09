@@ -18,11 +18,11 @@ public class Examination implements Serializable {
 	private static final long serialVersionUID = -1684791415227908011L;
 	private int examId;
 	private int examPaperId;
-	private int classId;
+	private String classId;
 	private int teaId;
-	private int epSendTime;
-	private int startTime;
-	private int endTime;
+	private String epSendTime;
+	private String startTime;
+	private String endTime;
 	public int getExamId() {
 		return examId;
 	}
@@ -35,10 +35,10 @@ public class Examination implements Serializable {
 	public void setExamPaperId(int examPaperId) {
 		this.examPaperId = examPaperId;
 	}
-	public int getClassId() {
+	public String getClassId() {
 		return classId;
 	}
-	public void setClassId(int classId) {
+	public void setClassId(String classId) {
 		this.classId = classId;
 	}
 	public int getTeaId() {
@@ -47,22 +47,22 @@ public class Examination implements Serializable {
 	public void setTeaId(int teaId) {
 		this.teaId = teaId;
 	}
-	public int getEpSendTime() {
+	public String getEpSendTime() {
 		return epSendTime;
 	}
-	public void setEpSendTime(int epSendTime) {
+	public void setEpSendTime(String epSendTime) {
 		this.epSendTime = epSendTime;
 	}
-	public int getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(int startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
-	public int getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(int endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 	@Override

@@ -14,7 +14,7 @@ header {
 .sjmb .dgtm{padding: 15px 0;margin: 0 25px;border-top: 1px solid  #CDCDCD;}
 .sjmb .dgtm p{ margin-left: 20px;}
 .dtk{margin-top: 0px; -webkit-box-shadow: -4px 5px 5px -4px #cfcfcf;position: fixed;padding: 20px;margin-left: 960px;
-    width: 300px;background-color: white}
+    width: 300px;background-color: white;height: 480px}
 .dtk .dtk2{font-size: 20px;text-align: center}
 .dtk .sysj span{color: red}
 .dgtmda .tmbx{border: 1px solid #CDCDCD;margin-right: 10px;margin-top: 5px;float: left;padding:3px 0;width: 30px;text-align: center}
