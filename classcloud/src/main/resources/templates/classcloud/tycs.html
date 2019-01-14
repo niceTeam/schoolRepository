@@ -23,6 +23,7 @@
 </head>
 <body style="  background-color: #e6ecee;">
 <div class="cyy" style="display:none; "></div>
+
 <header>
     <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
     <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
@@ -31,8 +32,11 @@
     <a href="dtls">历史答题</a>
     <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;<span th:text="${xname}" class="xname"></span></a>
     <span th:text="${xid}" class="xid" style="display: none"></span>
+    <span th:text="${bjid}" class="bjid" style="display: none"></span>
     <a style="font-size: 17px" href="dl"><i class="fa fa-power-off"></i> &nbsp;退出</a>
 </header>
+
+
 <div id="csnr">
     <div class="div1">
         <div class="kssj">
@@ -53,18 +57,103 @@
             <p>考试时长：1 小时</p>
             <p>试卷分数：100 分<a style="margin-left: 80px" href="sjyl.html">进入</a></p>
         </div>
-        <div class="kssj">
-            <p><label>第一次模拟考试</label></p>
-            <p>考试时间：2018/12/30 10:20:00</p>
-            <p>考试时长：1 小时</p>
-            <p>试卷分数：100 分<a style="margin-left: 80px" href="sjyl.html">进入</a></p>
-        </div>
-        <div class="kssj">
-            <p><label>第一次模拟考试</label></p>
-            <p>考试时间：2018/12/30 10:20:00</p>
-            <p>考试时长：1 小时</p>
-            <p>试卷分数：100 分<a style="margin-left: 80px" href="sjyl.html">进入</a></p>
-        </div>
-    </div>-</div>
+      
+    </div>
+</div>
+    
+    
 </body>
+<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	cxsj();
+})
+function cxsj(){
+	
+	var today;
+    today = new Date();
+    intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+    intMonths = today.getMonth() + 1; //得到月份，要加1
+    intDays = today.getDate(); //得到日期
+    intHours = today.getHours(); //得到小时 
+    intMinutes = today.getMinutes(); //得到分钟
+    if(intMonths<10){
+    	intMonths="0"+intMonths;
+    }
+    if(intDays<10){
+    	intDays="0"+intDays;
+    }
+    if(intHours<10){
+    	intHours="0"+intHours;
+    }
+    if(intMinutes<10){
+    	intMinutes="0"+intMinutes;
+    }
+    var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes;
+	var bjid=$(".bjid").html();
+	
+	$(".div1").html("");
+	
+	$.getJSON("cxwdtycs?bjid="+bjid+"&time="+time,function(date){
+		$.each(date,function(){
+			var date1 = new Date(this.startTime)
+			var date2 = new Date(this.endTime)
+
+			var s1 = date1.getTime(),s2 = date2.getTime();
+		 	var total = (s2 - s1)/1000;
+		 	var fz=total/60;
+		 	
+
+			$(".div1").append(" <div class=\"kssj\">"
+					+"<p><label>"+this.paperName+"</label></p>"
+        +"<p>考试时间："+this.startTime+"</p>"
+        +"<p>考试时长："+fz+" 分钟</p>"
+        +"<p>试卷分数："+this.zscore+" 分<a style=\"margin-left: 80px\" onclick=\"ksks('"+this.examId+"','"+this.examPaperId+"','"+this.startTime+"','"+this.endTime+"')\">进入</a></p>"
+   		+"</div>")
+
+		})
+	})
+	
+	//每秒执行一次,showTime()  
+    setTimeout("cxsj()",60000);  
+}
+function ksks(ksid,sjid,kssj,jssj){
+	var today;
+    today = new Date();
+    intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+    intMonths = today.getMonth() + 1; //得到月份，要加1
+    intDays = today.getDate(); //得到日期
+    intHours = today.getHours(); //得到小时 
+    intMinutes = today.getMinutes(); //得到分钟
+    if(intMonths<10){
+    	intMonths="0"+intMonths;
+    }
+    if(intDays<10){
+    	intDays="0"+intDays;
+    }
+    if(intHours<10){
+    	intHours="0"+intHours;
+    }
+    if(intMinutes<10){
+    	intMinutes="0"+intMinutes;
+    }
+    var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes;
+    
+    var date1 = new Date(time);
+	var date2 = new Date(kssj);
+	var date3 = new Date(jssj);
+
+	var s1 = date1.getTime(),s2 = date2.getTime(),s3 = date3.getTime();
+    
+    if((s1-s2)>=0){
+    	  
+    	  var djs=(s3 - s1)/1000;
+    	  djs=djs/60;
+    	  window.location.href="ksks?ksid="+ksid+"&sjid="+sjid+"&djs="+djs+"&jssj="+jssj;
+    	
+    }else{
+    	alert("考试还没开始")
+    }
+}
+</script>
 </html>

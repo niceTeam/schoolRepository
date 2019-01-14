@@ -228,16 +228,16 @@ public class KsyService {
 		return pageInfo;
 	}
 	
-	public PageInfo<Examinations> cxwkks(String time,int pageSize){
+	public PageInfo<Examinations> cxwkks(int pageSize){
 		PageHelper.startPage(1,pageSize);
-		List<Examinations> ea=this.ksyMapper.cxwkks(time);
+		List<Examinations> ea=this.ksyMapper.cxwkks();
 		PageInfo<Examinations> pageInfo=new PageInfo<Examinations>(ea);
 		return pageInfo;
 	}
 	
-	public PageInfo<Examinations> cxzzjxks(String time,int pageSize){
+	public PageInfo<Examinations> cxzzjxks(int pageSize){
 		PageHelper.startPage(1,pageSize);
-		List<Examinations> ea=this.ksyMapper.cxzzjxks(time);
+		List<Examinations> ea=this.ksyMapper.cxzzjxks();
 		PageInfo<Examinations> pageInfo=new PageInfo<Examinations>(ea);
 		return pageInfo;
 	}

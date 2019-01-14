@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.accp.spring.pojo.Analyze;
+import com.accp.spring.pojo.Appraise;
 import com.accp.spring.pojo.Book;
 import com.accp.spring.pojo.BrushHistory;
 import com.accp.spring.pojo.BrushHistoryDetails;
+import com.accp.spring.pojo.Classes;
 import com.accp.spring.pojo.ExamPaper;
 import com.accp.spring.pojo.ExamPaperHistory;
 import com.accp.spring.pojo.ExamPaperKnowledge;
@@ -29,9 +32,11 @@ import com.accp.spring.pojo.MyCollection;
 import com.accp.spring.pojo.PaperTitle;
 import com.accp.spring.pojo.QuesOption;
 import com.accp.spring.pojo.Question;
+import com.accp.spring.pojo.StuAnswer;
 import com.accp.spring.pojo.StuTest;
 import com.accp.spring.pojo.Student;
 import com.accp.spring.pojo.Teacher;
+import com.accp.spring.zsy.pojo.Analyzes;
 import com.accp.spring.zsy.pojo.Bookjd;
 import com.accp.spring.zsy.pojo.Books;
 import com.accp.spring.zsy.pojo.Courses;
@@ -63,31 +68,47 @@ public class KsyController {
 	
 	@GetMapping("/xszy")
 	public String xszy(HttpServletRequest request,HttpSession session,Model model) {
-		//登录成功后跳到云题库首页
+		//跳到云题库首页
 		model.addAttribute("xname",request.getSession().getAttribute("xsname"));
 		model.addAttribute("xid",request.getSession().getAttribute("xsid"));
+		model.addAttribute("bjid",request.getSession().getAttribute("bjid"));
 		return "classcloud/xssy.html";
 	}
 	
 	@GetMapping("/tycs")
 	public String tycs(HttpServletRequest request,HttpSession session,Model model) {
-		//登录成功后跳到统一测试页
+		//跳到统一测试页
 		model.addAttribute("xname",request.getSession().getAttribute("xsname"));
 		model.addAttribute("xid",request.getSession().getAttribute("xsid"));
+		model.addAttribute("bjid",request.getSession().getAttribute("bjid"));
 		return "classcloud/tycs.html";
 	}
 	
 	@GetMapping("/stjx")
-	public String stjx(HttpServletRequest request,HttpSession session,Model model) {
-		//登录成功后跳到试题解析页
+	public String stjx(HttpServletRequest request,HttpSession session,Model model,@RequestParam String zt,@RequestParam int sjid) {
+		//跳到试题解析页
 		model.addAttribute("xname",request.getSession().getAttribute("xsname"));
 		model.addAttribute("xid",request.getSession().getAttribute("xsid"));
+		model.addAttribute("zt",zt);
+		model.addAttribute("sjid",sjid);
 		return "classcloud/stjx.html";
+	}
+	
+	@GetMapping("/ksks")
+	public String ksks(HttpServletRequest request,HttpSession session,Model model,@RequestParam String ksid,@RequestParam String sjid,@RequestParam String djs,@RequestParam String jssj) {
+		//跳到试题解析页
+		model.addAttribute("xname",request.getSession().getAttribute("xsname"));
+		model.addAttribute("xid",request.getSession().getAttribute("xsid"));
+		model.addAttribute("ksid",ksid);
+		model.addAttribute("sjid",sjid);
+		model.addAttribute("djs",djs);
+		model.addAttribute("jssj",jssj);
+		return "classcloud/ksks.html";
 	}
 	
 	@GetMapping("/dtls")
 	public String dtls(HttpServletRequest request,HttpSession session,Model model) {
-		//登录成功后跳到答题历史页面
+		//跳到答题历史页面
 		model.addAttribute("xname",request.getSession().getAttribute("xsname"));
 		model.addAttribute("xid",request.getSession().getAttribute("xsid"));
 		return "classcloud/dtls.html";
@@ -95,7 +116,7 @@ public class KsyController {
 	
 	@GetMapping("/stym")
 	public String stym(HttpServletRequest request,HttpSession session,Model model) {
-		//登录成功后跳到刷题页面
+		//跳到刷题页面
 		model.addAttribute("xname",request.getSession().getAttribute("xsname"));
 		model.addAttribute("xid",request.getSession().getAttribute("xsid"));
 		model.addAttribute("stid",request.getSession().getAttribute("stid"));
@@ -106,9 +127,9 @@ public class KsyController {
 	
 
 	@ResponseBody
-	@RequestMapping(value="/stymcz/{id}/{mc}/{zt}",method=RequestMethod.GET)
-	public int stymcz(@PathVariable int id,@PathVariable String mc,@PathVariable int zt,HttpServletRequest request,HttpSession session) {
-		//传值到
+	@RequestMapping(value="/stymcz",method=RequestMethod.GET)
+	public int stymcz(@RequestParam int id,@RequestParam String mc,@RequestParam int zt,HttpServletRequest request,HttpSession session) {
+		//传值到试题页面
 		request.getSession().setAttribute("stid",id);
 		request.getSession().setAttribute("fwmc",mc);
 		request.getSession().setAttribute("zt",zt);
@@ -122,6 +143,7 @@ public class KsyController {
 		Student s=this.ytkService.dl(zh, pwd);
 		request.getSession().setAttribute("xsname",s.getStuName());
 		request.getSession().setAttribute("xsid",s.getStuId());
+		request.getSession().setAttribute("bjid",s.getClassId());
 		
 		return s;
 	}
@@ -147,7 +169,7 @@ public class KsyController {
 	
 	@GetMapping("/sjyl")
 	public String sjyl(HttpServletRequest request,HttpSession session,Model model) {
-		//登录成功后跳到试卷预览页面
+		//跳到试卷预览页面
 		model.addAttribute("uname",request.getSession().getAttribute("yhm"));
 		model.addAttribute("uid",request.getSession().getAttribute("yhid"));
 		model.addAttribute("sjid",request.getSession().getAttribute("sjid"));
@@ -367,17 +389,17 @@ public class KsyController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/cxzjjd/{stuId}/{courseId}/{percent}/{progressCount}",method=RequestMethod.GET)
-	public int cxzjjd(@PathVariable int stuId,@PathVariable int courseId,@PathVariable int percent,@PathVariable int progressCount) {
+	@RequestMapping(value="/cxzjjd/{stuId}/{courseId}",method=RequestMethod.GET)
+	public int cxzjjd(@PathVariable int stuId,@PathVariable int courseId) {
 		//修改章节进度
-		return this.ytkService.cxzjjd(stuId, courseId, percent, progressCount);
+		return this.ytkService.cxzjjd(stuId, courseId);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/cxzsdjd/{stuId}/{knowId}/{percent}/{progressCount}",method=RequestMethod.GET)
-	public int cxzsdjd(@PathVariable int stuId,@PathVariable int knowId,@PathVariable int percent,@PathVariable int progressCount){
+	@RequestMapping(value="/cxzsdjd/{stuId}/{knowId}",method=RequestMethod.GET)
+	public int cxzsdjd(@PathVariable int stuId,@PathVariable int knowId){
 		//修改知识点进度
-		return this.ytkService.cxzsdjd(stuId, knowId, percent, progressCount);
+		return this.ytkService.cxzsdjd(stuId, knowId);
 	}
 	
 	@ResponseBody
@@ -479,16 +501,16 @@ public class KsyController {
 	
 	@ResponseBody
 	@RequestMapping(value="/cxwkks",method=RequestMethod.GET)
-	public PageInfo<Examinations> cxwkks( String time,int pageSize){
+	public PageInfo<Examinations> cxwkks(int pageSize){
 		//查询即将进行的考试
-		return this.ksyService.cxwkks(time,pageSize);
+		return this.ksyService.cxwkks(pageSize);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/cxzzjxks",method=RequestMethod.GET)
-	public PageInfo<Examinations> cxzzjxks( String time,int pageSize){
+	public PageInfo<Examinations> cxzzjxks(int pageSize){
 		//查询正在进行的考试
-		return this.ksyService.cxzzjxks(time,pageSize);
+		return this.ksyService.cxzzjxks(pageSize);
 	}
 	
 	@ResponseBody
@@ -520,8 +542,8 @@ public class KsyController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/xzksryxx/{xsid}/{sjid}/{kssj}/{jssj}",method=RequestMethod.GET)
-	public int cxcjksxy(String xsid,int sjid,String kssj,String jssj){
+	@RequestMapping(value="/xzksryxx",method=RequestMethod.GET)
+	public int cxcjksxy(String xsid, int sjid,String kssj,String jssj){
 		//新增考试人员信息
 		return this.ksyService.cxcjksxy(xsid, sjid, kssj, jssj);
 	}
@@ -538,6 +560,165 @@ public class KsyController {
 	public int xgksxx(@RequestBody Examinations ks) {
 		//修改考试信息
 		return this.ksyService.xgksxx(ks);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxzxstbg/{stuId}",method=RequestMethod.GET)
+	public List<Questions> cxzxstbg(@PathVariable int stuId){
+		 //查询刷题报告
+		return this.ytkService.cxzxstbg(stuId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxjx/{qtId}",method=RequestMethod.GET)
+	public List<Analyzes> cxjx(@PathVariable int qtId){
+		//查询解析
+		return this.ytkService.cxjx(qtId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xzjx",method=RequestMethod.POST)
+	public int xzjx(@RequestBody Analyzes a) {
+		//新增解析
+		return this.ytkService.xzjx(a);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/sfdz/{stuId}/{jxid}",method=RequestMethod.GET)
+	public Appraise sfdz(@PathVariable int stuId,@PathVariable int jxid) {
+		//查询你是否点过赞或踩过
+		return this.ytkService.sfdz(stuId, jxid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xzdz",method=RequestMethod.POST)
+	public int xzdz(@RequestBody Appraise a) {
+		//新增点赞或踩
+		return this.ytkService.xzdz(a);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xgdz/{stuId}/{jxid}/{appraise}",method=RequestMethod.PUT)
+	public int xgdz(@PathVariable int stuId,@PathVariable int jxid,@PathVariable int appraise) {
+		//修改点赞或踩
+		return this.ytkService.xgdz(stuId, jxid, appraise);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xgjx/{yes}/{no}/{jxid}",method=RequestMethod.PUT)
+	public int xgjx(@PathVariable int yes,@PathVariable int no,@PathVariable int jxid) {
+		//修改解析点赞数量
+		return this.ytkService.xgjx(yes, no, jxid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xzct/{stuId}/{bhId}",method=RequestMethod.GET)
+	public int xzct(@PathVariable int stuId,@PathVariable int bhId) {
+		//新增错题
+		return this.ytkService.xzct(stuId,bhId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxkczsd/{bookId}",method=RequestMethod.GET)
+	public List<Knowledge> cxkczsd(@PathVariable int bookId) {
+		//查询课程的知识点
+		return this.ytkService.cxkczsd(bookId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxxsnj/{stuId}",method=RequestMethod.GET)
+	public Classes cxxsnj(@PathVariable int stuId) {
+		//查询我的年级
+		return this.ytkService.cxxsnj(stuId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxwdtycs",method=RequestMethod.GET)
+	public List<Examinations> cxwdtycs( String bjid,String time){
+		//查询我的统一测试
+		return this.ytkService.cxwdtycs(bjid, time);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxnjxdzsd/{gid}",method=RequestMethod.GET)
+	public List<Knowledge> cxnjxdzsd(@PathVariable int gid){
+		//查询年级下的所有知识点
+		return this.ytkService.cxnjxdzsd(gid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxljsum/{time}",method=RequestMethod.GET)
+	public List<BrushHistoryDetails> cxljsum(@PathVariable String time){
+		//查询当天的累计刷题数量
+		return this.ytkService.cxljsum(time);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxsjsum/{time}",method=RequestMethod.GET)
+	public List<BrushHistoryDetails> cxsjsum(@PathVariable String time){
+		//查询当天的实际刷题数量
+		return this.ytkService.cxljsum(time);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxzql/{time}",method=RequestMethod.GET)
+	public int cxzql(@PathVariable String time) {
+		//正确率
+		return this.ytkService.cxzql(time);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xzksdaan",method=RequestMethod.POST)
+	public int xzksdaan(@RequestBody StuAnswer [] stu) {
+		//新增学员考试答案
+		for(StuAnswer da:stu) {
+			this.ytkService.xzksdaan(da);
+		}
+		
+		return 1;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/xgksryqk",method=RequestMethod.GET)
+	public int xgksryqk(@RequestParam String kssj,@RequestParam int jjfs,@RequestParam int score,@RequestParam int stuid,@RequestParam int ksid) {
+		//修改考试人员情况
+		return this.ytkService.xgksryqk(kssj, jjfs, score, stuid, ksid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxsjtms/{sjid}/{stuid}",method=RequestMethod.GET)
+	public List<Questions> cxsjtms(@PathVariable int sjid,@PathVariable int stuid){
+		//查询试卷报告
+		return this.ytkService.cxsjtm(sjid, stuid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxkcsttm/{stuid}/{njid}",method=RequestMethod.GET)
+	public List<Books> cxkcsttm(@PathVariable int stuid,@PathVariable int njid){
+		//查询每个课程收藏的题目数量
+		return this.ytkService.cxkcsttm(stuid, njid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxsctm/{stuid}/{bookid}",method=RequestMethod.GET)
+	public List<Questions> cxsctm(@PathVariable int stuid,@PathVariable int bookid){
+		//查询收藏题目详细
+		return this.ytkService.cxsctm(stuid, bookid);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cxkcctsl/{stuid}/{njid}",method=RequestMethod.GET)
+	public List<Books> cxkcctsl(@PathVariable int stuid,@PathVariable int njid){
+		//查询课程错题数量
+		return this.ytkService.cxkcctsl(stuid, njid);
+	}
+	
+
+	@ResponseBody
+	@RequestMapping(value="/cxkcct/{stuid}/{bookid}",method=RequestMethod.GET)
+	public List<Questions> cxkcct(@PathVariable int stuid,@PathVariable int bookid){
+		//查询课程错题详情
+		return this.ytkService.cxkcct(stuid, bookid);
 	}
 }
 	

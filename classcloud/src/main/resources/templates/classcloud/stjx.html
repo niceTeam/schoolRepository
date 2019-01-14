@@ -23,144 +23,609 @@
 </head>
 <body style="  background-color: #e6ecee;">
 <div class="cyy" style="display:none;"></div>
+
 <header>
     <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
     <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
-    <a href="xssy.html" onclick="wdzc()">我的自测</a>
-    <a href="tycs.html">统一测试</a>
-    <a href="dtls.html">历史答题</a>
+    <a href="xszy" onclick="wdzc()">我的自测</a>
+    <a href="tycs">统一测试</a>
+    <a href="dtls">历史答题</a>
     <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;<span th:text="${xname}" class="xname"></span></a>
     <span th:text="${xid}" class="xid" style="display: none"></span>
+      <span th:text="${zt}" class="zt" style="display: none"></span>
+       <span th:text="${sjid}" class="sjid" style="display: none"></span>
     <a style="font-size: 17px" href="dl"><i class="fa fa-power-off"></i> &nbsp;退出</a>
 </header>
+
+
 <div class="jxdtk">
     <p>答题卡</p>
     <p class="zkct"><input type="checkbox" > 只看错题</p>
-    <div class="dtkxh">
-        <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
-        <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
-        <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
-        <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
-        <div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div>
-        <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div><div>1</div> <div>12</div>
+    <div class="dtkxh" style="height: 300px">
+      
         <div class="clear" style="border: 0;"></div>
     </div>
 </div>
 <div id="jxnr">
     <p class="bt"><i class="fa fa-file-text-o"></i> 试题解析</p>
     <div class="gbtmjx">X</div>
-    <div style="padding:0 20px;overflow: auto;">
-        <div class="grstjx">
-            <div style="border: 1px solid #CDCDCD;">
-                <p><label style="width: 150px">
-                    <i class="fa fa-file-text-o"></i>&nbsp;&nbsp;试题解析</label>
-                    <label>2016-8-18 10:44</label></p>
-                <div class="jxnr">
-                    本题考查访问修饰符，private仅仅只能由类自己访问
-                </div>
-            </div>
-            <div class="jxcz">
-                <label>10个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5个人踩</label>
-                <label>
-                    <a><i class="fa fa-thumbs-o-up"></i>点赞</a>
-                    <a><i class="fa fa-thumbs-o-down"></i>踩</a>
-                </label>
-            </div>
-        </div>
-        <div class="grstjx">
-            <div style="border: 1px solid #CDCDCD;">
-                <p><label style="width: 150px">
-                    <i class="fa fa-file-text-o"></i>&nbsp;&nbsp;试题解析</label>
-                    <label>2016-8-18 10:44</label></p>
-                <div class="jxnr">
-                    本题考查访问修饰符，private仅仅只能由类自己访问
-                </div>
-            </div>
-            <div class="jxcz">
-                <label>10个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5个人踩</label>
-                <label>
-                    <a><i class="fa fa-thumbs-o-up"></i>点赞</a>
-                    <a><i class="fa fa-thumbs-o-down"></i>踩</a>
-                </label>
-            </div>
-        </div>
-        <div class="grstjx">
-            <div style="border: 1px solid #CDCDCD;">
-                <p><label style="width: 150px">
-                    <i class="fa fa-file-text-o"></i>&nbsp;&nbsp;试题解析</label>
-                    <label>2016-8-18 10:44</label></p>
-                <div class="jxnr">
-                    本题考查访问修饰符，private仅仅只能由类自己访问
-                </div>
-            </div>
-            <div class="jxcz">
-                <label>10个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5个人踩</label>
-                <label>
-                    <a><i class="fa fa-thumbs-o-up"></i>点赞</a>
-                    <a><i class="fa fa-thumbs-o-down"></i>踩</a>
-                </label>
-            </div>
-        </div>
+    <div style="padding:0 20px;overflow: auto;height: 380px" class='syjxxq'>
+			<!-- 每个人的解析 -->
+    </div>
+    <div class="wljs">
+        <input type="button" value="我来解释这道题">
+    </div>
+</div>
 
+<div id="wdjs" style="display: none">
+    <h4>我对该题的见解</h4>
+    <div style="padding: 5px 40px;font-size: 17px">
+        <p>请告诉我们为什么是这个答案（或者不是其他答案的原因），越详细越好！您的解释将给其他同学带来帮助，而且有意想不到的惊喜等着你哦！</p>
     </div>
-</div>
-<div style="margin-top: 70px;margin-left: 100px" id="ckjx">
-    <div class="jxtmbt">
-        初识继承和多态
-    </div>
-    <div class="tmjx">
-    <p><label>1.</label>在C#中，已定义A类，若在其中定义方法public void B（int x）{}和public string B（int b）{}，这两个方法是</p>
-    <p>A:基于返回值不同的重载</p>
-    <p>B:基于参数类型不同的重载</p>
-    <p>C:基于参数名称不同的重载</p>
-    <p>D:不是重载</p>
+    <textarea class="wdjj">
+
+    </textarea>
     <div class="cz">
-        <label class="daan">正确答案是：A ， 你的回答是：B</label>
-        <a onclick="ckjx(this)"><i class="fa fa-file-text-o"></i> 试题解析</a>
-        <a><i class="fa fa-eye"></i> 吐槽</a>
-        <a><i class="fa fa-star-o"></i> 收藏</a>
+        <input type="button" value="提交" onclick="tjwdjs(this)">
+        <input type="button" value="返回" onclick="fhjx(this)">
     </div>
 </div>
-    <div class="tmjx">
-        <p><label>1.</label>在C#中，已定义A类，若在其中定义方法public void B（int x）{}和public string B（int b）{}，这两个方法是</p>
-        <p>A:基于返回值不同的重载</p>
-        <p>B:基于参数类型不同的重载</p>
-        <p>C:基于参数名称不同的重载</p>
-        <p>D:不是重载</p>
-        <div class="cz">
-            <label class="daan">正确答案是：A ， 你的回答是：B</label>
-            <a onclick="ckjx(this)"><i class="fa fa-file-text-o"></i> 试题解析</a>
-            <a><i class="fa fa-eye"></i> 吐槽</a>
-            <a><i class="fa fa-star-o"></i> 收藏</a>
-        </div>
+
+<div style="margin-top: 70px;margin-left: 100px" id="ckjx">
+    <div class="jxtmbt" id='0index'>
+       	 初识继承和多态
     </div>
-    <div class="tmjx">
-        <p><label>1.</label>在C#中，已定义A类，若在其中定义方法public void B（int x）{}和public string B（int b）{}，这两个方法是</p>
-        <p>A:基于返回值不同的重载</p>
-        <p>B:基于参数类型不同的重载</p>
-        <p>C:基于参数名称不同的重载</p>
-        <p>D:不是重载</p>
-        <div class="cz">
-            <label class="daan">正确答案是：A ， 你的回答是：B</label>
-            <a onclick="ckjx(this)"><i class="fa fa-file-text-o"></i> 试题解析</a>
-            <a><i class="fa fa-eye"></i> 吐槽</a>
-            <a><i class="fa fa-star-o"></i> 收藏</a>
-        </div>
+    <div class="jxtmhz">
+	   
     </div>
 </div>
 
 </body>
-<script src="js/jquery-3.2.1.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
 <script>
     $(function(){
+    	
+    	pdzt();
+    	
+    	$(".wljs input").click(function(){
+    		
+    		 $("#jxnr").hide();
+             $("#wdjs").show();
+    	})
+    	
         $(".gbtmjx").click(function(){
             $("#jxnr").hide();
             $(".cyy").hide();
         })
+        
+        $(".zkct input").click(function(){
+        	if($(this).prop("checked")==true){
+        		cktmxxs();
+        	}else{
+        		cktmxx();
+        	}
+        })
+        
     })
-    function ckjx(th){
+    
+    function tjwdjs(th){
+    	//提交我的解析
+    	var qtId=$("#jxnr").attr("tmid");
+    	var param={'qtId':$("#jxnr").attr("tmid"),'analyzeContent':$("#wdjs .wdjj").val(),'stuId':$(".xid").html()}
+    	  $.ajax({
+				type:"POST",
+				url:"xzjx",
+				dataType:"json",
+			    contentType:"application/json",
+				data:JSON.stringify(param),
+				success:function(res){					
+					alert("提交成功！");
+					$("#wdjs .wdjj").val("");
+
+					ckjx(qtId);
+		            $("#wdjs").hide();
+				}
+			}); 
+    }
+    
+    function fhjx(th){
+    	 //显示解析框
+    	 $("#wdjs").hide();
+    	 $("#jxnr").show();
+    }
+    
+    //判断状态
+    function pdzt(){
+    	var zt=$(".zt").html();
+    	if(zt=="1"){
+    		cktmxx();
+    		dtk();
+    	}else if(zt=="2"){
+    		cksjtm();
+    		sjdtk();
+    	}else if(zt=="3"){
+    		cksctm();
+    		scdtk();
+    	}else if(zt=="4"){
+    		ckct();
+    		sjdtk();
+    	}
+    }
+    //查看错题
+    function ckct(){
+    	var i=1;
+    	var stuid=$(".xid").html();
+    	var bookid=$(".sjid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxkcct/"+stuid+"/"+bookid,function(date){
+    		$.each(date,function(){
+    			
+    			var yes="";
+    			var sc="fa fa-star-o";
+    			if(this.sfsc>0){
+    				sc="fa fa-star";
+    			}
+    			
+    			$(".jxtmbt").html("我的错题");//标题
+    			var div=$("<div class=\"tmjx\" tmid='"+this.qtId+"' id='"+i+"index'>"
+    					+"<p><label>"+i+"</label>. "+this.qtQuest+"</p>"
+    					+"<div class='xxk'></div>"
+    					+"<div class=\"cz\">"
+    				        +"<label class=\"daan\">正确答案是：<span class='yes'></span> ， 最近回答：<span class='no'>"+this.recentlyAnswer+"</span></label>"
+    				        +"<a onclick=\"ckjx('"+this.qtId+"','1')\"><i class=\"fa fa-file-text-o\"></i> 试题解析</a>"
+    				        +"<a><i class=\"fa fa-eye\"></i> 吐槽</a>"
+    				        +"<a><i class=\""+sc+"\" onclick=\"sctm(this,'"+this.qtId+"')\"></i> 收藏</a>"
+    				        +"</div></div>");
+    			$(".jxtmhz").append(div);
+    				
+    			$.each(this.list,function(is,obj){
+    				
+    				if(this.isRight=="1"){
+    					yes+=this.opORder;
+    					div.find(".yes").html(yes);
+    				}
+    				div.find(".xxk").append("<p>"+this.opORder+":"+this.rightOption+"</p>");
+    			})
+    			i++;
+    		})
+    	})
+    }
+    
+    //查看收藏题目
+    function cksctm(){
+    	var i=1;
+    	var stuid=$(".xid").html();
+    	var bookid=$(".sjid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxsctm/"+stuid+"/"+bookid,function(date){
+    		$.each(date,function(){
+    			
+    			var yes="";
+    			var sc="fa fa-star-o";
+    			if(this.sfsc>0){
+    				sc="fa fa-star";
+    			}
+    			
+    			$(".jxtmbt").html("我的收藏");//标题
+    			var div=$("<div class=\"tmjx\" tmid='"+this.qtId+"' id='"+i+"index'>"
+    					+"<p><label>"+i+"</label>. "+this.qtQuest+"</p>"
+    					+"<div class='xxk'></div>"
+    					+"<div class=\"cz\">"
+    				        +"<label class=\"daan\">正确答案是：<span class='yes'></span></label>"
+    				        +"<a onclick=\"ckjx('"+this.qtId+"','1')\"><i class=\"fa fa-file-text-o\"></i> 试题解析</a>"
+    				        +"<a><i class=\"fa fa-eye\"></i> 吐槽</a>"
+    				        +"<a><i class=\""+sc+"\" onclick=\"sctm(this,'"+this.qtId+"')\"></i> 收藏</a>"
+    				        +"</div></div>");
+    			$(".jxtmhz").append(div);
+    				
+    			$.each(this.list,function(is,obj){
+    				
+    				if(this.isRight=="1"){
+    					yes+=this.opORder;
+    					div.find(".yes").html(yes);
+    				}
+    				div.find(".xxk").append("<p>"+this.opORder+":"+this.rightOption+"</p>");
+    			})
+    			i++;
+    		})
+    	})
+    }
+    //查询试卷题目
+    function cksjtm(){    	
+    	
+    	var i=1;
+    	$(".jxtmhz").html("");
+    	var stuid=$(".xid").html();
+    	var sjid=$(".sjid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxsjtms/"+sjid+"/"+stuid,function(date){
+    		$.each(date,function(){
+    			
+    	    	var yes="";
+    			var sc="fa fa-star-o";
+    			if(this.sfsc>0){
+    				sc="fa fa-star";
+    			}
+    			
+    			var yn=1;//判断是否正确
+    			if(this.rightAnswer!=this.stuAnswer){
+    				yn=2;
+    			}
+    			
+    			$(".jxtmbt").html(this.fbr);//标题
+    			var div=$("<div class=\"tmjx\" tmid='"+this.qtId+"' id='"+i+"index'>"
+    					+"<p><label>"+i+"</label>. "+this.qtQuest+"</p>"
+    					+"<div class='xxk'></div>"
+    					+"<div class=\"cz\">"
+    				        +"<label class=\"daan\">正确答案是：<span class='yes'></span> ， 你的回答是：<span class='no'>"+this.stuAnswer+"</span></label>"
+    				        +"<a onclick=\"ckjx('"+this.qtId+"','"+yn+"')\"><i class=\"fa fa-file-text-o\"></i> 试题解析</a>"
+    				        +"<a><i class=\"fa fa-eye\"></i> 吐槽</a>"
+    				        +"<a><i class=\""+sc+"\" onclick=\"sctm(this,'"+this.qtId+"')\"></i> 收藏</a>"
+    				        +"</div></div>");
+    			$(".jxtmhz").append(div);
+    				
+    			$.each(this.list,function(is,obj){
+    				
+    				if(this.isRight=="1"){
+    					yes+=this.opORder;
+    					div.find(".yes").html(yes);
+    				}
+    				div.find(".xxk").append("<p>"+this.opORder+":"+this.rightOption+"</p>");
+    			})
+    			
+    			i++;
+    		})
+    	})
+
+    }
+    //试卷答题卡
+    function sjdtk(){
+    	var a=$(".jxtmhz .tmjx");
+    	for(var i=0;i<a.length;i++){
+    		
+    		var div="background-color:#0088db";
+			var as="color:white";
+	
+			var yes=$(a[i]).find(".yes").html();
+			var no=$(a[i]).find(".no").html();
+			if(yes!=no){
+				div="background-color: red";
+    			as="color: white";
+			}
+			
+			$(".dtkxh").append("<div style='"+div+"'>"
+				+"<a style='"+as+"' href='#"+(i-1)+"index'>"+(i+1)+"</a></div>");
+	
+    	}
+    	$(".dtkxh").append("<div class=\"clear\" style=\"border: 0;\"></div>");
+    }
+    
+    //收藏答题卡
+    function scdtk(){
+    	var a=$(".jxtmhz .tmjx");
+    	for(var i=0;i<a.length;i++){
+    		
+    		var div="background-color:white";
+			var as="color:#333";
+	
+			$(".dtkxh").append("<div style='"+div+"'>"
+				+"<a style='"+as+"' href='#"+i+"index'>"+(i+1)+"</a></div>");
+	
+    	}
+    	$(".dtkxh").append("<div class=\"clear\" style=\"border: 0;\"></div>");
+    }
+    
+    //查看所有题目
+    function cktmxx(){    	
+    	var i=1;
+    	$(".jxtmhz").html("");
+    	var stuId=$(".xid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxzxstbg/"+stuId,function(date){
+    		$.each(date,function(){
+    			
+    			var sc="fa fa-star-o";
+    			if(this.sfsc>0){
+    				sc="fa fa-star";
+    			}
+    			
+    			var yn=1;//判断是否正确
+    			if(this.rightAnswer!=this.stuAnswer){
+    				yn=2;
+    			}
+    			
+    			$(".jxtmbt").html(this.fbr);//标题
+    			var div=$("<div class=\"tmjx\" tmid='"+this.qtId+"' id='"+i+"index'>"
+    					+"<p><label>"+i+"</label>. "+this.qtQuest+"</p>"
+    					+"<div class='xxk'></div>"
+    					+"<div class=\"cz\">"
+    				        +"<label class=\"daan\">正确答案是："+this.rightAnswer+" ， 你的回答是："+this.stuAnswer+"</label>"
+    				        +"<a onclick=\"ckjx('"+this.qtId+"','"+yn+"')\"><i class=\"fa fa-file-text-o\"></i> 试题解析</a>"
+    				        +"<a><i class=\"fa fa-eye\"></i> 吐槽</a>"
+    				        +"<a><i class=\""+sc+"\" onclick=\"sctm(this,'"+this.qtId+"')\"></i> 收藏</a>"
+    				        +"</div></div>");
+    			$(".jxtmhz").append(div);
+    				
+    			$.each(this.list,function(is,obj){
+    				
+    				div.find(".xxk").append("<p>"+this.opORder+":"+this.rightOption+"</p>");
+    			})
+    			
+    			i++;
+    		})
+    	})
+
+    }
+    
+    //只看错题
+    function cktmxxs(){    	
+    	var i=1;
+    	$(".jxtmhz").html("");
+    	var stuId=$(".xid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxzxstbg/"+stuId,function(date){
+    		$.each(date,function(){
+    			
+    			var sc="fa fa-star-o";
+    			if(this.sfsc>0){
+    				sc="fa fa-star";
+    			}
+    			
+    			if(this.rightAnswer!=this.stuAnswer){
+    			
+	    			$(".jxtmbt").html(this.fbr);//标题
+	    			var div=$("<div class=\"tmjx\" tmid='"+this.qtId+"' id='"+i+"index'>"
+	    					+"<p><label>"+i+"</label>. "+this.qtQuest+"</p>"
+	    					+"<div class='xxk'></div>"
+	    					+"<div class=\"cz\">"
+	    				        +"<label class=\"daan\">正确答案是："+this.rightAnswer+" ， 你的回答是："+this.stuAnswer+"</label>"
+	    				        +"<a onclick=\"ckjx('"+this.qtId+"',2)\"><i class=\"fa fa-file-text-o\"></i> 试题解析</a>"
+	    				        +"<a><i class=\"fa fa-eye\"></i> 吐槽</a>"
+	    				        +"<a><i class=\""+sc+"\" onclick=\"sctm(this,'"+this.qtId+"')\"></i> 收藏</a>"
+	    				        +"</div></div>");
+	    			$(".jxtmhz").append(div);
+	    				
+	    			$.each(this.list,function(is,obj){
+	    				div.find(".xxk").append("<p>"+this.opORder+":"+this.rightOption+"</p>");
+	    			})
+    			
+    			}
+    			
+    			i++;
+    		})
+    	})
+
+    }
+    
+    //填充答题卡
+    function dtk(){
+    	var xb=$(".tmjx");
+    	$(".dtkxh").html("");   
+    	
+    	var i=1;
+    	var stuId=$(".xid").html();
+    	
+    	$.getJSON("cxzxstbg/"+stuId,function(date){
+    		$.each(date,function(){
+    			
+    			var div="background-color:#0088db";
+				var a="color:white";
+		
+    			if(this.rightAnswer!=this.stuAnswer){
+    				div="background-color: red";
+        			a="color: white";
+    			}
+    			
+    			$(".dtkxh").append("<div style='"+div+"'>"
+    				+"<a style='"+a+"' href='#"+(i-1)+"index'>"+i+"</a></div>");
+    			
+    			i++;
+    		})
+    		$(".dtkxh").append("<div class=\"clear\" style=\"border: 0;\"></div>");
+    	})
+    }
+    
+    //查看解析
+    function ckjx(qtId,yn){
+    
+    	if(yn==2){
+    		$(".wljs").hide();
+    	}else{
+    		$(".wljs").show();
+    	}
+    	$("#jxnr").attr("tmid",qtId);
+    	$("#jxnr .syjxxq").html("");
+    	
+    	$.getJSON("cxjx/"+qtId,function(date){
+    		
+    		$.each(date,function(){
+    			
+    			var name=this.teaName;
+    			if(this.typeid==2){
+    				name=this.stuName;
+    			}
+    			
+    			$("#jxnr .syjxxq").append("<div class=\"grstjx\">"
+    					+"<div style=\"border: 1px solid #CDCDCD;\">"
+    					+"<p><label style=\"width: 150px\">"
+    					+"<i class=\"fa fa-file-text-o\"></i>&nbsp;&nbsp;"+name+"</label>"
+    					+"<label>"+this.analyzeTime+"</label></p>"
+    					+"<div class=\"jxnr\">"+this.analyzeContent+"</div></div>"
+    					+"<div class=\"jxcz\">"
+    					+"<label>"+this.yes+"个人点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    					+this.no+"个人踩</label><label>"
+    					+"<a onclick=\"dianz(this,'"+this.analyzeId+"',1,'"+this.yes+"','"+this.no+"')\"><i class=\"fa fa-thumbs-o-up\"></i>点赞</a>"
+                    +"<a onclick=\"dianz(this,'"+this.analyzeId+"',2,'"+this.yes+"','"+this.no+"')\"><i class=\"fa fa-thumbs-o-down\"></i>踩</a>"
+                    +"</label></div></div>")
+    		})
+    	})
+    	
         $("#jxnr").show();
         $(".cyy").show();
+    }
+    
+    //收藏题目
+    function sctm(th,tmid){
+    	var zt=$(th).find("i").attr("class");
+    	var xid=$(".xid").html();
+    	var param={'stuId':xid,'qtId':tmid,};
+    	if(zt=="fa fa-star-o"){
+		   	$.ajax({
+				type:"POST",
+				url:"tjsc",
+				dataType:"json",
+			    contentType:"application/json",
+				data:JSON.stringify(param),
+				success:function(res){					
+					$(th).find("i").attr("class","fa fa-star");	
+				}
+			}); 
+    	}else if(zt=="fa fa-star"){
+    		$.ajax({
+				type:"DELETE",
+				url:"qxsc/"+xid+"/"+tmid,
+				dataType:"json",
+			    contentType:"application/json",
+			    data:{'xid':xid,'tmid':tmid},
+				success:function(res){					
+					$(th).find("i").attr("class","fa fa-star-o");	
+				}
+			}); 
+    	}
+    }
+    
+    //点赞或踩
+    function dianz(th,jxid,zt,yes,no){
+    	
+    	var stuId=$(".xid").html();
+    	var id=0;
+    	var appraise=0;
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("sfdz/"+stuId+"/"+jxid,function(date){
+    			
+    			id=date.id;
+    			appraise=date.appraise;
+    	})
+
+    	 if(id==0){
+    		var param={'appraise':zt,'stuId':stuId,'analyzeId':jxid}
+    		$.ajax({
+				type:"POST",
+				url:"xzdz",
+				dataType:"json",
+			    contentType:"application/json",
+				data:JSON.stringify(param),
+				success:function(res){		
+					if(zt=="1"){
+						
+						xgdzsl(1,0,jxid);
+						alert("你给对方点了一个赞！");
+						
+					}else{
+						
+						xgdzsl(0,1,jxid)
+						alert("你成功踩了对方一脚！");
+					}					
+				}
+			}); 
+    	}else{
+    		if(zt==appraise){
+    			
+    			appraise=0;  			
+    			$.ajax({
+    				type:"PUT",
+    				url:"xgdz/"+stuId+"/"+jxid+"/"+appraise,
+    				dataType:"json",
+    			    contentType:"application/json",
+    				data:{'stuId':stuId,'jxid':jxid,'appraise':appraise},
+    				success:function(res){		
+    					if(zt=="1"){
+    						
+    						yes=parseInt(yes)-1;
+    						xgdzsl(yes,no,jxid);
+    						alert("你取消了给对方点赞！");
+    						
+    					}else{
+    						
+    						no=parseInt(no)-1;
+    						xgdzsl(yes,no,jxid);
+    						alert("你撤回了踩对方的一脚！");
+    					}					
+    				}
+    			}); 
+    		}else if(appraise==0){
+    			
+    			appraise=zt;
+    			$.ajax({
+    				type:"PUT",
+    				url:"xgdz/"+stuId+"/"+jxid+"/"+appraise,
+    				dataType:"json",
+    			    contentType:"application/json",
+    				data:{'stuId':stuId,'jxid':jxid,'appraise':appraise},
+    				success:function(res){		
+    					if(zt=="1"){
+    						
+    						yes=parseInt(yes)+1;
+    						xgdzsl(yes,no,jxid);
+    						alert("你给对方点了一个赞！");
+    						
+    					}else{
+    						
+    						no=parseInt(no)+1;
+    						xgdzsl(yes,no,jxid);
+    						alert("你成功踩了对方一脚！");
+    					}					
+    				}
+    			}); 
+    		}else{
+    			appraise=zt;
+    			$.ajax({
+    				type:"PUT",
+    				url:"xgdz/"+stuId+"/"+jxid+"/"+appraise,
+    				dataType:"json",
+    			    contentType:"application/json",
+    				data:{'stuId':stuId,'jxid':jxid,'appraise':appraise},
+    				success:function(res){		
+    					if(zt=="1"){
+    						
+    						yes=parseInt(yes)+1;
+    						no=parseInt(no)-1;
+    						xgdzsl(yes,no,jxid);
+    						alert("你给对方点了一个赞！");
+    						
+    					}else{
+    						
+    						yes=parseInt(yes)-1;
+    						no=parseInt(no)+1;
+    						xgdzsl(yes,no,jxid);
+    						alert("你成功踩了对方一脚！");
+    					}					
+    				}
+    			}); 
+    		}
+    	} 
+    }
+    
+    //修改解析的点赞数量
+    function xgdzsl(yes,no,jxid){
+    	
+    	var qtId=$("#jxnr").attr("tmid");
+    	$.ajax({
+			type:"PUT",
+			url:"xgjx/"+yes+"/"+no+"/"+jxid,
+			dataType:"json",
+		    contentType:"application/json",
+			data:{'yes':yes,'no':no,'jxid':jxid},
+			success:function(res){		
+				ckjx(qtId);
+			}
+    	})
     }
 </script>
 </html>

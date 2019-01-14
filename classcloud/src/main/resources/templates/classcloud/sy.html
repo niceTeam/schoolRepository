@@ -282,7 +282,7 @@
 
 <div class="neirong">
 
-    <div id="shouye" style="display: none;">
+    <div id="shouye" style="display: block;">
        <div class="sygl">
            <div class="cjks"  onclick="chuangjiankaoshi(this)" onmouseover="xsyd(this)" onmouseout="xxyd(this)">
            <div><img src="../image/cjks.jpg"></div>
@@ -317,14 +317,14 @@
            </div>
        </div>
 
-        <div style="margin-left: 20px;margin-top: 40px"><h4>正在进行<a style="margin-left: 950px;font-size: 15px">展开更多</a></h4></div>
+        <div style="margin-left: 20px;margin-top: 20px"><h4>正在进行<a style="margin-left: 950px;font-size: 15px">展开更多</a></h4></div>
 
         <div class="zzjx">
          
             <div style="margin: 60px 0 50px 400px;color: #8c8c8c;">还没有正在进行的考试，点击上方创建一场考试吧~~</div>
         </div>
 
-        <div style="margin-left: 20px;margin-top: 40px"><h4>即将开始<a style="margin-left: 950px;font-size: 15px" calss="xssyjjks">展开更多</a></h4></div>
+        <div style="margin-left: 20px;margin-top: 20px"><h4>即将开始<a style="margin-left: 950px;font-size: 15px" calss="xssyjjks">展开更多</a></h4></div>
         <div class="jjks">
          	<!-- 即将开始的考试  -->
         </div>
@@ -465,7 +465,7 @@
 
     </div>
 
-    <div id="shijk" style="display: block;">
+    <div id="shijk" style="display: none;">
         <div class="sjktb">
             <input type="button" value="试卷预览" class="sjyl" onclick="shijuanyl(this)">
         </div>
@@ -1254,9 +1254,10 @@
     }
     
     function xzksryxx(sjid,kssj,jssj,xsid){
-    	$.getJSON("xzksryxx/"+xsid,+"/"+shid+"/"+kssj+"/"+jssj,function(date){
+    	 alert(sjid+","+kssj+","+jssj+","+xsid);
+    	 $.getJSON("xzksryxx?xsid="+xsid+"&sjid="+sjid+"&kssj="+kssj+"&jssj="+jssj,function(date){
     		alert("发布成功");
-    	})
+    	}) 
     }
     function sbchange(th){
     		var bookId=$(th).val();
@@ -1666,13 +1667,13 @@
     }
     
     function sjxs(th){
-        $(th).css("margin-top","10px");
+        $(th).css("margin-top","0px");
         $(th).css("-webkit-box-shadow","3px 10px 20px #cfcfcf");
         $(th).css("margin-bottom","10px");
     }
     
     function sjxx(th){
-        $(th).css("margin-top","20px");
+        $(th).css("margin-top","10px");
         $(th).css("-webkit-box-shadow","0 0");
         $(th).css("margin-bottom","0");
     }
@@ -2059,11 +2060,11 @@
     }
     
    function xsyd(th){
-       $(th).css("margin-top","20px");
+       $(th).css("margin-top","5px");
     }
    
     function xxyd(th){
-        $(th).css("margin-top","25px");
+        $(th).css("margin-top","15px");
         $(th).css("height","99px");
     }
     
@@ -2589,7 +2590,7 @@
   	
   	//查询即将开始的考试
   	function cxjjksdks(pageSize){
-  		var today;
+  		/* var today;
         today = new Date();
         intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
         intMonths = today.getMonth() + 1; //得到月份，要加1
@@ -2608,11 +2609,11 @@
         if(intMinutes<10){
         	intMinutes="0"+intMinutes;
         }
-        var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes;
+        var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes; */
         
         $(".jjks").html("");
         
-        $.getJSON("cxwkks?time="+time+"&pageSize="+pageSize,function(date){
+        $.getJSON("cxwkks?pageSize="+pageSize,function(date){
         	
         	$.each(date.list,function(){
         		
@@ -2640,37 +2641,17 @@
         }
         
       	//每秒执行一次,showTime()  
-        //setTimeout("cxjjksdks(1)",60000);  
+        setTimeout("cxjjksdks(3)",60000);  
   	}
   	
   	function cxzzjxks(pageSize){
-  		var today;
-        today = new Date();
-        intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
-        intMonths = today.getMonth() + 1; //得到月份，要加1
-        intDays = today.getDate(); //得到日期
-        intHours = today.getHours(); //得到小时 
-        intMinutes = today.getMinutes(); //得到分钟
-        if(intMonths<10){
-        	intMonths="0"+intMonths;
-        }
-        if(intDays<10){
-        	intDays="0"+intDays;
-        }
-        if(intHours<10){
-        	intHours="0"+intHours;
-        }
-        if(intMinutes<10){
-        	intMinutes="0"+intMinutes;
-        }
-        var time=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes;
+
         
         $(".zzjx").html("");
         
-        $.getJSON("cxzzjxks?time="+time+"&pageSize="+pageSize,function(date){
+        $.getJSON("cxzzjxks?pageSize="+pageSize,function(date){
         	
         	$.each(date.list,function(){
-        		
         		
         		var min1=parseInt(this.endTime.substr(11,2))*60+parseInt(this.endTime.substr(14,2));
         		var min2=parseInt(this.startTime.substr(11,2))*60+parseInt(this.startTime.substr(14,2));
@@ -2686,14 +2667,15 @@
         	});
         	
         })
-  			
+  			$(".zzjx").append("<div class=\"clear\"></div>");
+        
   		var i=$(".zzjx .zzjxsj");
         if(i.length<1){
         	
   			$(".zzjx").html("<div style=\"margin: 60px 0 50px 400px;color: #8c8c8c;\">还没有正在进行的考试，点击上方创建一场考试吧~~</div>")
         }
         
-      //setTimeout("cxzzjxks(1)",60000);  
+       setTimeout("cxzzjxks(3)",60000);  
   }
   	
 	//选择已有模板

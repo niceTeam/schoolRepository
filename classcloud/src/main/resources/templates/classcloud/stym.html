@@ -24,6 +24,21 @@
 </head>
 <body style="  background-color: #e6ecee;">
 <div class="cyy" style="display:none; "></div>
+<div id="csbg" style="display: none;">
+    <h4 class="bt">答题报告</h4>
+    <p class="jstm">共 <label>10 </label> 题，答对 <label>5 </label> 题
+        <a><input type="button" value="查看解析" class="ckjx"></a>
+        <a href="xszy"><input type="button" value="退出" class="tc"></a>
+    </p>
+    <div class="tmxh">
+        <div><a>1</a></div>
+        <div><a>2</a></div>
+        <div><a>3</a></div>
+        <div class="clear" style="border: 0;"></div>
+    </div>
+    <p class="tjsj">提交时间：<span>2018年7月21日 20:20:14</span></p>
+    <div class="df">得分：<label>50</label></div>
+</div>
 <header>
     <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
     <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
@@ -80,23 +95,29 @@
         intMinutes = today.getMinutes(); //得到分钟
         intSeconds = today.getSeconds(); //得到秒钟
         var dqsj=intYears+"-"+intMonths+"-"+intDays+" "+intHours+":"+intMinutes+":"+intSeconds;
-    	xstm();
+    	
+        xstm();
+        
         $(".cz .jj").click(function () {           
-            var dtk =$(".ths .th a");
-            var is=0;
+             var dtk =$(".ths .th a");
+             var is=0;
             for(var i=0;i<dtk.length;i++){
             	//alert($(dtk[i]).css("color"));
             	if($(dtk[i]).css("color")=="rgb(51, 122, 183)"){
             		is+=1;
             	}
             }
+            if(is==0){
+            	$(".tsjj p").html("确定要提交吗？");
+            }
             $(".tsjj label").html(is);
             $(".tsjj lab")
             $(".cyy").show();
             $(".ts").show();
             $(".ts .tsjj").show();
-            clearInterval(timer);
+            clearInterval(timer); 
         });
+        
         $(".tsjj input:eq(0)").click(function(){
             $(".cyy").hide();
             $(".ts").hide();
@@ -119,39 +140,101 @@
         //新增刷题纪录
         $(".tjsj").click(function(){
         	var zt=$(".zt").html();
-        	var param={'stuId':$(".xid").html(),'knowName':$(".bt").html(),'isCommit':1,'startTime':dqsj};
+        	var stuId=$(".xid").html();
+        	var param={'stuId':$(".xid").html(),'knowName':$("#stnr .bt").html(),'isCommit':1,'startTime':dqsj};
         	 $.ajax({
  				type:"POST",
  				url:"xzstjl",
  				dataType:"json",
  			    contentType:"application/json",
  				data:JSON.stringify(param),
- 				success:function(res){					
+ 				success:function(res){	
+ 					
  					xzstmx(res);
- 					if(zt==1){
- 						// xgzjjd(res)
+ 					
+ 					cxstbg();    		
+ 		            $(".ts").hide();
+ 		            $(".ts .tsjj").hide();
+		
+ 					 if(zt==1){
+ 						 xgzjjd(res)
  					}else if(zt==2){
- 						// xgzsdjd(res)
- 					}
+ 						 xgzsdjd(res)
+ 					}else if(zt==3){
+ 						
+ 					} 
  				}
  			}); 
          
         });
     })
-    
+    //新增错题
+    function xzct(stuId,bhId){
+    	$.getJSON("xzct/"+stuId+"/"+bhId,function(date){
+    		alert("新增错题");
+    	})
+    }
     //修改章节进度
     function xgzjjd(){
     	var courseId=$(".stid").html();
     	var stuId=$(".xid").html();
     	$.getJSON("cxzjjd/"+stuId+"/"+courseId,function(){
-    		
+    		alert("修改成功");    		
+    		cxstbg();    		
+            $(".ts").hide();
+            $(".ts .tsjj").hide();
     	});
     }
     //修改知识点进度
     function xgzsdjd(){
-    	
+    	var knowId=$(".stid").html();
+    	var stuId=$(".xid").html();
+    	$.getJSON("cxzsdjd/"+stuId+"/"+knowId,function(){
+    		alert("修改成功");    		
+    		cxstbg();    		
+            $(".ts").hide();
+            $(".ts .tsjj").hide();
+    	});
     }
     
+    //查询刷题报告
+    function cxstbg(){
+    	var i=1;
+    	var yes=0;
+    	var sj="";
+    	var stuId=$(".xid").html();
+    	$("#csbg .tmxh").html("");
+    	
+    	$.getJSON("cxzxstbg/"+stuId,function(date){
+    		$.each(date,function(){
+    			
+    			var div="background-color:#0088db";
+				var a="color:white";
+		
+    			if(this.rightAnswer!=this.stuAnswer){
+    				div="background-color: red";
+        			a="color: white";
+    				
+    			}else{
+    				yes++;
+    			}
+    			
+    			$("#csbg .tmxh").append("<div style='"+div+"'>"
+    				+"<a style='"+a+"' href='stjx?zt=1&sjid=0'>"+i+"</a></div>");
+    			
+    			sj=this.jiexi;
+    			i++;
+    			
+    		})
+    		
+    		$("#csbg .tmxh").append("<div class=\"clear\" style=\"border: 0;\"></div>");
+    		$("#csbg .jstm label:eq(0)").html(i-1);
+    		$("#csbg .jstm label:eq(1)").html(yes);
+    		$("#csbg .tjsj span").html(sj);
+    		$("#csbg").show();
+    		$(".cyy").show();
+    	})
+    }
     //新增刷题纪录明细
     function xzstmx(bhId){
     	 var tm=$(".ydt");//循环题目
@@ -182,7 +265,9 @@
 			    contentType:"application/json",
 				data:JSON.stringify(param),
 				success:function(res){					
-					alert("提交成功！")
+					alert("提交成功！");
+					var stuId=$(".xid").html();
+					xzct(stuId,bhId);
 				}
 			}); 
     }
@@ -201,15 +286,137 @@
     		});
     		zsdid+="0";
     		
-    		sjct(zsdid);
+    		sjct(zsdid,10);
+    		
     	}else if(zt==2){
-    		sjct(courseId);
-    	}   	
+    		
+    		sjct(courseId,10);
+    		
+    	}else if(zt==3){
+    		
+    		var bookId=$(".stid").html();
+    		
+    		$.ajaxSettings.async = false;
+    		$.getJSON("cxkczsd/"+bookId,function(date){
+    			$.each(date,function(){
+    				zsdid+=this.knowId+",";
+    			});
+    		});
+    		zsdid+="0";
+    		
+    		sjct(zsdid,10);
+    	}else if(zt==4){
+    		
+    		$("#stcbl .cz").css("margin-top","50px");
+    		
+			var gid=$(".stid").html();  
+			
+    		$.ajaxSettings.async = false;
+    		$.getJSON("cxnjxdzsd/"+gid,function(date){
+    			$.each(date,function(){
+    				zsdid+=this.knowId+",";
+    			});
+    		});
+    		zsdid+="0";
+    		
+    		sjct(zsdid,20);
+    	}else if(zt=="5"){
+    		
+    		xssctm();
+    	}else if(zt=="6"){
+    		xswdct();
+    	}	
+    }
+    
+    //显示我的错题
+    function xswdct(){
+    	var is=1;
+    	var stuid=$(".xid").html();
+		var bookid=$(".stid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxkcct/"+stuid+"/"+bookid,function(date){
+    		$.each(date,function(){
+    			var cls="radio";
+				if(this.idDouble==2){
+					cls="checkbox";
+				}
+				
+				var sczt="fa fa-star-o";				
+				if(this.sfsc>0){
+					sczt="fa fa-star";
+				}
+				
+				var dd=$(" <div class=\"ydt\" id='"+(is+1)+"index' tmid='"+this.qtId+"' zsdid='"+this.knowId+"'>"
+			        +"<p style='margin-left: 0'><label class='bs'>"+is+"</label>"
+			        +"<label>.&nbsp;"+this.qtQuest+"</label></p>"
+			        +"<div class='xuanxiang'></div>" 
+			        +"<div class='cz'>"
+			        +"<a><i class='fa fa-eye'></i> &nbsp;吐槽</a>"
+			        +"<a><i class='fa fa-bookmark-o'></i> &nbsp;标记</a>"
+			        +"<a onclick=\"sctm(this,'"+this.qtId+"')\"><i class='"+sczt+"'></i> &nbsp;收藏</a>"
+			        +"</div> </div>");
+				
+				$(".tmrq").append(dd);
+				
+				$.each(this.list,function(i,obj){
+					  dd.find(".xuanxiang").append("<p><input type='"+cls+"' onclick=\"txdaan(this)\" name='dx"+is+"' style=\"width: 15px;height: 15px\" isRight='"+obj.isRight+"'></i>"
+							+" <span>"+obj.opORder+"</span>."+obj.rightOption+"</p>"); 
+						
+				});
+				is++;
+    		});
+    		
+    	});
+    		cjdtk(is);
+    }
+    
+    //显示我收藏的题目
+    function xssctm(){
+    	var is=1;
+    	var stuid=$(".xid").html();
+		var bookid=$(".stid").html();
+    	
+    	$.ajaxSettings.async = false;
+    	$.getJSON("cxsctm/"+stuid+"/"+bookid,function(date){
+    		$.each(date,function(){
+    			var cls="radio";
+				if(this.idDouble==2){
+					cls="checkbox";
+				}
+				
+				var sczt="fa fa-star-o";				
+				if(this.sfsc>0){
+					sczt="fa fa-star";
+				}
+				
+				var dd=$(" <div class=\"ydt\" id='"+(is+1)+"index' tmid='"+this.qtId+"' zsdid='"+this.knowId+"'>"
+			        +"<p style='margin-left: 0'><label class='bs'>"+is+"</label>"
+			        +"<label>.&nbsp;"+this.qtQuest+"</label></p>"
+			        +"<div class='xuanxiang'></div>" 
+			        +"<div class='cz'>"
+			        +"<a><i class='fa fa-eye'></i> &nbsp;吐槽</a>"
+			        +"<a><i class='fa fa-bookmark-o'></i> &nbsp;标记</a>"
+			        +"<a onclick=\"sctm(this,'"+this.qtId+"')\"><i class='"+sczt+"'></i> &nbsp;收藏</a>"
+			        +"</div> </div>");
+				
+				$(".tmrq").append(dd);
+				
+				$.each(this.list,function(i,obj){
+					  dd.find(".xuanxiang").append("<p><input type='"+cls+"' onclick=\"txdaan(this)\" name='dx"+is+"' style=\"width: 15px;height: 15px\" isRight='"+obj.isRight+"'></i>"
+							+" <span>"+obj.opORder+"</span>."+obj.rightOption+"</p>"); 
+						
+				});
+				is++;
+    		});
+    		
+    	});
+    		cjdtk(is);
     }
     
     //显示题目
-    function sjct(zsdid){
-    	var sum=10;
+    function sjct(zsdid,sum){
+    	
     	$(".tmrq").html("");
     	var is=1;
     	var xid=$(".xid").html();
@@ -227,7 +434,7 @@
 					sczt="fa fa-star";
 				}
 				
-				var dd=$(" <div class=\"ydt\" id='"+(is+1)+"index' tmid='"+this.qtId+"'>"
+				var dd=$(" <div class=\"ydt\" id='"+(is+1)+"index' tmid='"+this.qtId+"' zsdid='"+this.knowId+"'>"
 			        +"<p style='margin-left: 0'><label class='bs'>"+is+"</label>"
 			        +"<label>.&nbsp;"+this.qtQuest+"</label></p>"
 			        +"<div class='xuanxiang'></div>" 
@@ -327,6 +534,7 @@
         }
     }
 
+     
     $(document).ready(function(){
         ksjs();
     });
