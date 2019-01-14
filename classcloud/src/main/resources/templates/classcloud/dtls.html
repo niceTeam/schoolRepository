@@ -31,6 +31,7 @@
     <a href="dtls">历史答题</a>
     <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;<span th:text="${xname}" class="xname"></span></a>
     <span th:text="${xid}" class="xid" style="display: none"></span>
+     <span  class="njid" style="display: none"></span>
     <a style="font-size: 17px" href="dl"><i class="fa fa-power-off"></i> &nbsp;退出</a>
 </header>
 <div class="ztbg" style="display: none">
@@ -163,38 +164,7 @@
             <input type="button" value="错题专练" class="ctzl">
             <input type="button" value="查看题目" class="cktm">
         </div>
-        <div class="ctkc">
-            <label>
-                <label class="ctmc">使用Java实现面向对象编程</label>
-                <a class="ctsl">(共103道题)</a>
-            </label>
-            <input type="button" value="错题专练" class="ctzl">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
-        <div class="ctkc">
-            <label>
-                <label class="ctmc">使用Java实现数据库编程</label>
-                <a class="ctsl">(共203道题)</a>
-            </label>
-            <input type="button" value="错题专练" class="ctzl">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
-        <div class="ctkc">
-            <label>
-                <label class="ctmc">使用jQuery制作网页交互</label>
-                <a class="ctsl">(共23道题)</a>
-            </label>
-            <input type="button" value="错题专练" class="ctzl">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
-        <div class="ctkc">
-            <label>
-                <label class="ctmc">使用JSP/Servlet开发系统</label>
-                <a class="ctsl">(共120道题)</a>
-            </label>
-            <input type="button" value="错题专练" class="ctzl">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
+       
         <div style="margin: 40px;border-bottom: 1px solid #C0C0C0"></div>
     </div>
 
@@ -207,30 +177,7 @@
             <input type="button" value="专练收藏" class="zlsc">
             <input type="button" value="查看题目" class="cktm">
         </div>
-        <div class="sctm">
-            <label>
-                <label class="scmc">使用Java实现面向对象编程</label>
-                <a class="scsl">(共203道题)</a>
-            </label>
-            <input type="button" value="专练收藏" class="zlsc">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
-        <div class="sctm">
-            <label>
-                <label class="scmc">使用Java实现数据库编程</label>
-                <a class="scsl">(共203道题)</a>
-            </label>
-            <input type="button" value="专练收藏" class="zlsc">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
-        <div class="sctm">
-            <label>
-                <label class="scmc">使用jQuery制作网页交互</label>
-                <a class="scsl">(共203道题)</a>
-            </label>
-            <input type="button" value="专练收藏" class="zlsc">
-            <input type="button" value="查看题目" class="cktm">
-        </div>
+     
         <div style="margin: 40px;border-bottom: 1px solid #C0C0C0"></div>
     </div>
 </div>
@@ -238,6 +185,9 @@
 <script src="../js/jquery-3.2.1.js"></script>
 <script>
     $(function(){
+    	
+    	cxxsnj();
+    	
         $(".ztbg .gbbg").click(function(){
            $(".ztbg").hide();
             $(".cyy").hide();
@@ -281,5 +231,79 @@
     });
 
  })
+ 
+  //查询学生的年级
+  function cxxsnj(){
+    	var stuId=$(".xid").html();
+    	$.getJSON("cxxsnj/"+stuId,function(date){
+    		$(".njid").html(date.gId);
+    		cxsc(date.gId);
+    		cxcts(date.gId);
+    	})
+ }
+ 
+    function cxcts(njid){
+    	var stuid=$(".xid").html(); 
+    	$("#lsdtjl .wdct").html("");
+    	
+    	
+    	$.getJSON("cxkcctsl/"+stuid+"/"+njid,function(date){
+    		$.each(date,function(){
+    			$("#lsdtjl .wdct").append(" <div class=\"ctkc\" bookid='"+this.bookId+"'>"
+             +"<label>"
+             +"<label class=\"ctmc\">"+this.bookName+"</label>"
+             +"<a class=\"ctsl\">(共"+this.sum+"道题)</a>"
+             +"</label>"
+             +"<input type=\"button\" value=\"错题专练\" class=\"ctzl\" onclick=\"ctzl('"+this.bookId+"')\">"
+             +"<input type=\"button\" value=\"查看题目\" class=\"cktm\" onclick=\"ckct('"+this.bookId+"')\">"
+             +"</div>")
+    		})
+    		
+    		$("#lsdtjl .wdct").append("<div style=\"margin: 40px;border-bottom: 1px solid #C0C0C0\"></div>");
+    	})
+    }
+ //查询我的收藏
+ function cxsc(njid){
+    	var stuid=$(".xid").html();
+    	//var njid=$(".njid").html();
+    	
+    	$("#lsdtjl .wdsc").html("");
+    	$.getJSON("cxkcsttm/"+stuid+"/"+njid,function(date){
+    		
+    		$.each(date,function(){
+    			$("#lsdtjl .wdsc").append("<div class=\"sctm\" bookid='"+this.bookId+"'>"
+            	+"<label>"
+                +"<label class=\"scmc\">"+this.bookName+"</label>"
+                +"<a class=\"scsl\">(共"+this.sum+"道题)</a>"
+            +"</label>"
+            +"<input type=\"button\" value=\"专练收藏\" class=\"zlsc\" onclick=\"lxsctm('"+this.bookId+"')\">"
+            +"<input type=\"button\" value=\"查看题目\" class=\"cktm\" onclick=\"cksctm('"+this.bookId+"')\">"
+       		+"</div>")	
+    		})
+    		$("#lsdtjl .wdsc").append("<div style=\"margin: 40px;border-bottom: 1px solid #C0C0C0\"></div>");
+    	})
+    }
+ //练习错题
+ function ctzl(bookid){
+	 var zt=6;
+	 	$.getJSON("stymcz?id="+bookid+"&mc=专练错题&zt="+zt,function(date){
+	 		location.href="stym";
+	 	})
+ }
+ //查看错题信息
+ function ckct(bookid){
+	 location.href='stjx?zt=4&sjid='+bookid;
+ }
+ //查看收藏题目信息
+ function cksctm(bookid){
+	 location.href='stjx?zt=3&sjid='+bookid;
+ }
+ //练习收藏
+ function lxsctm(bookid){
+	 var zt=5;
+ 	$.getJSON("stymcz?id="+bookid+"&mc=专练收藏&zt="+zt,function(date){
+ 		location.href="stym";
+ 	})
+ }
 </script>
 </html>

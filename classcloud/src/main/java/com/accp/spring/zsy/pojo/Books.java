@@ -43,5 +43,12 @@ public class Books implements Serializable{
 	}
 	private String bookName;
 	private int gid;//年级id
+	private int sum;//数量
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 	private List<Courses> listc;
 }

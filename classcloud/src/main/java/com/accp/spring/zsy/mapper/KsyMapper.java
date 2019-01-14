@@ -74,7 +74,7 @@ public interface KsyMapper {
 	int xztmxx(QuesOption quesOption);
 	
 	//新增题目解析
-	@Insert("insert into `schoolmanage`.`analyze` (`qtId`, `analyzeContent`, `stuId`, `analyzeTime`)values(#{qtId},#{analyzeContent},#{stuId},NOW())")
+	@Insert("insert into `schoolmanage`.`analyze` (`qtId`, `analyzeContent`, `stuId`, `analyzeTime`,`typeid`)values(#{qtId},#{analyzeContent},#{stuId},NOW(),1)")
 	int xztmjx(Analyze analyze);
 	
 	//查询题库题目
@@ -185,7 +185,7 @@ public interface KsyMapper {
 	List<Sjtmzsd> cxsjtmzsd(@Param("sjid")int sjid);
 	
 	//查询试卷题目及答案解析
-	@Select("select q.*,(select analyzeContent from `ANALYZE` a where a.qtId=p.qtId order by analyzeId )as jiexi from `papertitle` p,`question` q where p.qtid=q.qtid and p.examId=#{sjid}")
+	@Select("select q.*,(select analyzeContent from `ANALYZE` a where a.qtId=p.qtId order by analyzeId LIMIT 1 )as jiexi from `papertitle` p,`question` q where p.qtid=q.qtid and p.examId=#{sjid}")
 	List<Questions> cxsjtm(@Param("sjid")int sjid);
 	
 	//查询所有考试
@@ -193,12 +193,12 @@ public interface KsyMapper {
 	List<Examinations> cxsyks();
 	
 	//查询即将进行的考试
-	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId and startTime>#{time}")
-	List<Examinations> cxwkks(@Param("time")String time);
+	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId and startTime>NOW()")
+	List<Examinations> cxwkks();
 	
 	//查询正在进行的考试
-	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId and ea.endTime>#{time}>ea.startTime")
-	List<Examinations> cxzzjxks(@Param("time")String time);
+	@Select("select ea.*,eh.paperName,t.teaName,(SELECT count(*)FROM  `papertitle` p where p.examId=eh.paperId)as tmsum,(SELECT ex.score*tmsum FROM `exampaper` ex where ex.epId=eh.epId) as zscore from `examination` ea,`exampaperhistory` eh,`teacher` t where ea.examPaperId=eh.paperId and t.teaid=ea.teaId and ea.endTime>NOW() AND NOW()>ea.startTime")
+	List<Examinations> cxzzjxks();
 	
 	//查询试卷某个知识点中的题目
 	@Select("select q.qtid  from `exampaperhistory` eh,`papertitle` p,`question` q where eh.paperId=p.examId and q.qtId=p.qtId and eh.paperId=#{sjid} and q.knowId=#{zsdid}")
@@ -217,8 +217,7 @@ public interface KsyMapper {
 	List<ExamPaperKnowledge> cxsjmb(@Param("mbid")int mbid);
 	
 	//新增考试人员信息
-	@Insert("insert into ` stutest ` (` stuId `, ` examId `, ` STATUS `, ` startTime `, ` commitTime `, ` commitStyle `, ` score `)\r\n" + 
-			"values(#{stuId}, #{examId}, #{status},#{startTime},#{commitTime},#{commitStyle},#{score})")
+	@Insert("insert into `stutest` (`stuId`, `examId`, `STATUS`, `startTime`, `commitTime`, `commitStyle`, `score`)values(#{stuId}, #{examId}, #{status},#{startTime},#{commitTime},#{commitStyle},#{score})")
 	int xzksryxx(StuTest stuTest);
 	
 	//查询参加考试的学生

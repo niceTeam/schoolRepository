@@ -84,6 +84,20 @@ public class Questions implements Serializable{
 	private int idDouble;//1单选 2多选
 	private int sfsc;//是否收藏
 	private String jiexi;//解析
+	private String rightAnswer;//正确答案
+	public String getRightAnswer() {
+		return rightAnswer;
+	}
+	public void setRightAnswer(String rightAnswer) {
+		this.rightAnswer = rightAnswer;
+	}
+	public String getStuAnswer() {
+		return stuAnswer;
+	}
+	public void setStuAnswer(String stuAnswer) {
+		this.stuAnswer = stuAnswer;
+	}
+	private String stuAnswer;//你的回答
 	public String getJiexi() {
 		return jiexi;
 	}
@@ -111,5 +125,15 @@ public class Questions implements Serializable{
 	}
 	public void setList(List<QuesOption> list) {
 		this.list = list;
+	}
+	
+	public String recentlyAnswer;
+
+
+	public String getRecentlyAnswer() {
+		return recentlyAnswer;
+	}
+	public void setRecentlyAnswer(String recentlyAnswer) {
+		this.recentlyAnswer = recentlyAnswer;
 	}
 }

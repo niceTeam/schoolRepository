@@ -58,7 +58,7 @@ input{outline: none;background-color: white}
 .ydt .cz{margin-left: 400px;margin-top: 30px}
 .ydt .cz i{font-size: 25px;color: #F76C0F}
 .ydt .cz a{margin-left: 20px}
-#stcbl{background-color: white;width: 300px;margin-left: 950px;position: fixed;padding: 15px 25px;}
+#stcbl{webkit-box-shadow: -4px 5px 5px -4px #cfcfcf;background-color: white;width: 300px;margin-left: 950px;position: fixed;padding: 15px 25px;}
 #stnr .bt{padding: 10px 30px;font-size: 20px;width:800px;background-color: white;border: 1px solid #CDCDCD;border-radius:5px;margin-bottom: 5px;text-align: center }
 #stcbl{height: 350px;margin-top: 40px}
 #stcbl p{font-size: 17px}
@@ -75,3 +75,29 @@ input{outline: none;background-color: white}
 .tsxx input,.tsjj input{border: 0;padding: 10px 30px;background-color:#A0C001;color: white;font-size: 17px;margin-top: 30px}
 .tsjj p{font-size: 25px;margin-top: 50px;}
 .tsxx,.tsjj{text-align: center}
+#csbg{background-color: white;
+    height: 400px;
+    width: 600px;
+    position: fixed;
+    z-index: 99;
+    border: 1px solid #CDCDCD;
+    margin-left: 350px;
+    margin-top: 50px;
+    padding: 10px;}
+#csbg .bt{text-align: center}
+#csbg .jstm{padding-left: 30px;margin-top: 20px}
+#csbg .jstm  .ckjx{border: 0px;color: white;background-color: #6ba5c8;padding: 2px 10px;margin-left: 220px}
+#csbg .jstm .tc{border: 0px;color: white;background-color: red;padding: 2px 10px;margin-left: 20px}
+#csbg  .tmxh{padding: 10px;margin: 10px 20px;border-top: 1px solid #cdcdcd85;border-bottom: 1px solid #cdcdcd85;
+    height: 200px;}
+#csbg  .tmxh div{float: left;
+    width: 30px;
+    border: 1px solid #CDCDCD;
+    padding: 3px 0;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;}
+.clear {  clear: both;  }
+#csbg  .tjsj{margin-left: 300px}
+#csbg  .tjsj span{color:#9d9090f0;}
+#csbg .df{position: absolute;margin-top: -35px;margin-left: 30px;display: none}

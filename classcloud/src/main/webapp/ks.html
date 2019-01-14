@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/sjmb.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <style type="text/css">
+       header{
+            color: white;
+            height: 10%;
+            width: 100%;
+            position: fixed;
+            background-color: #78c5f4;
+            top: 0;z-index: 12;
+            font-size: 25px;
+            -webkit-box-shadow: -4px 6px 5px -4px #cfcfcf;
+        }
+        header a{color: white;}       
+        a{text-decoration:none;}
+        .dgtmda a{color:#337ab7}
+    </style>
+</head>
+<body  style="  background-color: #e6ecee;">
+<header>
+    <label style="margin-top: 10px;margin-left:30px">云 题 库</label>
+    <a style="margin-left: 30px;border: 1px solid white;font-size: 25px"></a>
+    <a href="xszy" onclick="wdzc()">我的自测</a>
+    <a href="tycs">统一测试</a>
+    <a href="dtls">历史答题</a>
+    <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;<span th:text="${xname}" class="xname"></span></a>
+    <span th:text="${xid}" class="xid" style="display: none"></span>
+    <span th:text="${bjid}" class="bjid" style="display: none"></span>
+    <a style="font-size: 17px" href="dl"><i class="fa fa-power-off"></i> &nbsp;退出</a>
+</header>
+
+<div class="dtk">
+   <div class="dtk2">答题卡</div>
+   
+    <p class="sysj">剩余时间:</p>
+    
+    <div style="height: 58px">
+	    <form role="form">
+	        <div class="time">
+	            <div class="digit minutes">
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	            </div>
+	            <div class="digit minutes">
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	            </div>
+	            <div class="separator"></div>
+	            <div class="digit seconds">
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	            </div>
+	            <div class="digit seconds">
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	                <div class="segment"></div>
+	            </div>
+	        </div>
+	    </form>
+    </div>
+    
+    
+    <div class="dgtmda" style="overflow: auto;margin-top: 10px">
+    
+        	<!--  答题卡题号  -->
+
+        <div class="clear" style="border: 0"></div>
+        
+    </div>
+    
+    <div class="tijiao"><input type="button" value="提交"></div>
+    
+</div>
+
+<div class="sjmb">
+    <div class="tou" id="1idnex">
+    	共 <label class="tmsl"></label> 题，合计 <label class="tmzf"></label> 分
+    </div>
+    
+    <div class='shijuannr'>
+			<!-- 试卷题目  -->
+	</div>
+</div>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/countdown.js" type="text/javascript"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script>
+$(function (){
+    
+    cxsjxx();
+    cxsjtm();
+    
+})
+function cxsjxx(){
+	var sjid=$(".sjid").html();
+	$.getJSON("cxygsj/"+sjid,function(date){
+		$(".tmsl").html(date.tmsum);
+		$(".tmzf").html(date.score);
+	})
+}
+function cxsjtm(){
+	
+	var is=1;
+	var sjid=$(".sjid").html();
+	$(".shijuannr").html("");
+	
+	$.ajaxSettings.async = false;
+	$.getJSON("cxsjtm/"+sjid,function(date){
+		$.each(date,function(){ 	
+			
+			var cls="radio";
+			if(this.idDouble==2){
+				cls="checkbox";
+			}
+			
+			var div=$("<div class=\"dgtm\" id='"+(is+1)+"index'>"
+			        +"<p style=\"margin-left: 0\" ><label class='bs'>"+is+"</label>."+this.qtQuest+"</p>"
+			        +"<div class=\"daan\">"			            
+			        +"</div></div>");
+			
+			$(".shijuannr").append(div);
+			
+			$.each(this.list,function(i,obj){
+				 div.find(".daan").append("<p onclick='txdaan(this)'>"
+						 +"<input type='"+cls+"' onclick=\"txdaan(this)\" name='dx"+is+"' style=\"width: 15px;height: 15px\" isRight='"+obj.isRight+"'></i>"
+						 +" <span>"+obj.opORder+"</span>."+obj.rightOption+"</p>"); 
+			})
+			is++;
+		});
+		
+		$(".dgtm:eq(0)").css("border-top","0");
+	})
+	
+	cjdtk();
+}
+
+//填充答题卡
+function cjdtk(){
+	var sum=$(".shijuannr .dgtm");
+
+	$(".dgtmda").html("");
+	for(var i=1;i<=sum.length;i++){
+		$(".dgtmda").append("<div class=\"tmbx\"><a href='#"+i+"index'>"+i+"</a></div>");
+	}
+	$(".dgtmda").append("<div class=\"clear\" style=\"border: 0\"></div>");
+}
+
+function txdaan(th){
+	var xx=$(th).parents(".daan").find("input");
+	for(var i=0;i<xx.length;i++){
+		
+		var xh=$(th).parents(".dgtm").find(".bs").html();
+		var dtk=$(".dgtmda .tmbx a");	
+
+		if($(xx[i]).prop("checked")==true){
+			
+			for(var is=0;is<dtk.length;is++){
+
+				if($(dtk[is]).html()==xh){
+					$(dtk[is]).parent().css("background-color","#0088DB");
+					$(dtk[is]).css("color","white");
+				}
+			}
+			break;
+		}else if(i==xx.length-1){
+			for(var i=0;i<dtk.length;i++){
+				if($(dtk[i]).html()==xh){
+					$(dtk[i]).parent().css("background-color","white");
+					$(dtk[i]).css("color","#337ab7");
+				}
+			}
+		}
+	}
+}
+</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var date_str = "";
+            for (var i = 0; i <= 23; i++) {
+                var d_;
+                i < 10 ? d_ = "0" + i : d_ = i;
+                date_str = date_str + "<option>" + d_ + "</option><br/>"
+            }
+            $("#_minute").append(date_str);
+            var time_str = "";
+            for (var i = 0; i <= 59; i++) {
+                var t_;
+                i < 10 ? t_ = "0" + i : t_ = i;
+                time_str = time_str + "<option>" + t_ + "</option><br/>"
+            }
+            $("#_second").append(time_str);
+        });
+        $(document).ready(function() {
+                var m_ = 90;
+                var s_ = 00;
+                seconds_ = m_ * 60 + s_ * 1;
+         /*   $("#reset_").click(function() {
+                $("#_minute").val("00");
+                $("#_second").val("00");
+                seconds_ = 0;
+                clearInterval(timer);
+            });*/
+        });
+    </script>
+</body>
+</html>

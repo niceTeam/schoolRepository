@@ -35,7 +35,7 @@ a:hover{text-decoration: none}
 .zkct{margin-left: 30px;margin-bottom: 0}
 .dtkxh{padding:0 20px;}
 .dtkxh div{border: 1px solid #CDCDCD; margin-top: 15px;float: left; padding: 3px 0;width: 30px;text-align: center;margin-left: 11px;}
-#jxnr{display: none;overflow: auto;position: fixed;background-color: white;width: 800px;height: 450px;z-index: 40;margin-left:300px }
+#jxnr{display: none;position: fixed;background-color: white;width: 800px;height: 490px;z-index: 40;margin-left:300px }
 #jxnr .bt{font-size: 20px;padding:10px 20px;color: white;background-color:#96BC33;margin-bottom: 10px; }
 .gbtmjx{position: absolute;color: white;font-size: 20px;margin-top: -48px;margin-left: 760px;  }
 .grstjx{border-bottom: 1px solid #96969652;margin: 30px 0}
@@ -44,3 +44,10 @@ a:hover{text-decoration: none}
 .jxcz{margin-top: 20px;margin-left: 450px;margin-bottom: 20px}
 .jxcz label:first-of-type{color: #969696;}
 .jxcz a{margin-left: 20px}
+.wljs{text-align: center;margin-top: 5px;}
+.wljs input{border: 0;color: white;padding: 7px 35px;background-color:#A0C001;font-size: 17px }
+#wdjs{position: fixed;  background-color: white;  width: 700px;  height: 430px;  z-index: 40;  margin-left: 340px;}
+#wdjs h4{padding:10px 20px ;background-color:#A0C001;margin-top: 0px;color: white}
+#wdjs .wdjj{width: 615px;height: 200px;margin-left: 40px;padding: 5px;resize: none;}
+#wdjs .cz{display: flex;justify-content: space-between;padding: 10px 40px}
+#wdjs .cz input{border: 0px;padding: 5px 30px;background-color:#A0C001;color: white;font-size: 17px }

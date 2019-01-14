@@ -48,6 +48,8 @@
     <a href="dtls">历史答题</a>
     <a style="margin-left: 550px;font-size: 17px"><i class="fa fa-user-o" style="font-size: 22px"></i> &nbsp;<span th:text="${xname}" class="xname"></span></a>
     <span th:text="${xid}" class="xid" style="display: none"></span>
+     <span th:text="${bjid}" class="bjid" style="display: none"></span>
+    <span  class="njid" style="display: none"></span>
     <a style="font-size: 17px" href="dl"><i class="fa fa-power-off"></i> &nbsp;退出</a>
 </header>
 <div style="margin-top: 62px">
@@ -128,22 +130,22 @@
                 <p></p>
                 <p>模拟真题型</p>
                 <p class="mnztsum">完成0道题</p>
-                <input type="button" value="进入" class="jrmnzt" >
+                <input type="button" value="进入" class="jrmnzt" onclick="mnzc()">
             </div>
         </div>
             <div style="font-size: 20px;background-color: white;padding: 30px 70px;margin:0 30px;"><label>本日答题</label></div>
             <div class="brdt">
             <div>
                 <i class="fa fa-line-chart"></i> &nbsp;
-                <label>累计答题数:<span>10</span></label>
+                <label>累计答题数:<span class="ljdt">0</span></label>
             </div>
             <div>
                 <i class="fa fa-pencil-square-o"></i>&nbsp;
-                <label>实际答题数:<span>10</span></label>
+                <label>实际答题数:<span class="sjdt">0</span></label>
             </div>
             <div>
                 <i class="fa fa-pie-chart"></i> &nbsp;
-                <label>正确率:<span>100%</span></label>
+                <label>正确率:<span class="zql">100%</span></label>
             </div>
         </div>
             <div id="ztlfx">
@@ -267,8 +269,14 @@
         }]
     };
     myChart.setOption(option);
+    
     $(function(){
+    	
         red();
+        cxxsnj();
+        cxsjsum();
+        cxljsum();
+        
         $(".kc .zj input").click(function(){
             window.location.href="stym";
         });
@@ -317,7 +325,16 @@
             $(".dhl a").css("border-bottom","0px solid #A0C001");
             $(this).css("border-bottom","2px solid #A0C001");
         });
+        
     })
+    
+    //查询学生的年级
+    function cxxsnj(){
+    	var stuId=$(".xid").html();
+    	$.getJSON("cxxsnj/"+stuId,function(date){
+    		$(".njid").html(date.gId);
+    	})
+    }
     function xztmfw(th,zt){
         if(zt==1){
         	xszxjn();
@@ -337,19 +354,19 @@
     }
     
     function xskcfx(){
-    	var gId=2;
+    	var gId=$(".njid").html();
    	 	$(".xxnr .kc").html(""); 	 	
    	 	$.getJSON("cxBook/"+gId,function(date){
 			 $.each(date,function(){
 				 var li=$(" <li><i class=\"fa fa-circle-o\"></i><label style='width: 700px;'>【课程】"+this.bookName+"</label>"
-						 +"<input type=\"button\" value=\"进入测试\" class='kcfxcs'></li>");
+						 +"<input type=\"button\" value=\"进入测试\" class='kcfxcs' onclick=\"kccs('"+this.bookId+"','"+this.bookName+"')\"></li>");
 				 $(".xxnr .kc").append(li);
 			 });
    		});
     }
     function xszxjn(){
     	var uid=$(".xid").html();
-    	var gId=2;
+    	var gId=$(".njid").html();
     	 $(".xxnr .kc").html("");
     	 $.getJSON("cxBookjd/"+gId+"/"+uid,function(date){
 			 $.each(date,function(i,objb){
@@ -360,7 +377,7 @@
 				  $.each(this.listc,function(is,obj){
 					  var li2=$("<li><i class=\"fa fa-plus-circle\"></i><label>"+obj.courseName+"&nbsp;"
 							+"&nbsp;<span style=\"color: darkgreen;font-size: 15px\">"
-             			    +"进度："+obj.percent+"%</span></label>"
+             			    +"</span></label>"
                   			+"<input type=\"button\" value=\"进入测试\" onclick=\"zjcs('"+obj.courseId+"','"+obj.courseName+"')\">"
                   			+" <ul class=\"zsd\"></ul></li>");
 					  
@@ -369,7 +386,7 @@
 	                $.each(obj.listk,function(ik,objk){
 	                    	   li2.find(".zsd").append("<li><label>"+objk.knowName+"&nbsp;"
 	                    			     +"&nbsp;<span style=\"color: darkgreen;font-size: 15px\">"
-	                    			     +"进度："+objk.percent+"%</span></label>"
+	                    			     +"</span></label>"
 	                                     +"<input type=\"button\" value=\"进入测试\" onclick=\"zsdcs('"+objk.knowId+"','"+objk.knowName+"')\">"
 	                                     +"</li>");
 	                    });
@@ -399,18 +416,113 @@
 		        })
 		  });
     }
+    //进入章节测试
     function zjcs(id,mc){
     	var zt=1;
-    	$.getJSON("stymcz/"+id+"/"+mc+"/"+zt,function(date){
+    	$.getJSON("stymcz?id="+id+"&mc="+mc+"&zt="+zt,function(date){
     		location.href="stym";
     	})
     	
     }
+    //进入知识点测试
     function zsdcs(id,mc){
     	var zt=2;
-    	$.getJSON("stymcz/"+id+"/"+mc+"/"+zt,function(date){
+    	$.getJSON("stymcz?id="+id+"&mc="+mc+"&zt="+zt,function(date){
     		location.href="stym";
     	})
+    }
+    //进入课程测试
+    function kccs(id,mc){
+    	var zt=3;
+    	$.getJSON("stymcz?id="+id+"&zt="+zt+"&mc="+mc,function(date){
+    		location.href="stym";
+    	})
+    }
+    //进入模拟自测
+    function mnzc(){
+    	var mc="模拟自测";
+    	var id=$(".njid").html();
+    	var zt=4;
+    	$.getJSON("stymcz?id="+id+"&zt="+zt+"&mc="+mc,function(date){
+    		location.href="stym";
+    	})
+    }
+    
+    function cxljsum(){
+    	var d;
+    	d = new Date();
+        intYears = d.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+        intMonths = d.getMonth() + 1; //得到月份，要加1
+        intDays = d.getDate(); //得到日期
+        
+        if(intMonths<10){
+        	intMonths="0"+intMonths;
+        }
+        if(intDays<10){
+        	intDays="0"+intDays;
+        }
+        
+        var time=intYears+"-"+intMonths+"-"+intDays;
+        var i=0;
+        
+        $.ajaxSettings.async = false;
+    	$.getJSON("cxljsum/"+time,function(date){
+    		$.each(date,function(){
+    			i++;
+    		})
+    	})
+    	
+    	$(".ljdt").html(i);
+    	zql(i);
+    }
+    
+    function zql(sum){
+    	var d;
+    	d = new Date();
+        intYears = d.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+        intMonths = d.getMonth() + 1; //得到月份，要加1
+        intDays = d.getDate(); //得到日期
+        
+        if(intMonths<10){
+        	intMonths="0"+intMonths;
+        }
+        if(intDays<10){
+        	intDays="0"+intDays;
+        }
+        
+        var time=intYears+"-"+intMonths+"-"+intDays;
+    	
+    	$.getJSON("cxzql/"+time,function(date){
+    		var z=parseFloat(date)/sum;
+    		z=parseFloat(z)*100;
+    		$(".zql").html(z+"%");
+    	})
+    }
+    function cxsjsum(){
+    	var d;
+    	d = new Date();
+        intYears = d.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+        intMonths = d.getMonth() + 1; //得到月份，要加1
+        intDays = d.getDate(); //得到日期
+        
+        if(intMonths<10){
+        	intMonths="0"+intMonths;
+        }
+        if(intDays<10){
+        	intDays="0"+intDays;
+        }
+        
+        var time=intYears+"-"+intMonths+"-"+intDays;
+        var i=0;
+        
+        $.ajaxSettings.async = false;
+    	$.getJSON("cxsjsum/"+time,function(date){
+    		$.each(date,function(){
+    			i++;
+    		})
+    	})
+    	
+    	$(".sjdt").html(i);
     }
 </script>
 <script type="text/javascript">
@@ -429,9 +541,12 @@
             i++;
         }
     }
+    
     $(document).ready(function() {
         doProgress(50);
     });
+    
+    
 </script>
 
 </html>
